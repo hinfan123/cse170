@@ -1,17 +1,20 @@
 <template>
   <div class="home">
-	<div class="grid-container">
-		<div class="grid">
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
-			<div class="recipe-box"></div>
+		<div class="grid-container">
+			<div class="grid">
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+				<router-link to="cook" tag="div" class="recipe-box"></router-link>
+			</div>
 		</div>
-	</div>
   </div>
 </template>
 
