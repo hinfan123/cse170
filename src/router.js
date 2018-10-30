@@ -7,7 +7,7 @@ import Saved from './views/Saved.vue'
 import MyRecipes from './views/MyRecipes.vue'
 import Profile from './views/Profile.vue'
 import CreateRecipe from './views/CreateRecipe.vue'
-//import Cook from './views/Cook.vue'
+import Cook from './views/Cook.vue'
 
 Vue.use(Router)
 
@@ -43,10 +43,7 @@ export default new Router({
     {
       path: '/cook',
       name: 'cook',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Cook.vue')
+      component: Cook
     }
   ]
 })
