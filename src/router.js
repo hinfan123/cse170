@@ -5,7 +5,7 @@ import Main from './views/Main.vue'
 import Home from './views/Home.vue'
 import Saved from './views/Saved.vue'
 import MyRecipes from './views/MyRecipes.vue'
-import Profile from './views/Profile'
+import Profile from './views/Profile.vue'
 import CreateRecipe from './views/CreateRecipe.vue'
 //import Cook from './views/Cook.vue'
 
