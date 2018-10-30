@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url(/assets/SF.otf) format('otf');
+}
+
+#app {
+  font-family: 'SF Pro Display', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+
+.top-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+input.search-bar {
+	width: 400px;
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.menu a {
+	text-transform: uppercase;
+	margin: 0 10px;
+}
+
+.grid-container {
+	display: flex;
+	justify-content: center;
+	margin: 30px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	min-width: 800px;
+}
+
+.recipe-box {
+	height: 200px;
+	margin: 10px;
+	background: #CCCCCC;
+	border-radius: 5px;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.ingredient-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.ingredient-container input {
+	margin: 5px 0;
+}
+
+.img-container {
+	margin: 30px 0;
+}
+.img-container .img {
+	width: 300px;
+	height: 300px;
+	background: #CCCCCC;
+	border-radius: 5px;
+}
