@@ -13,4 +13,7 @@
 </style>
 
 <script>
+export default {
+  name: 'cook'
+}
 </script>

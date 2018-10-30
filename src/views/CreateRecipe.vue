@@ -18,3 +18,9 @@
 		<button>publish recipe</button>
 	</div>
 </template>
+
+<script>
+export default {
+  name: 'create'
+}
+</script>

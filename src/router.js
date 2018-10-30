@@ -7,7 +7,7 @@ import Saved from './views/Saved.vue'
 import MyRecipes from './views/MyRecipes.vue'
 import Profile from './views/Profile'
 import CreateRecipe from './views/CreateRecipe.vue'
-import Cook from './views/Cook.vue'
+//import Cook from './views/Cook.vue'
 
 Vue.use(Router)
 

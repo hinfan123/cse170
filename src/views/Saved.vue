@@ -7,4 +7,7 @@
 </style>
 
 <script>
+export default {
+  name: 'saved'
+}
 </script>

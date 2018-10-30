@@ -7,4 +7,7 @@
 </style>
 
 <script>
+export default {
+  name: 'my-recipes'
+}
 </script>
