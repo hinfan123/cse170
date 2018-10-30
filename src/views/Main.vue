@@ -1,5 +1,5 @@
 <template>
-	<div id="main">
+	<div id="main-content">
 		<div class="top-bar">
 	    <div>
 	      <h2>Some Cooking Site</h2>
