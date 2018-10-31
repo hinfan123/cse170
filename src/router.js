@@ -8,6 +8,7 @@ import MyRecipes from './views/MyRecipes.vue'
 import Profile from './views/Profile.vue'
 import CreateRecipe from './views/CreateRecipe.vue'
 import Cook from './views/Cook.vue'
+import Finish from './views/Finish.vue'
 
 Vue.use(Router)
 
@@ -44,6 +45,11 @@ export default new Router({
       path: '/cook',
       name: 'cook',
       component: Cook
+    },
+    {
+      path: '/finish',
+      name: 'finish',
+      component: Finish
     }
   ]
 })
