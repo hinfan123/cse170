@@ -164,3 +164,36 @@ input.search-bar {
 		}
 	}
 }
+
+.recipe-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	min-width: 800px;
+	width: 65vw;
+	.recipe-entry {
+		display: flex;
+		align-items: center;
+		margin: 10px 0;
+		cursor: pointer;
+		.recipe-img {
+			position: relative;
+			background: #CCCCCC;
+			border-radius: 5px;
+			height: 125px;
+			width: 125px;
+			margin-right: 20px;
+			.saved-btn {
+				cursor: pointer;
+				position: absolute;
+				top: 5px; right: 5px;
+				padding: 5px;
+				height: 20px;
+				width: 20px;
+				i { }
+			}
+		}
+		.recipe-description {
+			text-align: left;
+		}
+	}
+}

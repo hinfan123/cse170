@@ -5,7 +5,7 @@
 			start over
 		</router-link>
 		<router-link to="/" tag="button">
-			cook another dish
+			back to home
 		</router-link>
 	</div>
 </template>
