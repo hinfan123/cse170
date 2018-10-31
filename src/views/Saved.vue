@@ -1,10 +1,7 @@
 <template>
 	<div id="saved" class="content">
 		<div class="recipe-list">
-			<router-link to="/cook"
-									 tag="div"
-									 v-for="recipe in recipes"
-									 class="recipe-entry">
+			<div v-for="recipe in recipes" class="recipe-entry">
 				<div class="recipe-img">
 					<div class="saved-btn">
 						<i class="fas fa-heart"></i>
@@ -15,10 +12,14 @@
 					<p>
 						This is a recipe description<br>
 						It can be multiple lines<br>
-						It will contain basic details of the recipe<br>
 					</p>
+					<div class="btn-container">
+						<router-link to="/cook" tag="button">
+							cook
+						</router-link>
+					</div>
 				</div>
-			</router-link>
+			</div>
 		</div>
 	</div>
 </template>

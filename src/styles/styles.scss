@@ -22,6 +22,10 @@
   }
 }
 
+button {
+	cursor: pointer;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
@@ -165,16 +169,21 @@ input.search-bar {
 	}
 }
 
+#my-recipes {
+	display: flex;
+	justify-content: center;
+}
+
 .recipe-list {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	width: 55vw;
 	min-width: 800px;
-	width: 65vw;
+	margin-bottom: 30px;
 	.recipe-entry {
 		display: flex;
 		align-items: center;
 		margin: 10px 0;
-		cursor: pointer;
 		.recipe-img {
 			position: relative;
 			background: #CCCCCC;
@@ -194,6 +203,13 @@ input.search-bar {
 		}
 		.recipe-description {
 			text-align: left;
+			.btn-container {
+				button { margin-right: 10px; }
+			}
 		}
 	}
+}
+
+.align-left {
+	align-self: flex-start;
 }
