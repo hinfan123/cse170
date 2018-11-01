@@ -10,6 +10,7 @@
 				<div class="recipe-description">
 					<h4 class="text-semibold">{{ recipe.name }}</h4>
 					<p class="text-regular">
+						@{{recipe.author}}<br>
 						This is a recipe description.
 					</p>
 					<div class="btn-container">
@@ -32,18 +33,18 @@ export default {
 	data: function () {
 		return {
 			recipes: [
-				{ name: "Recipe 1",},
-				{ name: "Recipe 2",},
-				{ name: "Recipe 3",},
-				{ name: "Recipe 4",},
-				{ name: "Recipe 5",},
-				{ name: "Recipe 6",},
-				{ name: "Recipe 7",},
-				{ name: "Recipe 8",},
-				{ name: "Recipe 9",},
-				{ name: "Recipe 10",},
-				{ name: "Recipe 11",},
-				{ name: "Recipe 12",},
+				{ name: "Recipe 1", author: "Jack Ma"},
+				{ name: "Recipe 2", author: "Jeff Bezos"},
+				{ name: "Recipe 3", author: "Steve Jobs"},
+				{ name: "Recipe 4", author: "Bill Gates"},
+				{ name: "Recipe 5", author: "Mark Cuban"},
+				{ name: "Recipe 6", author: "Travis Kalanick"},
+				{ name: "Recipe 7", author: "Steve Wozniak"},
+				{ name: "Recipe 8", author: "Evan Spiegel"},
+				{ name: "Recipe 9", author: "Mark Zuckerberg"},
+				{ name: "Recipe 10", author: "Warren Buffet"},
+				{ name: "Recipe 11", author: "Elon Musk"},
+				{ name: "Recipe 12", author: "Larry Page"},
 			]
 		}
 	},

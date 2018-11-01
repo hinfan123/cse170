@@ -13,18 +13,24 @@ $primary: #7DB9B9;
 /*/
 // Dark theme
 $bg: #202020;
-$text: #E8E8E8;
+$text: #DEDEDE;
 $accent: #333333;
 $placeholder: #828282;
-$primary: #7DB9B9;
+$primary: #75B0B0;
 //*/
 
 $pink: #EB8D96;
 $green: #88BD96;
 $yellow: #F2D46C;
 
+$modal-z: 9999;
+
 html {
 	background: $bg;
+}
+
+.color-default {
+	color: $text !important;
 }
 
 #app {
@@ -121,8 +127,8 @@ button.button {
 	}
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
+h1, h2, h3, h4, h5, h6, p {
+	margin-bottom: 0.5em;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -205,11 +211,33 @@ input.search-bar {
 }
 
 .recipe-box {
-	height: 200px;
-	margin: 10px;
+	width: 225px;
+	margin: 10px 10px 20px 10px;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 	background: $accent;
 	border-radius: 5px;
+	text-align: left;
 	cursor: pointer;
+	position: relative;
+	&.xs { height: 195px; }
+	&.sm { height: 218px; }
+	&.md { height: 241px; }
+	&.lg { height: 252px; }
+	.saved-btn {
+		cursor: pointer;
+		position: absolute;
+		top: 0; right: 0;
+		padding: 5px;
+		height: 30px;
+		width: 30px;
+		i { color: $bg; }
+		&:hover {
+			i { color: $pink; }
+		}
+	}
 }
 
 .content {
