@@ -1,0 +1,101 @@
+.flex-column {
+  flex-direction: column !important;
+}
+.justify-start {
+  justify-content: flex-start !important;
+}
+.justify-center {
+  justify-content: center !important;
+}
+.justify-evenly {
+  justify-content: space-evenly !important;
+}
+.justify-around {
+  justify-content: space-around !important;
+}
+.justify-end {
+  justify-content: flex-end !important;
+}
+.align-center {
+  align-items: center !important;
+}
+.align-start {
+  align-items: flex-start !important;
+}
+
+$fontWeights: (
+  ('light', 500),
+  ('regular', 600),
+  ('semibold', 700),
+  ('bold', 800),
+  ('heavy', 900),
+);
+
+$fontWeightKey: 'text-';
+@each $weight in $fontWeights {
+  $weightKey: nth($weight, 1);
+  $weightValue: nth($weight, 2);
+  .#{$fontWeightKey}#{$weightKey} {
+    font-weight: $weightValue !important;
+  }
+}
+
+$sizeUnit: rem;
+$marginKey: 'm';
+$paddingKey: 'p';
+$separator: '-';
+$sizes: (
+  ('none', 0),
+  ('xxs', 0.125),
+  ('xs', 0.25),
+  ('sm', 0.5),
+  ('md', 1),
+  ('lg', 2),
+  ('xl', 3),
+  ('xxl', 4),
+  ('xxxl', 8),
+);
+$positions: (
+  ('t', 'top'),
+  ('r', 'right'),
+  ('b', 'bottom'),
+  ('l', 'left'),
+);
+
+
+@function sizeValue($key, $value) {
+    @return if($key == 'none', 0, $value + $sizeUnit);
+}
+
+@each $size in $sizes {
+  $sizeKey: nth($size, 1);
+  $sizeValue: nth($size, 2);
+  .#{$marginKey}#{$separator}#{$sizeKey} {
+      margin: sizeValue($sizeKey, $sizeValue) !important;
+  }
+  .#{$paddingKey}#{$separator}#{$sizeKey} {
+      padding: sizeValue($sizeKey, $sizeValue) !important;
+  }
+  @each $position in $positions {
+      $posKey: nth($position, 1);
+      $posValue: nth($position, 2);
+      .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+          margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+      }
+      .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+          padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+      }
+  }
+  .#{$marginKey}#{$separator}x#{$separator}#{$sizeKey} {
+    margin: 0 sizeValue($sizeKey, $sizeValue) !important;
+  }
+  .#{$marginKey}#{$separator}y#{$separator}#{$sizeKey} {
+    margin: sizeValue($sizeKey, $sizeValue) 0 !important;
+  }
+  .#{$paddingKey}#{$separator}x#{$separator}#{$sizeKey} {
+    padding: 0 sizeValue($sizeKey, $sizeValue) !important;
+  }
+  .#{$paddingKey}#{$separator}y#{$separator}#{$sizeKey} {
+    padding: sizeValue($sizeKey, $sizeValue) 0 !important;
+  }
+}

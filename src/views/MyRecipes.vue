@@ -10,17 +10,17 @@
 						</div>
 					</div>
 					<div class="recipe-description">
-						<h3>{{ recipe.name }}</h3>
+						<h4>{{ recipe.name }}</h4>
 						<p>
 							This is a recipe description<br>
 							It can be multiple lines<br>
 						</p>
 						<div class="btn-container">
-							<router-link to="/" tag="button">
-								edit
-							</router-link>
-							<router-link to="/cook" tag="button">
+							<router-link to="/cook" tag="button" class="button green">
 								cook
+							</router-link>
+							<router-link to="/" tag="button" class="button yellow">
+								edit
 							</router-link>
 						</div>
 					</div>

@@ -1,21 +1,36 @@
 <template>
-	<div id="main-content">
-		<div class="top-bar">
-	    <div>
-	      <h2>Some Cooking Site</h2>
-	    </div>
-	    <div>
-	      <input class="search-bar" placeholder="Seach for Recipes...">
-	    </div>
-	    <div id="nav">
-	      <router-link to="/">Home</router-link> |
-	      <router-link to="/saved">Saved</router-link> |
-	      <router-link to="/myrecipes">My Recipes</router-link> |
-	      <router-link to="/profile">Profile</router-link> |
-	      <router-link to="/create">New Recipe</router-link>
-	    </div>
-	   </div>
-		 <router-view/>
+	<div>
+		<div id="top-bar">
+			<div class="logo-container">
+				<i class="fas fa-utensils"></i>
+			</div>
+			<div id="search-field">
+				<div class="icon-container">
+					<i class="fas fa-search"></i>
+				</div>
+				<input placeholder="Look for recipes to cook...">
+			</div>
+			<div id="nav">
+				<router-link to="/">
+					Home
+				</router-link>
+				<router-link to="/saved">
+					Saved
+				</router-link>
+				<router-link to="/myrecipes">
+					My Recipes
+				</router-link>
+				<router-link to="/profile">
+					Profile
+				</router-link>
+				<router-link to="/create">
+					New Recipe
+				</router-link>
+			</div>
+		</div>
+		<div id="main-content" class="content">
+			<router-view/>
+		</div>
 	</div>
 </template>
 
@@ -24,6 +39,6 @@
 
 <script>
 export default {
-  name: 'main'
+	name: 'main'
 }
 </script>

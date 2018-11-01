@@ -3,37 +3,174 @@
   src: url(/assets/SF.otf) format('otf');
 }
 
+//*
+// Light Theme
+$bg: #FFFFFF;
+$text: #444444;
+$accent: #E0E0E0;
+$placeholder: #A7A7A7;
+$primary: #7DB9B9;
+/*/
+// Dark theme
+$bg: #202020;
+$text: #E8E8E8;
+$accent: #333333;
+$placeholder: #828282;
+$primary: #7DB9B9;
+//*/
+
+$pink: #EB8D96;
+$green: #88BD96;
+$yellow: #F2D46C;
+
+html {
+	background: $bg;
+}
+
 #app {
   font-family: 'SF Pro Display', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $text;
 }
 
 #nav {
-  padding: 30px;
+	display:flex;
+	flex-wrap: nowrap;
+	margin: 0 0.5em;
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    font-weight: 700;
+    font-size: 16px;
+    color: $text;
+    border-radius: 8px;
+    height: 40px;
+    padding: 0.5em 0.6em;
+    margin: 0 0.25em;
+    white-space: nowrap;
+    &:hover {
+    	background: $accent;
+    }
     &.router-link-exact-active {
-      color: #42b983;
+      color: $primary;
+      background: $accent;
+      cursor: default;
     }
   }
+}
+
+#top-bar {
+	z-index: 1001;
+	padding: 5px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	background: $bg;
+	border-bottom: 1px solid $accent;
+}
+
+#main-content {
+	margin-top: 75px;
 }
 
 button {
 	cursor: pointer;
 }
 
+button.button {
+	background: transparent;
+	border-radius: 6px;
+	text-transform: uppercase;
+	font-weight: 700;
+	&:focus {
+		box-shadow: none;
+	}
+	&.green {
+		color: $green;
+		border: 2px solid $green;
+		&:hover {
+			background: $green;
+			color: $bg;
+		}
+	}
+	&.yellow {
+		color: $yellow;
+		border: 2px solid $yellow;
+		&:hover {
+			background: $yellow;
+			color: $bg;
+		}
+	}
+}
+
+.logo-container {
+	font-size: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.35em;
+	margin: 0 0.25em;
+	border-radius: 8px;
+	color: $text;
+	cursor: pointer;
+	&:hover {
+		background: $accent;
+	}
+}
+
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
-.top-bar {
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $placeholder;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $placeholder;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: $placeholder;
+}
+
+#search-field {
+	position: relative;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	font-size: 16px;
+	width: 100%;
+	margin: 0 0.5em;
+	.icon-container {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 2.5em;
+		i {
+			font-size: 1.25em;
+			color: $text;
+		}
+	}
+	input {
+		padding-left: 2.5em;
+		height: 40px;
+		width: 100%;
+		background: $accent;
+		border-radius: 8px;
+		border-style: none;
+		font-size: 1em;
+		font-weight: 700;
+		color: $text;
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 0 3px $primary;
+		}
+	}
 }
 
 .top-bar-cook {
@@ -58,7 +195,7 @@ input.search-bar {
 .grid-container {
 	display: flex;
 	justify-content: center;
-	margin: 30px;
+	margin: 15px;
 }
 
 .grid {
@@ -70,7 +207,7 @@ input.search-bar {
 .recipe-box {
 	height: 200px;
 	margin: 10px;
-	background: #CCCCCC;
+	background: $accent;
 	border-radius: 5px;
 	cursor: pointer;
 }
@@ -111,7 +248,7 @@ input.search-bar {
 	.img {
 		width: 300px;
 		height: 300px;
-		background: #CCCCCC;
+		background: $accent;
 		border-radius: 5px;
 	}
 }
@@ -186,7 +323,7 @@ input.search-bar {
 		margin: 10px 0;
 		.recipe-img {
 			position: relative;
-			background: #CCCCCC;
+			background: $accent;
 			border-radius: 5px;
 			height: 125px;
 			width: 125px;
@@ -196,12 +333,19 @@ input.search-bar {
 				position: absolute;
 				top: 5px; right: 5px;
 				padding: 5px;
-				height: 20px;
-				width: 20px;
-				i { }
+				height: 30px;
+				width: 30px;
+				i { color: $pink; }
+				&:hover {
+					i { color: $text; }
+				}
 			}
 		}
 		.recipe-description {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
 			text-align: left;
 			.btn-container {
 				button { margin-right: 10px; }

@@ -8,13 +8,12 @@
 					</div>
 				</div>
 				<div class="recipe-description">
-					<h3>{{ recipe.name }}</h3>
-					<p>
-						This is a recipe description<br>
-						It can be multiple lines<br>
+					<h4 class="text-semibold">{{ recipe.name }}</h4>
+					<p class="text-regular">
+						This is a recipe description.
 					</p>
 					<div class="btn-container">
-						<router-link to="/cook" tag="button">
+						<router-link to="/cook" tag="button" class="button green">
 							cook
 						</router-link>
 					</div>
