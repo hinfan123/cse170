@@ -61,7 +61,7 @@
 								It can be multiple lines<br>
 							</p>
 							<div class="btn-container">
-								<router-link to="/" tag="button" class="button yellow">
+								<router-link to="/edit" tag="button" class="button yellow">
 									edit
 								</router-link>
 								<router-link to="/m/cook" tag="button" class="button primary">
