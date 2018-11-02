@@ -1,7 +1,7 @@
 <template>
 	<div id="finish">
 		<h1>YAY! Enjoy your dish!</h1>
-		<router-link to="/cook" tag="button">
+		<router-link to="/h/cook" tag="button">
 			start over
 		</router-link>
 		<router-link to="/" tag="button">
