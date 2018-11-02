@@ -49,17 +49,17 @@
 
 		<div v-for="step in steps">
 			<div v-if="isCurrPage(step.n)" class="content">
-				<h1>{{step.title}}</h1>
+				<h2 class="m-b-sm">{{step.title}}</h2>
 				<div class="img-container">
 					<div class="img">
 
 					</div>
 				</div>
 				<div class="instruction-detail-container">
-					<h4>Some instruction detail</h4>
-					<h4>Some other instruction detail</h4>
-					<h4>Even more instruction detail</h4>
-					<h4>Last line of instruction detail</h4>
+					<h6>Some instruction detail</h6>
+					<h6>Some other instruction detail</h6>
+					<h6>Even more instruction detail</h6>
+					<h6>Last line of instruction detail</h6>
 				</div>
 
 				<div v-if="step.timer" class="timer-container">
@@ -69,6 +69,7 @@
 					</button>
 				</div>
 
+				<br>
 				<div class="step-nav-container">
 					<button @click="prevPage()">
 						back

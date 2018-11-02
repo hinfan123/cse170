@@ -254,6 +254,12 @@ input.search-bar {
 	text-align: left;
 	cursor: pointer;
 	position: relative;
+
+	background-image: url('./assets/img-placeholder.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
 	&.xs { height: 185px; }
 	&.sm { height: 218px; }
 	&.md { height: 241px; }
@@ -319,11 +325,15 @@ input.search-bar {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin: 30px 0;
+	margin: 15px 0;
 	.img {
 		width: 325px;
 		height: 325px;
-		background: $accent;
+		//background: $accent;
+		background-image: url('./assets/img-placeholder.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
 		border-radius: 5px;
 	}
 }
@@ -403,6 +413,12 @@ input.search-bar {
 			height: 125px;
 			width: 125px;
 			margin-right: 20px;
+
+			background-image: url('./assets/img-placeholder.jpg');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+
 			.saved-btn {
 				cursor: pointer;
 				position: absolute;

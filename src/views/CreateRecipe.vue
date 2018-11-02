@@ -14,9 +14,12 @@
 						 v-model="ingredientToAdd"
 						 placeholder="Tap Enter to add...">
 		</div>
+
+		<br>
 		<button @click="modalActive = true">
 			save as private recipe
 		</button>
+		<br>
 		<button @click="modalActive = true">
 			publish recipe
 		</button>

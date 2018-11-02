@@ -10,11 +10,17 @@ import CreateRecipe from './views/CreateRecipe.vue'
 import Cook from './views/Cook.vue'
 import Finish from './views/Finish.vue'
 import EditRecipe from './views/EditRecipe.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
     {
       path: '/',
       name: 'main',

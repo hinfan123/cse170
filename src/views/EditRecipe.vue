@@ -21,8 +21,24 @@
 						 v-model="ingredientToAdd"
 						 placeholder="Tap Enter to add...">
 		</div>
-		<button>save as private recipe</button>
-		<button>save and publish recipe</button>
+		<button @click="modalActive = true">save as private recipe</button>
+		<button @click="modalActive = true">save and publish recipe</button>
+
+		<b-modal :active.sync="modalActive"
+						 :width="275"
+						 :canCancel="false">
+			<div class="card">
+				<div class="card-content">
+					<h2 class="color-default m-b-sm">Recipe Saved!</h2>
+					<div class="is-flex">
+						<router-link to="/myrecipes" tag="button" class="button primary">
+							OK
+						</router-link>
+					</div>
+				</div>
+			</div>
+		</b-modal>
+
 	</div>
 </template>
 
@@ -31,10 +47,11 @@
 
 <script>
 export default {
-	name: 'create',
+	name: 'edit',
 	data: function () {
 		return {
 			recipeName: "Some Existing Recipe",
+			modalActive: false,
 			ingredients: [
 				{
 					name: "Ingredient 1",
