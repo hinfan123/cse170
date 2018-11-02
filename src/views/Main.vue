@@ -39,6 +39,6 @@
 
 <script>
 export default {
-	name: 'main'
+	name: 'main-content'
 }
 </script>

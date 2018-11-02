@@ -1,7 +1,7 @@
 <template>
 	<div id="cook">
 		<div class="top-bar-cook">
-			<router-link to="/" tag="div" class="back-btn">
+			<router-link :to="prevRoute" tag="div" class="back-btn">
 				<i class="fas fa-chevron-left"></i>
 			</router-link>
 			<h2>Cooking "Some Recipe"</h2>
@@ -110,6 +110,19 @@ export default {
 				{ n: 3, title: "Third Step also has no timer", timer: false },
 				{ n: 4, title: "Final Step has timer!", timer: true }
 			]
+		}
+	},
+	computed: {
+		prevRoute: function () {
+			let prev = ''
+			if (this.$route.params.prev === 'h') {
+				prev = ''
+			} else if (this.$route.params.prev === 's') {
+				prev = 'saved'
+			} else if (this.$route.params.prev === 'm') {
+				prev = 'myrecipes'
+			}
+			return '/' + prev
 		}
 	},
 	methods: {

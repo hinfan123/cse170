@@ -1,26 +1,77 @@
 <template>
-  <div class="home">
+	<div class="home">
 		<div class="columns m-t-md">
 			<div v-for="(col, i) in columns" class="column p-none">
-				<router-link v-for="(recipe, j) in getColRecipes(col)"
-										 to="cook"
-										 tag="div"
+				<div v-for="(recipe, j) in getColRecipes(col)"
+										 @click="openModal(recipe)"
 										 :class="['recipe-box', boxSizeArray[i][j]]">
 					<div class="saved-btn" v-on:click.stop="">
 						<i class="fas fa-heart"></i>
 					</div>
-					<h4 class="m-b-sm color-default">{{ recipe.name }}</h4>
+					<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>
 					<h6 class="m-none color-default">@{{ recipe.author }}</h6>
-				</router-link>
+				</div>
 			</div>
 		</div>
-<!-- 		<div class="grid-container">
-	<div class="grid">
+
+		<b-modal v-if="clickedRecipe"
+						 :active.sync="modalActive"
+						 :width="600"
+						 :canCancel="['escape', 'outside']">
+			<div class="card">
+				<div class="card-content">
+					<h2 class="color-default m-b-sm">{{ clickedRecipe.name }}</h2>
+					<h5 class="color-default">@{{ clickedRecipe.author }}</h5>
+					<div class="img-container">
+						<div class="img-carousel-btn">
+							<i class="fas fa-chevron-left"></i>
+						</div>
+						<div class="img">
+
+						</div>
+						<div class="img-carousel-btn">
+							<i class="fas fa-chevron-right"></i>
+						</div>
+					</div>
+					<p class="color-default">
+						This is a detailed description<br>
+						It could be many lines<br>
+					</p>
+					<div class="is-flex justify-center">
+						<router-link to="/h/cook" tag="button" class="button primary is-large">
+							cook
+						</router-link>
+					</div>
+				</div>
+			</div>
+		</b-modal>
+		<div class="close-modal-btn" v-if="modalActive" @click="closeModal()">
+			<i class="fas fa-chevron-left"></i>BACK
+		</div>
+
 
 	</div>
-</div> -->
-  </div>
 </template>
+
+<style lang="scss" scoped>
+.close-modal-btn {
+	position: fixed;
+	top: 50px; left: 50px;
+	z-index: 50;
+	cursor: pointer;
+	padding: 0.5em;
+	font-size: 20px;
+	color: #FFFFFF;
+	font-weight: 700;
+	border-radius: 8px;
+	i {
+		margin-right: 0.75em;
+	}
+	&:hover {
+		background: rgba(200,200,200, 0.5);
+	}
+}
+</style>
 
 <script>
 // @ is an alias to /src
@@ -57,7 +108,9 @@ export default {
 			],
 			columns: [0,1,2],
 			boxSizeArray: undefined,
-			boxSizes: ['xs','sm','md','lg']
+			boxSizes: ['xs','sm','md','lg', 'xl'],
+			modalActive: false,
+			clickedRecipe: undefined
 		}
 	},
 	computed: {
@@ -70,8 +123,15 @@ export default {
 			})
 		},
 		randSize: function () {
-			console.log(Math.floor(Math.random() * 3))
-			return Math.floor(Math.random() * 3)
+			return Math.floor(Math.random() * this.boxSizes.length)
+		},
+		openModal: function (recipe) {
+			this.modalActive = true
+			this.clickedRecipe = recipe
+		},
+		closeModal: function (recipe) {
+			this.modalActive = false
+			this.clickedRecipe = undefined
 		}
 	},
 	created: function () {

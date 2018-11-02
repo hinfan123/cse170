@@ -16,10 +16,10 @@
 							It can be multiple lines<br>
 						</p>
 						<div class="btn-container">
-							<router-link to="/cook" tag="button" class="button green">
+							<router-link to="/m/cook" tag="button" class="button green">
 								cook
 							</router-link>
-							<router-link to="/" tag="button" class="button yellow">
+							<router-link to="/edit" tag="button" class="button yellow">
 								edit
 							</router-link>
 						</div>
@@ -45,7 +45,7 @@
 							<router-link to="/" tag="button">
 								edit
 							</router-link>
-							<router-link to="/cook" tag="button">
+							<router-link to="/m/cook" tag="button">
 								cook
 							</router-link>
 						</div>

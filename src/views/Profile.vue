@@ -1,18 +1,23 @@
 <template>
 	<div id="profile" class="content">
-		<div class="field is-vertical">
-		  <div class="field-label is-normal">
-		    <label class="label">To</label>
-		  </div>
-		  <div class="field-body">
-		    <div class="field">
-		      <p class="control">
-		        <input class="input" type="email" placeholder="Recipient email">
-		      </p>
-		    </div>
+		<div class="field">
+		  <label class="label">Username</label>
+		  <div class="control">
+		    <input class="input" type="text" placeholder="Ex. avocado devourer">
 		  </div>
 		</div>
-
+		<div class="field">
+		  <label class="label">First Name</label>
+		  <div class="control">
+		    <input class="input" type="text" placeholder="Enter your first name...">
+		  </div>
+		</div>
+		<div class="field">
+		  <label class="label">Last Name</label>
+		  <div class="control">
+		    <input class="input" type="text" placeholder="Enter your first name...">
+		  </div>
+		</div>
 	</div>
 </template>
 

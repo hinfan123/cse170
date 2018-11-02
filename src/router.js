@@ -9,6 +9,7 @@ import Profile from './views/Profile.vue'
 import CreateRecipe from './views/CreateRecipe.vue'
 import Cook from './views/Cook.vue'
 import Finish from './views/Finish.vue'
+import EditRecipe from './views/EditRecipe.vue'
 
 Vue.use(Router)
 
@@ -42,7 +43,7 @@ export default new Router({
       ]
     },
     {
-      path: '/cook',
+      path: '/:prev/cook',
       name: 'cook',
       component: Cook
     },
@@ -50,6 +51,11 @@ export default new Router({
       path: '/finish',
       name: 'finish',
       component: Finish
+    },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: EditRecipe
     }
   ]
 })

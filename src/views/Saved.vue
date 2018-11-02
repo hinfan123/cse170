@@ -9,12 +9,12 @@
 				</div>
 				<div class="recipe-description">
 					<h4 class="text-semibold">{{ recipe.name }}</h4>
-					<p class="text-regular">
+					<p class="text-regular color-muted">
 						@{{recipe.author}}<br>
 						This is a recipe description.
 					</p>
 					<div class="btn-container">
-						<router-link to="/cook" tag="button" class="button green">
+						<router-link to="/s/cook" tag="button" class="button primary">
 							cook
 						</router-link>
 					</div>
