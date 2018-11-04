@@ -4,7 +4,7 @@
 			<router-link :to="prevRoute" tag="div" class="back-btn">
 				<i class="fas fa-chevron-left"></i>
 			</router-link>
-			<h2>Cooking "Some Recipe"</h2>
+			<h2>Cooking {{ recipe.name }}</h2>
 		</div>
 
 		<div class="steps-nav">
@@ -92,6 +92,9 @@
 </style>
 
 <script>
+import store from '../store'
+import _ from 'lodash'
+
 export default {
 	name: 'cook',
 	data: function () {
@@ -124,6 +127,9 @@ export default {
 				prev = 'myrecipes'
 			}
 			return '/' + prev
+		},
+		recipe: function() {
+			return this.$store.getters.getRecipeById(_.toNumber(this.$route.params.id))
 		}
 	},
 	methods: {

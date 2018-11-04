@@ -5,7 +5,8 @@
 				<div v-for="(recipe, j) in getColRecipes(col)"
 						 @click="openModal(recipe)"
 						 :class="['recipe-box', boxSizeArray[i][j]]">
-					<div class="saved-btn" v-on:click.stop="">
+					<div :class="['save-btn', {'saved': isSaved(recipe.id)}]"
+							 v-on:click.stop="onSaveBtnClick(recipe)">
 						<i class="fas fa-heart"></i>
 					</div>
 					<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>
@@ -45,7 +46,7 @@
 						It could be many lines<br>
 					</p>
 					<div class="is-flex justify-center">
-						<router-link to="/h/cook" tag="button" class="button primary is-large">
+						<router-link :to="'/h/cook/' + clickedRecipe.id" tag="button" class="button primary is-large">
 							cook
 						</router-link>
 					</div>
@@ -91,7 +92,7 @@
 <script>
 // @ is an alias to /src
 import _ from 'lodash'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'home',
@@ -105,13 +106,17 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(
-			{ recipes: 'filteredRecipes' }
-		)
+		...mapGetters([
+			'filteredRecipes',
+			'savedList'
+		])
 	},
 	methods: {
+		...mapActions([
+			'toggleSaved'
+		]),
 		getColRecipes: function (col) {
-			return _.filter(this.recipes, (i, n) => {
+			return _.filter(this.filteredRecipes, (i, n) => {
 				//console.log(n % this.columns.length === col)
 				return (n % this.columns.length) === col
 			})
@@ -137,13 +142,19 @@ export default {
 		closeModal: function (recipe) {
 			this.modalActive = false
 			this.clickedRecipe = undefined
+		},
+		isSaved: function (id) {
+			return _.indexOf(this.savedList, id) !== -1
+		},
+		onSaveBtnClick: function (recipe) {
+			this.toggleSaved(recipe.id)
 		}
 	},
 	created: function () {
 		this.setupGrid()
 	},
 	watch: {
-		recipes: function () {
+		filteredRecipes: function () {
 			this.setupGrid()
 		}
 	}

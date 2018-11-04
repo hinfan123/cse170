@@ -14,7 +14,7 @@
 						This is a recipe description.
 					</p>
 					<div class="btn-container">
-						<router-link to="/s/cook" tag="button" class="button primary">
+						<router-link :to="'/s/cook/' + recipe.id" tag="button" class="button primary">
 							cook
 						</router-link>
 					</div>
@@ -28,27 +28,19 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
 	name: 'saved',
 	data: function () {
 		return {
-			recipes: [
-				{ name: "Recipe 1", author: "Jack Ma"},
-				{ name: "Recipe 2", author: "Jeff Bezos"},
-				{ name: "Recipe 3", author: "Steve Jobs"},
-				{ name: "Recipe 4", author: "Bill Gates"},
-				{ name: "Recipe 5", author: "Mark Cuban"},
-				{ name: "Recipe 6", author: "Travis Kalanick"},
-				{ name: "Recipe 7", author: "Steve Wozniak"},
-				{ name: "Recipe 8", author: "Evan Spiegel"},
-				{ name: "Recipe 9", author: "Mark Zuckerberg"},
-				{ name: "Recipe 10", author: "Warren Buffet"},
-				{ name: "Recipe 11", author: "Elon Musk"},
-				{ name: "Recipe 12", author: "Larry Page"},
-			]
 		}
 	},
 	methods: {
+	},
+	computed: {
+		...mapGetters(
+			{ recipes: 'savedRecipes' }
+		)
 	},
 	created: function () {
 	}

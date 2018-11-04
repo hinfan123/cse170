@@ -7,47 +7,203 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		recipeList: [
-			{ name: "Carbonara",  duration: 25, private: false, author: "Jack Ma" },
-			{ name: "Philly Cheesesteak",  duration: 25, private: false, author: "Jeff Bezos" },
-			{ name: "Grilled Cheese Sandwich",  duration: 25, private: false, author: "Steve Jobs" },
-			{ name: "Ribeye Steak",  duration: 25, private: false, author: "Bill Gates" },
-			{ name: "Recipe 5",  duration: 25, private: false, author: "Mark Cuban" },
-			{ name: "Recipe 6",  duration: 25, private: false, author: "Travis Kalanick" },
-			{ name: "Recipe 7",  duration: 25, private: false, author: "Steve Wozniak" },
-			{ name: "Recipe 8",  duration: 25, private: false, author: "Evan Spiegel" },
-			{ name: "Recipe 9",  duration: 25, private: false, author: "Mark Zuckerberg" },
-			{ name: "Recipe 10", duration: 25, private: false, author: "Warren Buffet" },
-			{ name: "Recipe 11", duration: 25, private: false, author: "Elon Musk" },
-			{ name: "Recipe 12", duration: 25, private: false, author: "Brad Pitt" },
-			{ name: "Recipe 13", duration: 25, private: false, author: "Arbold Swarznegger" },
-			{ name: "Recipe 14", duration: 25, private: false, author: "Matt LeBlanc" },
-			{ name: "Recipe 15", duration: 25, private: false, author: "Tom Cruise" },
-			{ name: "Recipe 16", duration: 25, private: false, author: "Keanu Reeves" },
-			{ name: "Recipe 17", duration: 25, private: false, author: "Jackie Chan" },
-			{ name: "Recipe 18", duration: 25, private: false, author: "Gigi Hadid" },
-			{ name: "Recipe 19", duration: 25, private: false, author: "Cara Delevingne" },
-			{ name: "Recipe 20", duration: 25, private: false, author: "Gal Gadot" },
-			{ name: "Recipe 21", duration: 25, private: false, author: "Tom Hiddleston" },
-			{ name: "Recipe 22", duration: 25, private: false, author: "Simon Pegg" },
-			{ name: "Recipe 23", duration: 25, private: false, author: "Charlize Theron" },
+			{
+				id: 1,
+				name: "Carbonara",
+				duration: 25,
+				private: false,
+				author: "Jack Ma"
+			},
+			{
+				id: 2,
+				name: "Philly Cheesesteak",
+				duration: 25,
+				private: false,
+				author: "Jeff Bezos"
+			},
+			{
+				id: 3,
+				name: "Grilled Cheese Sandwich",
+				duration: 25,
+				private: false,
+				author: "Steve Jobs"
+			},
+			{
+				id: 4,
+				name: "Ribeye Steak",
+				duration: 25,
+				private: false,
+				author: "Bill Gates"
+			},
+			{
+				id: 5,
+				name: "Recipe 5",
+				duration: 25,
+				private: false,
+				author: "Mark Cuban"
+			},
+			{
+				id: 6,
+				name: "Recipe 6",
+				duration: 25,
+				private: false,
+				author: "Travis Kalanick"
+			},
+			{
+				id: 7,
+				name: "Recipe 7",
+				duration: 25,
+				private: false,
+				author: "Steve Wozniak"
+			},
+			{
+				id: 8,
+				name: "Recipe 8",
+				duration: 25,
+				private: false,
+				author: "Evan Spiegel"
+			},
+			{
+				id: 9,
+				name: "Recipe 9",
+				duration: 25,
+				private: false,
+				author: "Mark Zuckerberg"
+			},
+			{
+				id: 10,
+				name: "Recipe 10",
+				duration: 25,
+				private: false,
+				author: "Warren Buffet"
+			},
+			{
+				id: 11,
+				name: "Recipe 11",
+				duration: 25,
+				private: false,
+				author: "Elon Musk"
+			},
+			{
+				id: 12,
+				name: "Recipe 12",
+				duration: 25,
+				private: false,
+				author: "Brad Pitt"
+			},
+			{
+				id: 13,
+				name: "Recipe 13",
+				duration: 25,
+				private: false,
+				author: "Arbold Swarznegger"
+			},
+			{
+				id: 14,
+				name: "Recipe 14",
+				duration: 25,
+				private: false,
+				author: "Matt LeBlanc"
+			},
+			{
+				id: 15,
+				name: "Recipe 15",
+				duration: 25,
+				private: false,
+				author: "Tom Cruise"
+			},
+			{ id: 16,
+				name: "Recipe 16",
+				duration: 25,
+				private: false,
+				author: "Keanu Reeves"
+			},
+			{ id: 17,
+				name: "Recipe 17",
+				duration: 25,
+				private: false,
+				author: "Jackie Chan"
+			},
+			{ id: 18,
+				name: "Recipe 18",
+				duration: 25,
+				private: false,
+				author: "Gigi Hadid"
+			},
+			{ id: 19,
+				name: "Recipe 19",
+				duration: 25,
+				private: false,
+				author: "Cara Delevingne"
+			},
+			{ id: 20,
+				name: "Recipe 20",
+				duration: 25,
+				private: false,
+				author: "Gal Gadot"
+			},
+			{ id: 21,
+				name: "Recipe 21",
+				duration: 25,
+				private: false,
+				author: "Tom Hiddleston"
+			},
+			{ id: 22,
+				name: "Recipe 22",
+				duration: 25,
+				private: false,
+				author: "Simon Pegg"
+			},
+			{ id: 23,
+				name: "Recipe 23",
+				duration: 25,
+				private: false,
+				author: "Charlize Theron"
+			},
 		],
-		searchQuery: ''
+		searchQuery: '',
+		saved: [1,3,4,5,8,12]
 	},
 	getters: {
 		filteredRecipes: state => {
 			return _.filter(state.recipeList, (recipe) => {
 				return _.includes(_.lowerCase(recipe.name), _.lowerCase(state.searchQuery))
 			})
+		},
+		savedRecipes: state => {
+			return _.filter(state.recipeList, (recipe) => {
+				return _.indexOf(state.saved, recipe.id) !== -1
+			})
+		},
+		getRecipeById: (state) => (id) => {
+			return _.find(state.recipeList, {'id': id})
+		},
+		savedList: (state) => {
+			return state.saved
 		}
 	},
 	mutations: {
 		EXECUTE_SEARCH: (state, query) => {
 			state.searchQuery = query
+		},
+		SAVE_RECIPE: (state, id) => {
+			state.saved.push(id)
+		},
+		UNSAVE_RECIPE: (state, id) => {
+			state.saved.splice(state.saved.indexOf(id), 1)
 		}
 	},
 	actions: {
 		executeSearch: (context, query) => {
 			context.commit("EXECUTE_SEARCH", query)
+		},
+		toggleSaved: (context, id) => {
+			let idx = context.state.saved.indexOf(id)
+			if(idx === -1) {
+				context.commit("SAVE_RECIPE", id)
+			} else {
+				context.commit("UNSAVE_RECIPE", id)
+			}
 		}
 	}
 })

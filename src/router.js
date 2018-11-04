@@ -49,7 +49,7 @@ export default new Router({
       ]
     },
     {
-      path: '/:prev/cook',
+      path: '/:prev/cook/:id',
       name: 'cook',
       component: Cook
     },

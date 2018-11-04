@@ -282,7 +282,7 @@ input.search-bar {
 			content: '';
 		}
 	}
-	.saved-btn {
+	.save-btn {
 		cursor: pointer;
 		position: absolute;
 		top: 0; right: 0;
@@ -292,6 +292,12 @@ input.search-bar {
 		i { color: $bg; }
 		&:hover {
 			i { color: $pink; }
+		}
+		&.saved {
+			i { color: $pink; }
+			&:hover {
+				i { color: $bg; }
+			}
 		}
 	}
 	&::before {
