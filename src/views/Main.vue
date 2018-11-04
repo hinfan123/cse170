@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<div id="top-bar">
-			<div class="logo-container">
+			<router-link to="/" tag="div" class="logo-container">
 				<i class="fas fa-utensils"></i>
-			</div>
+			</router-link>
 			<div id="search-field">
 				<div class="icon-container">
 					<i class="fas fa-search"></i>

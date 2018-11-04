@@ -3,8 +3,8 @@
 		<div class="columns m-t-md">
 			<div v-for="(col, i) in columns" class="column p-none">
 				<div v-for="(recipe, j) in getColRecipes(col)"
-										 @click="openModal(recipe)"
-										 :class="['recipe-box', boxSizeArray[i][j]]">
+						 @click="openModal(recipe)"
+						 :class="['recipe-box', boxSizeArray[i][j]]">
 					<div class="saved-btn" v-on:click.stop="">
 						<i class="fas fa-heart"></i>
 					</div>
@@ -91,12 +91,13 @@
 <script>
 // @ is an alias to /src
 import _ from 'lodash'
+import RecipeListService from '../services/RecipeListService'
 
 export default {
 	name: 'home',
 	data: function () {
 		return {
-			recipes: [
+			recipes: [/*
 				{ name: "Recipe 1",  duration: 25, author: "Jack Ma" },
 				{ name: "Recipe 2",  duration: 25, author: "Jeff Bezos" },
 				{ name: "Recipe 3",  duration: 25, author: "Steve Jobs" },
@@ -119,7 +120,7 @@ export default {
 				{ name: "Recipe 20", duration: 25, author: "Gal Gadot" },
 				{ name: "Recipe 21", duration: 25, author: "Tom Hiddleston" },
 				{ name: "Recipe 22", duration: 25, author: "Simon Pegg" },
-				{ name: "Recipe 23", duration: 25, author: "Charlize Theron" },
+				{ name: "Recipe 23", duration: 25, author: "Charlize Theron" },*/
 			],
 			columns: [0,1,2],
 			boxSizeArray: undefined,
@@ -150,6 +151,9 @@ export default {
 		}
 	},
 	created: function () {
+
+		this.recipes = RecipeListService.getRecipeList().res
+
 		this.boxSizeArray = []
 		_.forEach(this.columns, (col) => {
 			var tmp = []
