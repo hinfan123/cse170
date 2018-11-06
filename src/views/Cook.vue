@@ -63,10 +63,6 @@
 				</div>
 
 				<div v-if="step.timer" class="timer-container">
-					<!-- <h2>05:30</h2>
-					<button @click="startTimer()">
-						start timer
-					</button> -->
 					<cooking-timer v-bind:duration="10"
 												 v-on:timer-done="timerModalActive = true">
 					</cooking-timer>
@@ -148,7 +144,6 @@
 </style>
 
 <script>
-import store from '../store'
 import _ from 'lodash'
 
 import CookingTimer from '../components/CookingTimer.vue'

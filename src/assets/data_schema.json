@@ -1,0 +1,51 @@
+{
+	"recipes": [
+
+		{
+			"id": 1,
+			"name": "Some very Delicious Food",
+			"duration": 25,
+			"author": "Jackie",
+
+			"ingredients": [
+				{
+					"name": "Vinegar",
+					"quant": 25,
+					"unit": "mL"
+				},
+				{
+					"name": "Garlic",
+					"quant": 2,
+					"unit": "colves"
+				},
+			],
+
+			"steps": [
+				{
+					"n": 1,
+					"title": "Fry Garlic",
+					"details": [
+						"Add oil to pan"
+						"Heat up pan for 2 minutes",
+						"Put garlic in",
+						"Fry for 3 minutes"
+					],
+					"timer": true,
+					"duration": 60
+				},
+				{
+					"n": 2,
+					"title": "Prepare onions and seasoning",
+					"details": [
+						"Cut up onions"
+						"Add salt and pepper",
+						"Stir mildly until they are mixed"
+					],
+					"timer": false,
+					"duration": 0
+				},
+			]
+		}
+
+	] // recipes list
+}
