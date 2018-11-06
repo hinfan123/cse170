@@ -38,7 +38,7 @@
 				</div>
 			</div>
 		</b-modal>
-
+	
 	</div>
 </template>
 
