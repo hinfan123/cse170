@@ -56,7 +56,7 @@ export default {
 		}
 	},
 	methods: {
-		onIngredientAdd: function () {
+		/*onIngredientAdd: function () {
 			if (this.ingredientToAdd) {
 				this.ingredients.push({
 					name: this.ingredientToAdd,
@@ -65,7 +65,7 @@ export default {
 				})
 				this.ingredientToAdd = ""
 			}
-		}
+		}*/
 	}
 }
 </script>

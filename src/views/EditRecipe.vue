@@ -50,7 +50,7 @@ export default {
 	name: 'edit',
 	data: function () {
 		return {
-			recipeName: "Some Existing Recipe",
+			recipeName: "This recipe",
 			modalActive: false,
 			ingredients: [
 				{
@@ -93,6 +93,7 @@ export default {
 				this.ingredientToAdd = ""
 			}
 		}
+		
 	}
 }
 </script>

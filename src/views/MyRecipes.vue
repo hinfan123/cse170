@@ -88,18 +88,8 @@ export default {
   name: 'my-recipes',
 	data: function () {
 		return {
-			publishedRecipes: [
-				{ name: "Published Recipe 1",},
-				{ name: "Published Recipe 2",},
-				{ name: "Published Recipe 3",},
-				{ name: "Published Recipe 4",}
-			],
-			privateRecipes: [
-				{ name: "Private Recipe 1",},
-				{ name: "Private Recipe 2",},
-				{ name: "Private Recipe 3",},
-				{ name: "Private Recipe 4",}
-			]
+			publishedRecipes: [],
+			privateRecipes: []
 		}
 	},
 	methods: {

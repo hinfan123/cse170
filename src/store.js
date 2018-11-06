@@ -23,7 +23,7 @@ export default new Vuex.Store({
 			},
 			{
 				id: 3,
-				name: "Grilled Cheese Sandwich",
+				name: "Grilled Cheese",
 				duration: 25,
 				private: false,
 				author: "Steve Jobs"
@@ -51,7 +51,7 @@ export default new Vuex.Store({
 			},
 			{
 				id: 7,
-				name: "Recipe 7",
+				name: "",
 				duration: 25,
 				private: false,
 				author: "Steve Wozniak"
