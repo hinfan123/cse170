@@ -6,7 +6,7 @@
 						 @click="openModal(recipe)"
 						 :class="['recipe-box', boxSizeArray[i][j]]">
 					<div :class="['save-btn', {'saved': isSaved(recipe.id)}]"
-							 v-on:click.stop="onSaveBtnClick(recipe)">
+							 @click.stop="onSaveBtnClick(recipe)">
 						<i class="fas fa-heart"></i>
 					</div>
 					<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>

@@ -1,22 +1,24 @@
 <template>
 	<div id="cook">
 		<div class="top-bar-cook">
-			<router-link :to="prevRoute" tag="div" class="back-btn">
+			<div class="back-btn" @click="goBackModalActive = true">
 				<i class="fas fa-chevron-left"></i>
-			</router-link>
+			</div>
 			<h2>Cooking {{ recipe.name }}</h2>
 		</div>
 
 		<div class="steps-nav">
-			<div v-bind:class="['step-btn', {'current': iscurrStep(0)}]"
-					 @click="currStep = 0">
+			<button :class="['step-btn', {'current': iscurrStep(0)}]"
+					 		:disabled="timerActive"
+					 		@click="currStep = 0">
 				PREP
-			</div>
-			<div v-for="step in steps"
-					 v-bind:class="['step-btn', {'current': iscurrStep(step.n)}]"
-					 @click="onStepClick(step.n)">
+			</button>
+			<button v-for="step in steps"
+					 		:class="['step-btn', {'current': iscurrStep(step.n)}]"
+					 		:disabled="timerActive"
+					 		@click="onStepClick(step.n)">
 				{{ step.n }}
-			</div>
+			</button>
 		</div>
 
 		<div v-if="iscurrStep(0)" class="content">
@@ -49,48 +51,25 @@
 
 		<div v-for="step in steps">
 			<div v-if="iscurrStep(step.n)" class="content">
-				<h2 class="m-b-sm">{{step.title}}</h2>
-				<div class="img-container">
-					<div class="img">
-
-					</div>
-				</div>
-				<div class="instruction-detail-container">
-					<h6>Some instruction detail</h6>
-					<h6>Some other instruction detail</h6>
-					<h6>Even more instruction detail</h6>
-					<h6>Last line of instruction detail</h6>
-				</div>
-
-				<div v-if="step.timer" class="timer-container">
-					<cooking-timer v-bind:duration="10"
-												 v-on:timer-done="timerModalActive = true">
-					</cooking-timer>
-				</div>
-
-				<br>
-				<div class="step-nav-container">
-					<button @click="prevStep()">
-						back
-					</button>
-					<button v-if="step.n < steps.length" @click="nextStep()">
-						next
-					</button>
-					<button v-if="currStep >= steps.length" @click="finishedModalActive = true">
-						finish
-					</button>
-				</div>
+				<cooking-step :step="step"
+											:lastStep="steps.length"
+											:timerActive.sync="timerActive"
+											@next-step="nextStep()"
+											@prev-step="prevStep()"
+											@timer-done="timerModalActive = true"
+											@finish="finishedModalActive = true">
+				</cooking-step>
 			</div>
 		</div>
 
-		<b-modal :active.sync="modalActive"
+		<b-modal :active.sync="skipModalActive"
 						 :width="400"
-						 :canCancel="false">
+						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">Are you sure you want to jump to this step?</h2>
 					<div class="is-flex justify-between">
-						<button class="button green" @click="modalActive = false">
+						<button class="button green" @click="skipModalActive = false">
 							Stay on Step {{ currStep }}
 						</button>
 						<button class="button pink" @click="changeStep(stepClicked)">
@@ -108,11 +87,11 @@
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">YAY! Enjoy your dish!</h2>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="reset()">
-							start over
+						<button class="button primary" @click="finishedModalActive = false">
+							Back
 						</button>
 						<router-link to="/" tag="button" class="button">
-							back to home
+							Done Cooking
 						</router-link>
 					</div>
 				</div>
@@ -137,6 +116,26 @@
 			</div>
 		</b-modal>
 
+		<b-modal :active.sync="goBackModalActive"
+						 :width="450"
+						 :canCancel="['escape', 'outside']">
+			<div class="card">
+				<div class="card-content">
+					<h2 class="color-default m-b-sm text-semibold">
+						Are you sure you want to stop cooking and exit to the home page?
+					</h2>
+					<div class="is-flex justify-between">
+						<router-link :to="prevRoute" tag="button" class="button pink">
+							Exit to Home Page
+						</router-link>
+						<button class="button primary" @click="goBackModalActive = false">
+							Continue Cooking
+						</button>
+					</div>
+				</div>
+			</div>
+		</b-modal>
+
 	</div>
 </template>
 
@@ -145,21 +144,22 @@
 
 <script>
 import _ from 'lodash'
-
-import CookingTimer from '../components/CookingTimer.vue'
+import CookingStep from '../components/CookingStep.vue'
 
 export default {
 	name: 'cook',
 	components: {
-		CookingTimer
+		CookingStep
 	},
 	data: function () {
 		return {
 			currStep: 0,
 			finishedModalActive: false,
-			modalActive: false,
+			skipModalActive: false,
 			timerModalActive: false,
+			goBackModalActive: false,
 			stepClicked: undefined,
+			timerActive: false,
 			ingredientsList: [
 				{ name: "Ingredient 1", amount: 1, units: "L" },
 				{ name: "Ingredient 2", amount: 2, units: "mL" },
@@ -198,7 +198,7 @@ export default {
 		},
 		changeStep: function (n) {
 			this.currStep = n
-			this.modalActive = false;
+			this.skipModalActive = false;
 		},
 		prevStep: function () {
 			this.currStep -= 1
@@ -209,14 +209,10 @@ export default {
 		onStepClick: function (n) {
 			this.stepClicked = n
 			if (Math.abs(this.currStep - n) > 1) {
-				this.modalActive = true;
+				this.skipModalActive = true;
 			} else {
 				this.changeStep(n)
 			}
-		},
-		reset: function () {
-			this.finishedModalActive = false
-			this.changeStep(0)
 		},
 		timerModalNext: function () {
 			this.timerModalActive = false

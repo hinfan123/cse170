@@ -27,14 +27,27 @@ $pink: #EB8D96;
 $green: #88BD96;
 $yellow: #F2D46C;
 
-.modal {
-	//z-index: 9999;
-}
-
 html {
 	background: $bg !important;
 	background-color: $bg !important;
 }
+
+/*
+::-webkit-scrollbar-track {
+	background: transparent;
+	background-color: transparent;
+	width: 0.1em;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(50,50,50, 0.7);
+	border-radius: 5px;
+	width: 0.1em;
+}
+::-webkit-scrollbar {
+	background-color: transparent;
+	width: 0.4em;
+}*/
 
 .content {
 	h1, h2, h3, h4, h5, h6, p {
