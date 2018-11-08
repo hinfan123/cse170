@@ -7,15 +7,18 @@
 // Light Theme
 $bg: #FFFFFF;
 $text: #444444;
+$light-accent: #F2F2F2;
 $accent: #E0E0E0;
 $placeholder: #A7A7A7;
-$primary: #7DB9B9;
+//$primary: #7DB9B9;
+$primary: #76ADB0;
 $muted: #8E8E8E;
 $modal-bg: rgba(25,25,25,0.9);
 /*/
 // Dark theme
 $bg: #202020;
 $text: #DEDEDE;
+$light-accent: #282828;
 $accent: #333333;
 $placeholder: #828282;
 $primary: #75B0B0;
@@ -27,14 +30,27 @@ $pink: #EB8D96;
 $green: #88BD96;
 $yellow: #F2D46C;
 
-.modal {
-	//z-index: 9999;
-}
-
 html {
 	background: $bg !important;
 	background-color: $bg !important;
 }
+
+/*
+::-webkit-scrollbar-track {
+	background: transparent;
+	background-color: transparent;
+	width: 0.1em;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(50,50,50, 0.7);
+	border-radius: 5px;
+	width: 0.1em;
+}
+::-webkit-scrollbar {
+	background-color: transparent;
+	width: 0.4em;
+}*/
 
 .content {
 	h1, h2, h3, h4, h5, h6, p {
@@ -50,6 +66,12 @@ html {
 }
 .color-muted {
 	color: $muted !important;
+}
+.color-placeholder {
+	color: $placeholder !important;
+}
+.color-primary {
+	color: $primary !important;
 }
 
 #app {
@@ -158,7 +180,8 @@ button.button {
 	justify-content: center;
 	align-items: center;
 	padding: 0.35em;
-	margin: 0 0.25em;
+	margin-left: 0.25em;
+	margin-right: 0.35em;
 	border-radius: 8px;
 	color: $text;
 	cursor: pointer;
@@ -184,12 +207,14 @@ h1, h2, h3, h4, h5, h6, p {
     color: $placeholder;
 }
 
-#search-field {
+.input-container {
 	position: relative;
 	display: flex;
 	font-size: 16px;
 	width: 100%;
-	margin: 0 0.5em;
+	&.sm {
+		font-size: 14px;
+	}
 	.icon-container {
 		position: absolute;
 		display: flex;
@@ -214,7 +239,7 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 	input {
 		padding-left: 2.5em;
-		height: 40px;
+		height: 2.5em;
 		width: 100%;
 		background: $accent;
 		border-radius: 8px;
@@ -351,25 +376,36 @@ input.search-bar {
 	align-items: center;
 	margin: 15px 0;
 	.img {
-		width: 325px;
+		width: 100%;
 		height: 325px;
-		//background: $accent;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 		background-image: url('./assets/img-placeholder.jpg');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 		border-radius: 5px;
+		.img-carousel-btn {
+			visibility: hidden;
+			opacity: 0;
+			padding: 15px 25px;
+			cursor: pointer;
+			transition: 100ms ease-in-out;
+			i {
+				font-size: 1.5rem;
+			}
+		}
+		&:hover {
+			.img-carousel-btn {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
 	}
 }
 
-.img-carousel-btn {
-	padding: 15px;
-	margin: 25px;
-	cursor: pointer;
-	i {
-		font-size: 1.5rem;
-	}
-}
 
 .back-btn {
 	padding: 5px;
@@ -476,6 +512,8 @@ input.search-bar {
 .card {
 	border-radius: 10px;
 	background-color: $bg !important;
+	overflow: visible !important;
+	margin-bottom: 2.5em;
 	.card-content {
 		background: transparent;
 		text-align: left;
@@ -484,4 +522,40 @@ input.search-bar {
 
 .modal-background {
 	background-color: $modal-bg !important;
+	position: fixed !important;
+}
+
+.modal.is-active {
+	overflow-y: scroll !important;
+
+	.animation-content.modal-content {
+		overflow: visible !important;
+	}
+}
+
+.comment-box {
+	position: relative;
+	font-size: 14px;
+	padding: 0.5em 0.5em 0.5em 3.5em;
+	background: $light-accent;
+	border-radius: 8px;
+	&.reply {
+		padding: 0em 0em 0em 3em;
+		.profile-pic {
+			top: 0.05em; left: 0;
+		}
+	}
+	.comment-text {
+		font-size: 0.95em;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+	}
+	.profile-pic {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		top: 0.25em; left: 0.25em;
+		font-size: 2.5em;
+	}
 }

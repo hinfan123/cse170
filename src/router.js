@@ -8,7 +8,6 @@ import MyRecipes from './views/MyRecipes.vue'
 import Profile from './views/Profile.vue'
 import CreateRecipe from './views/CreateRecipe.vue'
 import Cook from './views/Cook.vue'
-import Finish from './views/Finish.vue'
 import EditRecipe from './views/EditRecipe.vue'
 import Login from './views/Login.vue'
 
@@ -52,11 +51,6 @@ export default new Router({
       path: '/:prev/cook/:id',
       name: 'cook',
       component: Cook
-    },
-    {
-      path: '/finish',
-      name: 'finish',
-      component: Finish
     },
     {
       path: '/edit',

@@ -6,7 +6,7 @@
 						 @click="openModal(recipe)"
 						 :class="['recipe-box', boxSizeArray[i][j]]">
 					<div :class="['save-btn', {'saved': isSaved(recipe.id)}]"
-							 v-on:click.stop="onSaveBtnClick(recipe)">
+							 @click.stop="onSaveBtnClick(recipe)">
 						<i class="fas fa-heart"></i>
 					</div>
 					<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>
@@ -17,8 +17,9 @@
 
 		<b-modal v-if="clickedRecipe"
 						 :active.sync="modalActive"
-						 :width="600"
-						 :canCancel="['escape', 'outside']">
+						 :width="625"
+						 :canCancel="['escape', 'outside']"
+						 scroll="clip">
 			<div class="card">
 				<div class="card-content">
 					<div class="is-flex justify-between">
@@ -26,21 +27,27 @@
 							<h2 class="color-default m-b-sm">{{ clickedRecipe.name }}</h2>
 							<h5 class="color-default">@{{ clickedRecipe.author }}</h5>
 						</div>
-						<div class="duration text-semibold">
-							<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} minutes
+						<div class="is-flex flex-column align-end">
+							<div class="duration text-semibold m-b-sm">
+								<i class="fas fa-heart"></i> 67
+							</div>
+							<div class="duration text-semibold">
+								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
+							</div>
 						</div>
 					</div>
-					<div class="img-container">
-						<div class="img-carousel-btn">
-							<i class="fas fa-chevron-left"></i>
-						</div>
-						<div class="img">
 
-						</div>
-						<div class="img-carousel-btn">
-							<i class="fas fa-chevron-right"></i>
+					<div class="img-container">
+						<div class="img">
+							<div class="img-carousel-btn">
+								<i class="fas fa-chevron-left"></i>
+							</div>
+							<div class="img-carousel-btn">
+								<i class="fas fa-chevron-right"></i>
+							</div>
 						</div>
 					</div>
+
 					<p class="color-default text-semibold">
 						This is a detailed description<br>
 						It could be many lines<br>
@@ -50,6 +57,11 @@
 							cook
 						</router-link>
 					</div>
+
+					<h5>Comments</h5>
+					<comments-section>
+					</comments-section>
+
 				</div>
 			</div>
 		</b-modal>
@@ -94,8 +106,13 @@
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 
+import CommentsSection from '@/components/CommentsSection.vue'
+
 export default {
 	name: 'home',
+	components: {
+		CommentsSection
+	},
 	data: function () {
 		return {
 			columns: [0,1,2],

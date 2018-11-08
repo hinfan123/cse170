@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<h1>{{ display }}</h1>
-		<button v-if="!isCounting" @click="startTimer(duration)">START TIMER</button>
-		<button v-if="isCounting" @click="reset()">RESET TIMER</button>
+	<div class="is-flex">
+		<h1 class="m-r-md">{{ display }}</h1>
+		<button v-if="!timerActive" @click="startTimer(duration)">START TIMER</button>
+		<button v-if="timerActive" @click="resetTimer()">RESET TIMER</button>
 	</div>
 
 </template>
@@ -19,7 +19,7 @@ export default {
 		return {
 			timeLeft: this.duration,
 			startTime: undefined,
-			isCounting: false
+			timerActive: false
 		}
 	},
 	props: {
@@ -40,27 +40,30 @@ export default {
 	},
 	methods: {
 		startTimer: function () {
-			this.isCounting = true
-			this.startTime = Date.now() - 750
+			this.$emit('has-started')
+			this.$emit('update:timerActive', true)
+			this.timerActive = true
+			this.startTime = Date.now() - 500
 			setInterval(this.update, 250)
 		},
 		update: function () {
-			if (this.isCounting) {
+			if (this.timerActive) {
 				this.timeLeft = this.duration - (((Date.now() - this.startTime) / 1000) | 0)
 				if (this.timeLeft <= 0) {
-					this.reset()
+					this.resetTimer()
 					this.$emit('timer-done')
 				}
 			}
 		},
-		reset: function () {
+		resetTimer: function () {
 			this.startTime = Date.now()
 			this.update()
-			this.isCounting = false
+			this.timerActive = false
+			this.$emit('update:timerActive', false)
 		}
 	},
 	created: function () {
-		this.timeLeft = this.duration - (((Date.now() - this.startTime) / 1000) | 0)
+		this.timeLeft = this.duration
 	}
 }
 </script>
