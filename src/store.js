@@ -162,7 +162,17 @@ export default new Vuex.Store({
 			},
 		],
 		searchQuery: '',
-		saved: [1,3,4,5,8,12]
+		saved: [1,3,4,5,8,12],
+		myPublishedRecipes: [
+			{id: "Ice Soup"},
+			{id: "Vegan Water"},
+			{id: "Burritos Locos Tacos"},
+			{id: "Kevin's Famous Chili"},
+			],
+		myPrivateRecipes: [
+			{id: "Lo-mein"},
+			{id: "Creole Sauce"}
+			],
 	},
 	getters: {
 		filteredRecipes: state => {
@@ -175,11 +185,27 @@ export default new Vuex.Store({
 				return _.indexOf(state.saved, recipe.id) !== -1
 			})
 		},
+		myPublishedRecipes: state => {
+			return _.filter(state.myPublishedRecipes, (recipe) => {
+				return _.indexOf(state.myPublishedRecipes, recipe.id) !== -1
+			})
+		},
+		myPrivateRecipes: state => {
+			return _.filter(state.myPrivateRecipes, (recipe) => {
+				return _.indexOf(state.myPrivateRecipes, recipe.id) !== -1
+			})
+		},
 		getRecipeById: (state) => (id) => {
 			return _.find(state.recipeList, {'id': id})
 		},
 		savedList: (state) => {
 			return state.saved
+		},
+		myPublishedRecipeList:(state) => {
+			return state.myPublishedRecipes
+		},
+		myPrivateRecipeList:(state) => {
+			return state.myPublishedRecipes
 		}
 	},
 	mutations: {
@@ -191,6 +217,15 @@ export default new Vuex.Store({
 		},
 		UNSAVE_RECIPE: (state, id) => {
 			state.saved.splice(state.saved.indexOf(id), 1)
+		},
+		SAVE_PUBLISHEDRECIPE: (state,id) => {
+			state.myPublishedRecipes.push(id)
+		},
+		SAVE_PRIVATERECIPE: (state,id) => {
+			state.myPrivateRecipes.push(id)
+		},
+		ADD_RECIPE(state,payload){
+			state.myPublishedRecipes.unshift(payload)
 		}
 	},
 	actions: {
@@ -204,6 +239,9 @@ export default new Vuex.Store({
 			} else {
 				context.commit("UNSAVE_RECIPE", id)
 			}
+		},
+		addRecipe(context,payload){
+			context.commit('ADD_RECIPE',payload);
 		}
 	}
 })
