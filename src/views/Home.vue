@@ -28,9 +28,9 @@
 							<h5 class="color-default">@{{ clickedRecipe.author }}</h5>
 						</div>
 						<div class="is-flex flex-column align-end">
-							<div class="duration text-semibold m-b-sm">
+							<!-- <div class="duration text-semibold m-b-sm">
 								<i class="fas fa-heart"></i> 67
-							</div>
+							</div> -->
 							<div class="duration text-semibold">
 								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
 							</div>
@@ -59,7 +59,8 @@
 					</div>
 
 					<h5>Comments</h5>
-					<comments-section>
+					<comments-section :comments="commentList"
+														commentBoxPlaceholder="What do you think of this recipe?">
 					</comments-section>
 
 				</div>
@@ -119,7 +120,39 @@ export default {
 			boxSizeArray: undefined,
 			boxSizes: ['xs','sm','md','lg', 'xl'],
 			modalActive: false,
-			clickedRecipe: undefined
+			clickedRecipe: undefined,
+			commentList: [
+				{
+					id: 1,
+					commenter: "LindaLovesFood",
+					text: "I made this for my kids yesterday, they loved it!!! Thanks!",
+					replies: [
+						{
+							commenter: "RecipeAuthor",
+							text: "Hey Linda, I'm glad your kids loved the food. I'll keep posting more recipes!"
+						},
+						{
+							commenter: "BoyfriendOfTheYear",
+							text: "That's great! I'll cook this for my girlfriend tonight!"
+						}
+					]
+				},
+				{
+					id: 2,
+					commenter: "The commenter's name",
+					text: "This is a comment. Comments should help enhance the recreation aspect of our apps by allowing users to socialize with others about their cooking.",
+					replies: [
+						{
+							commenter: "Replier's name",
+							text: "This is a reply to a comment, it could be as long as the user wishes"
+						},
+						{
+							commenter: "Replier's name",
+							text: "This is a reply to a comment, it could be as long as the user wishes"
+						}
+					]
+				}
+			]
 		}
 	},
 	computed: {

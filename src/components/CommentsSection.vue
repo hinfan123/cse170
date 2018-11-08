@@ -5,24 +5,27 @@
 			<div class="icon-container">
 				<i class="fas fa-comment-alt color-placeholder"></i>
 			</div>
-			<input type="text"
-						 ref="commentField"
-						 placeholder="What do you think about this recipe?"
-						 v-model="commentToAdd"
-						 @keyup.enter="addComment">
+			<resizable-textarea>
+					<textarea :placeholder="commentBoxPlaceholder"
+										v-model="commentToAdd"
+										rows="1"
+										ref="commentField"
+										@keydown.enter="addComment()">
+					</textarea>
+			</resizable-textarea>
 			<div v-if="commentToAdd" class="icon-container clear" @click="commentToAdd = ''">
 				<i class="fas fa-times"></i>
 			</div>
 		</div>
 
-		<div v-for="(comment, i) in commentList" class="comment-box full-width m-y-xs">
+		<div v-for="(comment, i) in comments" class="comment-box full-width m-y-xs">
 			<div class="profile-pic">
 				<i class="fas fa-user-circle"></i>
 			</div>
 			<div class="commenter-name text-semibold">
 				{{ comment.commenter }}
 			</div>
-			<div class="comment-text text-regular m-y-xs">
+			<div class="comment-text text-regular m-b-xs">
 				{{ comment.text}}
 			</div>
 
@@ -31,14 +34,14 @@
 			</button>
 
 			<div v-for="(reply, i) in comment.replies"
-					 class="comment-box reply full-width m-y-xs">
+					 class="comment-box reply full-width m-y-sm">
 				<div class="profile-pic">
 					<i class="fas fa-user-circle"></i>
 				</div>
 				<div class="commenter-name text-semibold">
 					{{ reply.commenter }}
 				</div>
-				<div class="comment-text text-regular m-y-xs">
+				<div class="comment-text text-regular m-b-xs">
 					{{ reply.text}}
 				</div>
 			</div>
@@ -68,51 +71,23 @@
 
 <script>
 import _ from 'lodash'
+import ResizableTextarea from '@/components/AutoResize.js'
 
 export default {
 	name: 'comments-section',
 	components: {
+		ResizableTextarea
 	},
 	data: function () {
 		return {
-			commentList: [
-				{
-					id: 1,
-					commenter: "The commenter's name",
-					text: "This is a comment. Comments could be very long and may expand to multiple lines. Comments should help enhance the recreation aspect of our apps by allowing users to socialize and share opinions with others about their cooking.",
-					replies: [
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						},
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						}
-					]
-				},
-				{
-					id: 2,
-					commenter: "The commenter's name",
-					text: "This is a comment. Comments could be very long and may expand to multiple lines. Comments should help enhance the recreation aspect of our apps by allowing users to socialize with others about their cooking.",
-					replies: [
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						},
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						}
-					]
-				}
-			],
 			commentToAdd: '',
 			replyToAdd: '',
 			showReplyBox: undefined
 		}
 	},
 	props: {
+		comments: Array,
+		commentBoxPlaceholder: String
 	},
 	computed: {
 
@@ -127,21 +102,21 @@ export default {
 		},
 		addComment: function () {
 			if (this.commentToAdd) {
-				this.commentList.unshift({
+				this.comments.unshift({
 					id: 0,
-					commenter: "Username",
+					commenter: "TestUser",
 					text: this.commentToAdd,
 					replies: []
 				})
 				this.commentToAdd = ''
-				this.$refs.commentField.blur()
 				this.showReplyBox = undefined
+				this.$refs.commentField.blur()
 			}
 		},
 		addReply: function () {
 			if (this.replyToAdd) {
-				this.commentList[this.showReplyBox].replies.push({
-					commenter: "Username",
+				this.comments[this.showReplyBox].replies.push({
+					commenter: "TestUser",
 					text: this.replyToAdd
 				})
 				this.replyToAdd = ''

@@ -237,9 +237,8 @@ h1, h2, h3, h4, h5, h6, p {
 			right: 0;
 		}
 	}
-	input {
-		padding-left: 2.5em;
-		height: 2.5em;
+	input, textarea {
+		padding: 0 2.5em;
 		width: 100%;
 		background: $accent;
 		border-radius: 8px;
@@ -251,6 +250,15 @@ h1, h2, h3, h4, h5, h6, p {
 			outline: none;
 			box-shadow: 0 0 0 3px $primary;
 		}
+	}
+	input {
+		height: 2.5em;
+	}
+	textarea {
+		resize: none;
+		line-height: 1.25em;
+		padding-top: 0.75em;
+		padding-bottom: 0.75em;
 	}
 }
 
@@ -539,6 +547,7 @@ input.search-bar {
 	padding: 0.5em 0.5em 0.5em 3.5em;
 	background: $light-accent;
 	border-radius: 8px;
+	text-align: left;
 	&.reply {
 		padding: 0em 0em 0em 3em;
 		.profile-pic {

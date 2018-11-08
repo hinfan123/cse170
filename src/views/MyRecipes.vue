@@ -9,14 +9,14 @@
 				</div>
 
 				<div class="recipe-list">
-					<div v-for="recipe in publishedRecipes" class="recipe-entry">
+					<div v-for="recipe in myPublishedRecipeList" class="recipe-entry">
 						<div class="recipe-img">
 							<!-- <div class="saved-btn">
 								<i class="fas fa-heart"></i>
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h4>{{ recipe.id }}</h4>
+							<h4>{{ recipe.name }}</h4>
 							<p>
 								This is a recipe description<br>
 								It can be multiple lines<br>
@@ -25,7 +25,7 @@
 								<router-link to="/edit" tag="button" class="button yellow">
 									edit
 								</router-link>
-								<router-link to="/m/cook" tag="button" class="button primary">
+								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary">
 									cook
 								</router-link>
 							</div>
@@ -48,14 +48,14 @@
 				</div>
 
 				<div class="recipe-list">
-					<div v-for="recipe in privateRecipes" class="recipe-entry">
+					<div v-for="recipe in myPrivateRecipeList" class="recipe-entry">
 						<div class="recipe-img">
 							<!-- <div class="saved-btn">
 								<i class="fas fa-heart"></i>
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h3>{{ recipe.id }}</h3>
+							<h3>{{ recipe.name }}</h3>
 							<p>
 								This is a recipe description<br>
 								It can be multiple lines<br>
@@ -64,7 +64,7 @@
 								<router-link to="/edit" tag="button" class="button yellow">
 									edit
 								</router-link>
-								<router-link to="/m/cook" tag="button" class="button primary">
+								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary">
 									cook
 								</router-link>
 							</div>
@@ -85,20 +85,18 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import CreateRecipe from './CreateRecipe.vue'
+
 export default {
-	...mapGetters([
-			'myPublishedRecipes','myPrivateRecipes'
-	]),
   name: 'myRecipes',
 	data: function () {
 		return {
-			publishedRecipes: this.$store.state.myPublishedRecipes,
-			privateRecipes: this.$store.state.myPrivateRecipes
 		}
 	},
-	methods: { 
-
+	computed: {
+		...mapGetters([
+				'myPublishedRecipeList',
+				'myPrivateRecipeList'
+		]),
 	},
 	created: function () {
 	}

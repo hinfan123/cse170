@@ -7,59 +7,69 @@
 			<h2>Cooking {{ recipe.name }}</h2>
 		</div>
 
-		<div class="steps-nav">
-			<button :class="['step-btn', {'current': iscurrStep(0)}]"
-							:disabled="timerActive"
-							@click="currStep = 0">
-				PREP
-			</button>
-			<button v-for="step in steps"
-							:class="['step-btn', {'current': iscurrStep(step.n)}]"
-							:disabled="timerActive"
-							@click="onStepClick(step.n)">
-				{{ step.n }}
-			</button>
-		</div>
+		<div class="columns">
+			<div class="column justify-center">
+				<div class="steps-nav">
+					<button :class="['step-btn', {'current': iscurrStep(0)}]"
+									:disabled="timerActive"
+									@click="currStep = 0">
+						PREP
+					</button>
+					<button v-for="step in steps"
+									:class="['step-btn', {'current': iscurrStep(step.n)}]"
+									:disabled="timerActive"
+									@click="onStepClick(step.n)">
+						{{ step.n }}
+					</button>
+				</div>
 
-		<div v-if="iscurrStep(0)" class="content">
-			<div class="img-container">
-				<div class="img">
-					<div class="img-carousel-btn">
-						<i class="fas fa-chevron-left"></i>
+				<div v-if="iscurrStep(0)" class="content">
+					<div class="img-container">
+						<div class="img">
+							<div class="img-carousel-btn">
+								<i class="fas fa-chevron-left"></i>
+							</div>
+
+							<div class="img-carousel-btn">
+								<i class="fas fa-chevron-right"></i>
+							</div>
+						</div>
+					</div>
+					<div class="ingredient-container">
+						<h3>Here's what you need:</h3><br>
+						<div v-for="ingredient in ingredientsList" class="ingredient-entry">
+							<h4>{{ ingredient.name }}</h4>
+							<div class="ingredient-amount">
+								<h4>{{ ingredient.amount }}</h4>
+								<h4>{{ ingredient.units }}</h4>
+							</div>
+						</div>
 					</div>
 
-					<div class="img-carousel-btn">
-						<i class="fas fa-chevron-right"></i>
+					<button class="start-btn" @click="changeStep(1)">
+						START COOKING
+					</button>
+				</div>
+
+				<div v-for="step in steps">
+					<div v-if="iscurrStep(step.n)" class="content">
+						<cooking-step :step="step"
+													:lastStep="steps.length"
+													:timerActive.sync="timerActive"
+													@next-step="nextStep()"
+													@prev-step="prevStep()"
+													@timer-done="timerModalActive = true"
+													@ignore-timer="ignoreTimerModalActive = true"
+													@finish="finishedModalActive = true">
+						</cooking-step>
 					</div>
 				</div>
 			</div>
-			<div class="ingredient-container">
-				<h3>Here's what you need:</h3><br>
-				<div v-for="ingredient in ingredientsList" class="ingredient-entry">
-					<h4>{{ ingredient.name }}</h4>
-					<div class="ingredient-amount">
-						<h4>{{ ingredient.amount }}</h4>
-						<h4>{{ ingredient.units }}</h4>
-					</div>
-				</div>
-			</div>
 
-			<button class="start-btn" @click="changeStep(1)">
-				START COOKING
-			</button>
-		</div>
-
-		<div v-for="step in steps">
-			<div v-if="iscurrStep(step.n)" class="content">
-				<cooking-step :step="step"
-											:lastStep="steps.length"
-											:timerActive.sync="timerActive"
-											@next-step="nextStep()"
-											@prev-step="prevStep()"
-											@timer-done="timerModalActive = true"
-											@ignore-timer="ignoreTimerModalActive = true"
-											@finish="finishedModalActive = true">
-				</cooking-step>
+			<div class="column is-4 m-x-md">
+				<comments-section :comments="commentList"
+													commentBoxPlaceholder="Add a comment...">
+				</comments-section>
 			</div>
 		</div>
 
@@ -163,12 +173,14 @@
 
 <script>
 import _ from 'lodash'
-import CookingStep from '../components/CookingStep.vue'
+import CommentsSection from '@/components/CommentsSection.vue'
+import CookingStep from '@/components/CookingStep.vue'
 
 export default {
 	name: 'cook',
 	components: {
-		CookingStep
+		CookingStep,
+		CommentsSection
 	},
 	data: function () {
 		return {
@@ -193,6 +205,42 @@ export default {
 				{ n: 2, title: "Second Step has no timer", timer: false },
 				{ n: 3, title: "Third Step also has no timer", timer: false },
 				{ n: 4, title: "Final Step has timer!", timer: true }
+			],
+			commentList: [
+				{
+					id: 1,
+					commenter: "iDontKnowHowToCook",
+					text: "Hey everyone, I'm confused about step 2, can someone explain please?",
+					replies: [
+						{
+							commenter: "MrNiceGuy",
+							text: "What part confused you? I am here to help"
+						},
+						{
+							commenter: "iDontKnowHowToCook",
+							text: "Whats an an oven? I have never heard of such a thing :("
+						},
+						{
+							commenter: "MrNiceGuy",
+							text: "..."
+						}
+					]
+				},
+				{
+					id: 2,
+					commenter: "KnowItAll",
+					text: "Everyone, on step 3, it is better to leave the garlic in the pan for 2 more minutes after the timer runs out, trust me.",
+					replies: [
+						{
+							commenter: "JustAnotherUser",
+							text: "Thanks for the tip, I'll try it out!"
+						},
+						{
+							commenter: "JustAnotherUser",
+							text: "Hmmm it really is better if you leave the garlic in there for longer. Great tip!"
+						}
+					]
+				}
 			]
 		}
 	},

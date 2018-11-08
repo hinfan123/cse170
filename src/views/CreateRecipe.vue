@@ -83,8 +83,9 @@ export default {
 				name: this.recipeName,
 				duration: 0,
 				private: true,
-				author: 'Username',
-				ingredients: this.ingredients
+				author: 'TestUser',
+				ingredients: this.ingredients,
+				owner: 0
 			})
 			this.modalActive = true
 		}

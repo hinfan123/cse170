@@ -30,6 +30,7 @@
 						"Put garlic in",
 						"Fry for 3 minutes"
 					],
+					"gifURL": "",
 					"timer": true,
 					"duration": 60
 				},

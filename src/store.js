@@ -12,167 +12,195 @@ export default new Vuex.Store({
 				name: "Carbonara",
 				duration: 25,
 				private: false,
-				author: "Jack Ma"
+				author: "Jack Ma",
+				owns: false
 			},
 			{
 				id: 2,
 				name: "Philly Cheesesteak",
 				duration: 25,
 				private: false,
-				author: "Jeff Bezos"
+				author: "Jeff Bezos",
+				owns: false
 			},
 			{
 				id: 3,
 				name: "Grilled Cheese",
 				duration: 25,
 				private: false,
-				author: "Steve Jobs"
+				author: "Steve Jobs",
+				owns: false
 			},
 			{
 				id: 4,
 				name: "Ribeye Steak",
 				duration: 25,
 				private: false,
-				author: "Bill Gates"
+				author: "Bill Gates",
+				owns: false
 			},
 			{
 				id: 5,
 				name: "Recipe 5",
 				duration: 25,
 				private: false,
-				author: "Mark Cuban"
+				author: "Mark Cuban",
+				owns: false
 			},
 			{
 				id: 6,
 				name: "Recipe 6",
 				duration: 25,
 				private: false,
-				author: "Travis Kalanick"
+				author: "Travis Kalanick",
+				owns: false
 			},
 			{
 				id: 7,
 				name: "Recipe 7",
 				duration: 25,
 				private: false,
-				author: "Steve Wozniak"
+				author: "Steve Wozniak",
+				owns: false
 			},
 			{
 				id: 8,
 				name: "Recipe 8",
 				duration: 25,
 				private: false,
-				author: "Evan Spiegel"
+				author: "Evan Spiegel",
+				owns: false
 			},
 			{
 				id: 9,
 				name: "Recipe 9",
 				duration: 25,
 				private: false,
-				author: "Mark Zuckerberg"
+				author: "Mark Zuckerberg",
+				owns: false
 			},
 			{
 				id: 10,
 				name: "Recipe 10",
 				duration: 25,
 				private: false,
-				author: "Warren Buffet"
+				author: "Warren Buffet",
+				owns: false
 			},
 			{
 				id: 11,
 				name: "Recipe 11",
 				duration: 25,
 				private: false,
-				author: "Elon Musk"
+				author: "Elon Musk",
+				owns: false
 			},
 			{
 				id: 12,
 				name: "Recipe 12",
 				duration: 25,
 				private: false,
-				author: "Brad Pitt"
+				author: "Brad Pitt",
+				owns: false
 			},
 			{
 				id: 13,
 				name: "Recipe 13",
 				duration: 25,
 				private: false,
-				author: "Arbold Swarznegger"
+				author: "Arbold Swarznegger",
+				owns: false
 			},
 			{
 				id: 14,
 				name: "Recipe 14",
 				duration: 25,
 				private: false,
-				author: "Matt LeBlanc"
+				author: "Matt LeBlanc",
+				owns: false
 			},
 			{
 				id: 15,
 				name: "Recipe 15",
 				duration: 25,
 				private: false,
-				author: "Tom Cruise"
+				author: "Tom Cruise",
+				owns: false
 			},
 			{ id: 16,
 				name: "Recipe 16",
 				duration: 25,
 				private: false,
-				author: "Keanu Reeves"
+				author: "Keanu Reeves",
+				owns: false
 			},
 			{ id: 17,
 				name: "Recipe 17",
 				duration: 25,
 				private: false,
-				author: "Jackie Chan"
+				author: "Jackie Chan",
+				owns: false
 			},
 			{ id: 18,
 				name: "Recipe 18",
 				duration: 25,
 				private: false,
-				author: "Gigi Hadid"
+				author: "Gigi Hadid",
+				owns: false
 			},
 			{ id: 19,
 				name: "Recipe 19",
 				duration: 25,
 				private: false,
-				author: "Cara Delevingne"
+				author: "Cara Delevingne",
+				owns: false
 			},
 			{ id: 20,
 				name: "Recipe 20",
 				duration: 25,
 				private: false,
-				author: "Gal Gadot"
+				author: "Gal Gadot",
+				owns: false
 			},
 			{ id: 21,
 				name: "Recipe 21",
 				duration: 25,
 				private: false,
-				author: "Tom Hiddleston"
+				author: "Tom Hiddleston",
+				owns: false
 			},
 			{ id: 22,
 				name: "Recipe 22",
 				duration: 25,
 				private: false,
-				author: "Simon Pegg"
+				author: "Simon Pegg",
+				owns: false
 			},
 			{ id: 23,
 				name: "Recipe 23",
 				duration: 25,
 				private: false,
-				author: "Charlize Theron"
+				author: "Charlize Theron",
+				owns: false
+			},
+			{ id: 23,
+				name: "My Private Recipe",
+				duration: 25,
+				private: true,
+				author: "TestUser",
+				owns: true
+			},
+			{ id: 23,
+				name: "My Public Recipe",
+				duration: 25,
+				private: false,
+				author: "TestUser",
+				owns: true
 			},
 		],
 		searchQuery: '',
 		saved: [1,3,4,5,8,12],
-		myPublishedRecipes: [
-			{id: "Ice Soup"},
-			{id: "Vegan Water"},
-			{id: "Burritos Locos Tacos"},
-			{id: "Kevin's Famous Chili"},
-			],
-		myPrivateRecipes: [
-			{id: "Lo-mein"},
-			{id: "Creole Sauce"}
-			],
+		idCounter: 100
 	},
 	getters: {
 		filteredRecipes: state => {
@@ -185,16 +213,6 @@ export default new Vuex.Store({
 				return _.indexOf(state.saved, recipe.id) !== -1
 			})
 		},
-		myPublishedRecipes: state => {
-			return _.filter(state.myPublishedRecipes, (recipe) => {
-				return _.indexOf(state.myPublishedRecipes, recipe.id) !== -1
-			})
-		},
-		myPrivateRecipes: state => {
-			return _.filter(state.myPrivateRecipes, (recipe) => {
-				return _.indexOf(state.myPrivateRecipes, recipe.id) !== -1
-			})
-		},
 		getRecipeById: (state) => (id) => {
 			return _.find(state.recipeList, {'id': id})
 		},
@@ -202,10 +220,14 @@ export default new Vuex.Store({
 			return state.saved
 		},
 		myPublishedRecipeList:(state) => {
-			return state.myPublishedRecipes
+			return _.filter(state.recipeList, (recipe) => {
+				return recipe.owns && !recipe.private
+			})
 		},
 		myPrivateRecipeList:(state) => {
-			return state.myPublishedRecipes
+			return _.filter(state.recipeList, (recipe) => {
+				return recipe.owns && recipe.private
+			})
 		}
 	},
 	mutations: {
@@ -218,13 +240,9 @@ export default new Vuex.Store({
 		UNSAVE_RECIPE: (state, id) => {
 			state.saved.splice(state.saved.indexOf(id), 1)
 		},
-		SAVE_PUBLISHEDRECIPE: (state,id) => {
-			state.myPublishedRecipes.push(id)
-		},
-		SAVE_PRIVATERECIPE: (state,id) => {
-			state.myPrivateRecipes.push(id)
-		},
 		ADD_RECIPE: (state, payload) => {
+			payload.id = state.idCounter
+			state.idCounter += 1
 			state.recipeList.unshift(payload)
 		}
 	},
@@ -234,7 +252,7 @@ export default new Vuex.Store({
 		},
 		toggleSaved: (context, id) => {
 			let idx = context.state.saved.indexOf(id)
-			if(idx === -1) {
+			if (idx === -1) {
 				context.commit("SAVE_RECIPE", id)
 			} else {
 				context.commit("UNSAVE_RECIPE", id)
