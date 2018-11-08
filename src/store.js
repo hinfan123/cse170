@@ -51,7 +51,7 @@ export default new Vuex.Store({
 			},
 			{
 				id: 7,
-				name: "",
+				name: "Recipe 7",
 				duration: 25,
 				private: false,
 				author: "Steve Wozniak"
@@ -224,8 +224,8 @@ export default new Vuex.Store({
 		SAVE_PRIVATERECIPE: (state,id) => {
 			state.myPrivateRecipes.push(id)
 		},
-		ADD_RECIPE(state,payload){
-			state.myPublishedRecipes.unshift(payload)
+		ADD_RECIPE: (state, payload) => {
+			state.recipeList.unshift(payload)
 		}
 	},
 	actions: {
@@ -240,8 +240,8 @@ export default new Vuex.Store({
 				context.commit("UNSAVE_RECIPE", id)
 			}
 		},
-		addRecipe(context,payload){
-			context.commit('ADD_RECIPE',payload);
+		saveRecipe: (context, payload) => {
+			context.commit('ADD_RECIPE', payload)
 		}
 	}
 })

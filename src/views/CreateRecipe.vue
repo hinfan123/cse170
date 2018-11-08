@@ -1,19 +1,17 @@
 <template>
 	<div class="content">
-		
+
 		<div>
 			<h3>New Recipe Entry</h3>
 			<div class="recipe-container">
-				<input v-for="recipe in recipe"
-               v-model="recipe.name">
-        <input placeholder="Name of dish">
+        <input placeholder="Name of dish" v-model="recipeName">
 			</div>
 		</div>
-		
+
 		<div class="img-container">
 			<div class="img"></div>
 		</div>
-		
+
 		<h3>Ingredients</h3>
 
 		<div class="ingredient-container">
@@ -25,11 +23,11 @@
 		</div>
 
 		<br>
-		<button @click="saveRecipe(recipe)">
+		<button @click="">
 			Publish Recipe
 		</button>
 		<br>
-		<button @click="modalActive = true">
+		<button @click="savePrivateRecipe()">
 			Save as Private Recipe
 		</button>
 
@@ -62,13 +60,14 @@ export default {
 		return {
 			ingredients: [],
 			ingredientToAdd: "",
-			modalActive: false
+			modalActive: false,
+			recipeName: ''
 		}
 	},
 	methods: {
 		...mapActions([
-				'saveRecipe'
-			]),
+			'saveRecipe'
+		]),
 		onIngredientAdd: function () {
 			if (this.ingredientToAdd) {
 				this.ingredients.push({
@@ -79,9 +78,16 @@ export default {
 				this.ingredientToAdd = ""
 			}
 		},
-	},
-	saveRecipe(recipe) {
-		this.$store.dispatch('addRecipe',recipe)
+		savePrivateRecipe: function () {
+			this.saveRecipe({
+				name: this.recipeName,
+				duration: 0,
+				private: true,
+				author: 'Username',
+				ingredients: this.ingredients
+			})
+			this.modalActive = true
+		}
 	}
 }
 </script>
