@@ -1,12 +1,21 @@
 <template>
 	<div class="content">
+		
 		<div>
-			<input placeholder="What's this dish called?">
+			<h3>New Recipe Entry</h3>
+			<div class="recipe-container">
+				<input v-for="recipe in recipe"
+               v-model="recipe.name">
+        <input placeholder="Name of dish">
+			</div>
 		</div>
+		
 		<div class="img-container">
 			<div class="img"></div>
 		</div>
+		
 		<h3>Ingredients</h3>
+
 		<div class="ingredient-container">
 			<input v-for="ingredient in ingredients"
 						 v-model="ingredient.name">
@@ -16,12 +25,12 @@
 		</div>
 
 		<br>
-		<button @click="modalActive = true">
-			save as private recipe
+		<button @click="saveRecipe(recipe)">
+			Publish Recipe
 		</button>
 		<br>
 		<button @click="modalActive = true">
-			publish recipe
+			Save as Private Recipe
 		</button>
 
 		<b-modal :active.sync="modalActive"
@@ -46,6 +55,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions} from 'vuex'
 export default {
 	name: 'create',
 	data: function () {
@@ -56,6 +66,9 @@ export default {
 		}
 	},
 	methods: {
+		...mapActions([
+				'saveRecipe'
+			]),
 		onIngredientAdd: function () {
 			if (this.ingredientToAdd) {
 				this.ingredients.push({
@@ -65,7 +78,10 @@ export default {
 				})
 				this.ingredientToAdd = ""
 			}
-		}
+		},
+	},
+	saveRecipe(recipe) {
+		this.$store.dispatch('addRecipe',recipe)
 	}
 }
 </script>

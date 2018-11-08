@@ -16,7 +16,7 @@
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h4>{{ recipe.name }}</h4>
+							<h4>{{ recipe.id }}</h4>
 							<p>
 								This is a recipe description<br>
 								It can be multiple lines<br>
@@ -55,7 +55,7 @@
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h3>{{ recipe.name }}</h3>
+							<h3>{{ recipe.id }}</h3>
 							<p>
 								This is a recipe description<br>
 								It can be multiple lines<br>
@@ -84,25 +84,21 @@
 </style>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import CreateRecipe from './CreateRecipe.vue'
 export default {
-  name: 'my-recipes',
+	...mapGetters([
+			'myPublishedRecipes','myPrivateRecipes'
+	]),
+  name: 'myRecipes',
 	data: function () {
 		return {
-			publishedRecipes: [
-				{ name: "Published Recipe 1",},
-				{ name: "Published Recipe 2",},
-				{ name: "Published Recipe 3",},
-				{ name: "Published Recipe 4",}
-			],
-			privateRecipes: [
-				{ name: "Private Recipe 1",},
-				{ name: "Private Recipe 2",},
-				{ name: "Private Recipe 3",},
-				{ name: "Private Recipe 4",}
-			]
+			publishedRecipes: this.$store.state.myPublishedRecipes,
+			privateRecipes: this.$store.state.myPrivateRecipes
 		}
 	},
-	methods: {
+	methods: { 
+
 	},
 	created: function () {
 	}
