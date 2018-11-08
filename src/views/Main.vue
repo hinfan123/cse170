@@ -4,7 +4,8 @@
 			<router-link to="/" tag="div" class="logo-container">
 				<i class="fas fa-utensils"></i>
 			</router-link>
-			<div id="search-field">
+
+			<div class="input-container">
 				<div class="icon-container">
 					<i class="fas fa-search"></i>
 				</div>
@@ -16,6 +17,7 @@
 					<i class="fas fa-times"></i>
 				</div>
 			</div>
+
 			<div id="nav">
 				<router-link to="/">
 					Home
@@ -34,9 +36,11 @@
 				</router-link>
 			</div>
 		</div>
+
 		<div id="main-content" class="content">
 			<router-view/>
 		</div>
+
 	</div>
 </template>
 

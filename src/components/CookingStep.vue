@@ -16,7 +16,8 @@
 		<div v-if="step.timer" class="timer-container">
 			<cooking-timer :duration="10"
 										 :timerActive.sync="timerActive"
-										 @timer-done="onTimerDone()">
+										 @timer-done="onTimerDone()"
+										 @has-started="hasStarted = true">
 			</cooking-timer>
 		</div>
 
@@ -27,12 +28,12 @@
 				back
 			</button>
 			<button v-if="step.n < lastStep"
-							@click="$emit('next-step')"
+							@click="onNext()"
 							:disabled="timerActive">
 				next
 			</button>
 			<button v-if="step.n >= lastStep"
-							@click="$emit('finish')"
+							@click="onFinish()"
 							:disabled="timerActive">
 				finish
 			</button>
@@ -40,7 +41,10 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
+.img-container {
+	width: 450px;
+}
 </style>
 
 <script>
@@ -55,7 +59,8 @@ export default {
 	data: function () {
 		return {
 			timerModalActive: false,
-			timerActive: false
+			timerActive: false,
+			hasStarted: false
 		}
 	},
 	props: {
@@ -63,6 +68,9 @@ export default {
 		lastStep: 0
 	},
 	computed: {
+		timerOK: function () {
+			return !this.step.timer || this.hasStarted
+		}
 	},
 	methods: {
 		onTimerDone: function () {
@@ -71,7 +79,22 @@ export default {
 			} else {
 				this.$emit('timer-done')
 			}
-		}
+		},
+		onNext: function () {
+			if (this.timerOK) {
+				this.$emit('next-step')
+			} else {
+				this.$emit('ignore-timer')
+			}
+		},
+		onFinish: function () {
+			if (this.timerOK) {
+				this.$emit('finish')
+			} else {
+				this.$emit('ignore-timer')
+			}
+		},
+
 	},
 	created: function () {
 	},

@@ -9,28 +9,28 @@
 
 		<div class="steps-nav">
 			<button :class="['step-btn', {'current': iscurrStep(0)}]"
-					 		:disabled="timerActive"
-					 		@click="currStep = 0">
+							:disabled="timerActive"
+							@click="currStep = 0">
 				PREP
 			</button>
 			<button v-for="step in steps"
-					 		:class="['step-btn', {'current': iscurrStep(step.n)}]"
-					 		:disabled="timerActive"
-					 		@click="onStepClick(step.n)">
+							:class="['step-btn', {'current': iscurrStep(step.n)}]"
+							:disabled="timerActive"
+							@click="onStepClick(step.n)">
 				{{ step.n }}
 			</button>
 		</div>
 
 		<div v-if="iscurrStep(0)" class="content">
 			<div class="img-container">
-				<div class="img-carousel-btn">
-					<i class="fas fa-chevron-left"></i>
-				</div>
 				<div class="img">
+					<div class="img-carousel-btn">
+						<i class="fas fa-chevron-left"></i>
+					</div>
 
-				</div>
-				<div class="img-carousel-btn">
-					<i class="fas fa-chevron-right"></i>
+					<div class="img-carousel-btn">
+						<i class="fas fa-chevron-right"></i>
+					</div>
 				</div>
 			</div>
 			<div class="ingredient-container">
@@ -57,6 +57,7 @@
 											@next-step="nextStep()"
 											@prev-step="prevStep()"
 											@timer-done="timerModalActive = true"
+											@ignore-timer="ignoreTimerModalActive = true"
 											@finish="finishedModalActive = true">
 				</cooking-step>
 			</div>
@@ -116,6 +117,24 @@
 			</div>
 		</b-modal>
 
+		<b-modal :active.sync="ignoreTimerModalActive"
+						 :width="350"
+						 :canCancel="false">
+			<div class="card">
+				<div class="card-content">
+					<h2 class="color-default m-b-sm text-semibold">You haven't started the timer. Are you sure you want to proceed?</h2>
+					<div class="is-flex justify-between">
+						<button class="button primary" @click="ignoreTimerModalActive = false">
+							Stay in current step
+						</button>
+						<button class="button primary" @click="timerModalNext()">
+							Proceed
+						</button>
+					</div>
+				</div>
+			</div>
+		</b-modal>
+
 		<b-modal :active.sync="goBackModalActive"
 						 :width="450"
 						 :canCancel="['escape', 'outside']">
@@ -125,12 +144,12 @@
 						Are you sure you want to stop cooking and exit to the home page?
 					</h2>
 					<div class="is-flex justify-between">
-						<router-link :to="prevRoute" tag="button" class="button pink">
-							Exit to Home Page
-						</router-link>
 						<button class="button primary" @click="goBackModalActive = false">
 							Continue Cooking
 						</button>
+						<router-link :to="prevRoute" tag="button" class="button pink">
+							Exit to Home Page
+						</router-link>
 					</div>
 				</div>
 			</div>
@@ -160,6 +179,7 @@ export default {
 			goBackModalActive: false,
 			stepClicked: undefined,
 			timerActive: false,
+			ignoreTimerModalActive: false,
 			ingredientsList: [
 				{ name: "Ingredient 1", amount: 1, units: "L" },
 				{ name: "Ingredient 2", amount: 2, units: "mL" },
@@ -216,11 +236,12 @@ export default {
 		},
 		timerModalNext: function () {
 			this.timerModalActive = false
- 			if (this.currStep < this.steps.length) {
+			this.ignoreTimerModalActive = false
+			if (this.currStep < this.steps.length) {
 				this.nextStep()
- 			} else {
- 				this.finishedModalActive = true
- 			}
+			} else {
+				this.finishedModalActive = true
+			}
 		}
 	},
 	created: function () {

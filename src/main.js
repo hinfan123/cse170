@@ -10,6 +10,14 @@ import 'buefy/dist/buefy.css'
 Vue.config.productionTip = false
 Vue.use(Buefy)
 
+Vue.directive('input-focus-on-create', {
+  bind: function(el) {
+    Vue.nextTick(() => {
+        el.querySelector('input').focus()
+    })
+  }
+})
+
 new Vue({
   router,
   store,
