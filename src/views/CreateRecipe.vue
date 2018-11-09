@@ -69,7 +69,7 @@
 						<!-- <router-link to="/m/cook" tag="button" class="button primary">
 							Cook it now!
 						</router-link> -->
-						<router-link to="/" tag="button" class="button green">
+						<router-link to="/home" tag="button" class="button green">
 							Back to home page
 						</router-link>
 					</div>

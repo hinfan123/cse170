@@ -107,7 +107,7 @@
 						<button class="button primary" @click="finishedModalActive = false">
 							Back
 						</button>
-						<router-link to="/" tag="button" class="button">
+						<router-link to="/home" tag="button" class="button">
 							Done Cooking
 						</router-link>
 					</div>
@@ -241,7 +241,7 @@ export default {
 		prevRoute: function () {
 			let prev = ''
 			if (this.$route.params.prev === 'h') {
-				prev = ''
+				prev = 'home'
 			} else if (this.$route.params.prev === 's') {
 				prev = 'saved'
 			} else if (this.$route.params.prev === 'm') {

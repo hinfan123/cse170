@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div id="top-bar">
-			<router-link to="/" tag="div" class="logo-container">
+			<router-link to="/home" tag="div" class="logo-container">
 				<i class="fas fa-utensils"></i>
 			</router-link>
 
@@ -19,7 +19,7 @@
 			</div>
 
 			<div id="nav">
-				<router-link to="/">
+				<router-link to="/home">
 					Home
 				</router-link>
 				<router-link to="/saved">

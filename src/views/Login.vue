@@ -8,7 +8,7 @@
 		<input v-if="isSignup" placeholder="Last name">
 		<input placeholder="password" type="password">
 		<input v-if="isSignup" placeholder="Re-enter password" type="password">
-		<router-link v-if="!isSignup" to="/" tag="button">
+		<router-link v-if="!isSignup" to="/home" tag="button">
 			login
 		</router-link>
 		<button v-if="!isSignup" @click="isSignup = true">signup</button>
