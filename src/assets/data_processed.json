@@ -1,12 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import _ from 'lodash'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-	state: {
-		recipeList: [
+recipeList: [
 			{
 				id: 1,
 				name: 'Spicy Thai Basil Chicken',
@@ -453,69 +445,3 @@ export default new Vuex.Store({
 
 
 		], // END recipes list
-		searchQuery: '',
-		saved: [1,3,4,5,8,12],
-		idCounter: 100
-	},
-	getters: {
-		filteredRecipes: state => {
-			return _.filter(state.recipeList, (recipe) => {
-				return _.includes(_.lowerCase(recipe.name), _.lowerCase(state.searchQuery))
-			})
-		},
-		savedRecipes: state => {
-			return _.filter(state.recipeList, (recipe) => {
-				return _.indexOf(state.saved, recipe.id) !== -1
-			})
-		},
-		getRecipeById: (state) => (id) => {
-			return _.find(state.recipeList, {'id': id})
-		},
-		savedList: (state) => {
-			return state.saved
-		},
-		myPublishedRecipeList:(state) => {
-			return _.filter(state.recipeList, (recipe) => {
-				return recipe.owns && !recipe.private
-			})
-		},
-		myPrivateRecipeList:(state) => {
-			return _.filter(state.recipeList, (recipe) => {
-				return recipe.owns && recipe.private
-			})
-		}
-	},
-	mutations: {
-		EXECUTE_SEARCH: (state, query) => {
-			state.searchQuery = query
-		},
-		SAVE_RECIPE: (state, id) => {
-			state.saved.push(id)
-		},
-		UNSAVE_RECIPE: (state, id) => {
-			state.saved.splice(state.saved.indexOf(id), 1)
-		},
-		ADD_RECIPE: (state, payload) => {
-			payload.id = state.idCounter
-			state.idCounter += 1
-			state.recipeList.unshift(payload)
-		},
-	},
-	actions: {
-		executeSearch: (context, query) => {
-			context.commit("EXECUTE_SEARCH", query)
-		},
-		toggleSaved: (context, id) => {
-			let idx = context.state.saved.indexOf(id)
-			if (idx === -1) {
-				context.commit("SAVE_RECIPE", id)
-			} else {
-				context.commit("UNSAVE_RECIPE", id)
-			}
-		},
-		saveRecipe: (context, payload) => {
-			context.commit('ADD_RECIPE', payload)
-		}
-	}
-})
-

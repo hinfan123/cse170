@@ -2,7 +2,7 @@
 	<div class="content">
 		<h2 class="m-b-sm">{{ step.title }}</h2>
 		<div class="img-container">
-			<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
+			<div class="img" :style="{'background-image': genURL(step.gifURL)}">
 
 			</div>
 		</div>
