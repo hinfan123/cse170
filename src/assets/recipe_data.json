@@ -1,0 +1,452 @@
+{
+	"recipes": [ // START recipes list
+
+		{ // start recipe 1: spicy thai basil chicken
+			"id": 1,
+			"name": "Spicy Thai Basil Chicken",
+			"description": "Ground chicken with basil",
+			"duration": 25,
+			"author": "Jackie",
+			"owns": true,
+			"private": true,
+			"imgURL": "http://i68.tinypic.com/o5q685.png",
+
+			"ingredients": [
+				{
+					"name": "Chicken Broth",
+					"quant": "1/3", //string
+					"unit": "cup"
+				},
+				{
+					"name": "Oyster Sauce",
+					"quant": 1,
+					"unit": "tablespoon"
+				},
+				{
+					"name": "Soy Sauce",
+					"quant": 1,
+					"unit": "tablespoon"
+				},
+				{
+					"name": "Fish Sauce",
+					"quant": 2,
+					"unit": "tablespoon"
+				},
+				{
+					"name": "White Sugar",
+					"quant": 1,
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Brown Sugar",
+					"quant": 1,
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Vegetable Oil",
+					"quant": 2,
+					"unit": "tablespoon"
+				},
+				{
+					"name": "Boneless Chicken Thighs",
+					"quant": 1,
+					"unit": "pound"
+				},
+				{
+					"name": "Shallots",
+					"quant": "1/4",
+					"unit": "cup"
+				},
+				{
+					"name": "Garlic",
+					"quant": 4,
+					"unit": "cloves"
+				},
+				{
+					"name": "Thai Chillies",
+					"quant": 2,
+					"unit": "tablespoon"
+				},
+				{
+					"name": "Basil Leaves",
+					"quant": 1,
+					"unit": "cup"
+				}, // comma needed here or NO
+
+			], // end ingredients
+
+			"steps": [
+				{ // step 1
+					"n": 1,
+					"title": "Make the Sauce",
+					"gifURL": "https://gph.is/2ATry3P",
+					"details": "Add chicken broth, oyster sauce, fish sauce, white sugar, and brown sugar together in bowl. Whisk together until well blended",
+					"timer": true,
+					"duration": 0.5
+				},
+				{ // step 2
+					"n": 2,
+					"title": "Prepare Basil",
+					"gifURL": "https://gph.is/2ASazyY",
+					"details": "Thinly slice basil leaves",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 3
+					"n": 3,
+					"title": "Cut Shallots",
+					"gifURL": "https://gph.is/2zDJAoY",
+					"details": "Peel and thinly cut shallots",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 4
+					"n": 4,
+					"title": "Mince Garlic",
+					"gifURL": "https://gph.is/2zAGmT7",
+					"details": "Peel, slice, and mince garlic",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 5
+					"n": 5,
+					"title": "Cut Peppers",
+					"gifURL": "https://gph.is/2Ph2psO",
+					"details": "Thinly cut garlic.",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 6
+					"n": 6,
+					"title": "Chop Chicken",
+					"gifURL": "https://gph.is/2zCJTjX",
+					"details": "Coarsely chop chicken until it meets a grounded texture.",
+					"timer": true,
+					"duration": 240
+				},
+				{ // step 7
+					"n": 7,
+					"title": "Stirfry Chicken",
+					"gifURL": "https://gph.is/2RIDCu7",
+					"details": "Add oil to pan. Add grounded chicken to pan and stirfry.",
+					"timer": true,
+					"duration": 120
+				},
+				{ // step 8
+					"n": 8,
+					"title": "Add chopped ingredients",
+					"gifURL": "https://gph.is/2RIDCu7",
+					"details": "Stir in shallots, garlic, and sliced chillies.",
+					"timer": true,
+					"duration": 120
+				},
+				{ // step 9
+					"n": 9,
+					"title": "Add a bit of sauce",
+					"gifURL": "https://gph.is/2ASfdgn",
+					"details": "Add only a splash of the sauce mixture. Keep stirring until the sauce is absorbed in the chicken.",
+					"timer": true,
+					"duration": 120
+				},
+				{ // step 10
+					"n": 10,
+					"title": "Add the rest of sauce",
+					"gifURL": "https://gph.is/2ATITK6",
+					"details": "Add the rest of the sauce mixture. Keep stirring until the sauce is absorbed in the chicken.",
+					"timer": true,
+					"duration": 180
+				},
+				{ // step 11
+					"n": 11,
+					"title": "Add Basil",
+					"gifURL": "https://gph.is/2PeiwqV",
+					"details": "Add the basil and stir into the chicken.",
+					"timer": true,
+					"duration": 120
+				},
+				{ // step 12
+					"n": 12,
+					"title": "Finished!",
+					"gifURL": "http://i68.tinypic.com/o5q685.png",
+					"details": "Enjoy your Spicy Thai Basil Chicken with rice!",
+					"timer": false,
+					"duration": 0
+				}
+
+			] // end steps
+		} // end recipe 1: spicy thai basil chicken
+
+
+		{ // start recipe 2: spaghetti & meatballs
+			"id": 2,
+			"name": "Spaghetti & Meatballs",
+			"description": "Fastest made meatballs",
+			"duration": 60,
+			"author": "Steve",
+			"owns": true,
+			"private": false,
+			"imgURL": "http://i63.tinypic.com/dwop4p.jpg",
+			
+			"ingredients": [
+				{
+					"name": "Tomato Sauce",
+					"quant": 6, 
+					"unit": "cup"
+				},
+				{
+					"name": "Dry Bread Crumbs",
+					"quant": "1/2",
+					"unit": "cup"
+				},
+				{
+					"name": "Milk",
+					"quant": "1/4",
+					"unit": "cup"
+				},
+				{
+					"name": "Egg",
+					"quant": 1,
+					"unit": "large"
+				},
+				{
+					"name": "Italian Herb Seasoning",
+					"quant": 2,
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Garlic Powder",
+					"quant": "1/2",
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Red Pepper Flakes",
+					"quant": "1/4",
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Ground Beef",
+					"quant": 1,
+					"unit": "pound"
+				},
+				{
+					"name": "Ground Veal",
+					"quant": 1,
+					"unit": "pound"
+				},
+				{
+					"name": "Salt",
+					"quant": "1 1/2",
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Black Pepper",
+					"quant": "1/2",
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Parmigiano-Reggiano",
+					"quant": "1/3",
+					"unit": "cup"
+				}
+			], // end ingredients
+
+			"steps": [
+				{ // step 1
+					"n": 1,
+					"title": "Boil Tomato Sauce",
+					"gifURL": "https://gph.is/2RP6Jwf",
+					"details": "Using a tomato sauce of your choice, stir and bring it to a simmer on medium heat. Then reduce heat to low to keep sauce warm.",
+					"timer": true,
+					"duration": 180
+				},
+				{ // step 2
+					"n": 2,
+					"title": "Pre-Heat Oven",
+					"gifURL": "https://gph.is/2ATihsE",
+					"details": "Pre-heat oven to 500 F and keep on while preparing meatballs",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 3
+					"n": 3,
+					"title": "Make Slurry",
+					"gifURL": "https://gph.is/2RLLJ9B",
+					"details": "Add breadcrumbs, milk, egg, Italian seasoning, olive oil, garlic powder, and red flakes together into a bowl. Whisk together until you have a thick, slurry consistency",
+					"timer": true,
+					"duration": 60
+				},
+				{ // step 4
+					"n": 4,
+					"title": "Mix Meat",
+					"gifURL": "https://gph.is/2AV18Pn",
+					"details": "Combine beef and veal in a large bowl. Add salt, black pepper, white pepper, Parmigiano-Reggiano, and slurry made in previous step. Mix until combined",
+					"timer": true,
+					"duration": 180
+				},
+				{ // step 5
+					"n": 5,
+					"title": "Prepare baking sheet",
+					"gifURL": "https://gph.is/2RLQIah",
+					"details": "Line baking sheet with aluminum foil. Brush it lightly with oil.",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 5
+					"n": 5,
+					"title": "Scoop Meatballs",
+					"gifURL": "https://gph.is/2zDQuuf",
+					"details": "Using a sorbet scoop, scoop meat mixture and place on baking sheet. Finish out the rest of the mixture." ,
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 5
+					"n": 5,
+					"title": "Broil Meatballs",
+					"gifURL": "https://gph.is/2ATYg5a",
+					"details": "Place meatballs into the oven and broil until brown.",
+					"timer": true,
+					"duration": 300
+				},
+				{ // step 6
+					"n": 6,
+					"title": "Transfer Meatballs",
+					"gifURL": "https://gph.is/2ATYg5a",
+					"details": "Transfer meatballs into the tomato sauce. Turn up heat back to simmer to further cook the meatballs into the tomato sauce.",
+					"timer": true,
+					"duration": 180
+				},
+				{ // step 7
+					"n": 7,
+					"title": "Finished!",
+					"gifURL": "http://i63.tinypic.com/dwop4p.jpg",
+					"details": "Enjoy your meatballs on its own or with some cooked spaghetti!",
+					"timer": false,
+					"duration": 0
+				}
+			
+			] // end steps
+		} // end recipe 2: spaghetti & meatballs
+
+
+{ // start recipe 3: guacamole
+			"id": 3,
+			"name": "Guacamole",
+			"description": "Authentic guacamole",
+			"duration": 20,
+			"author": "Bill",
+			"owns": true,
+			"private": false,
+			"imgURL": "http://i68.tinypic.com/adzu6e.png",
+
+			"ingredients": [
+				{
+					"name": "Avocado",
+					"quant": 4, 
+					"unit": "large"
+				},
+				{
+					"name": "Onion",
+					"quant": "1/2",
+					"unit": "large"
+				},
+				{
+					"name": "Serrano Pepper",
+					"quant": 2,
+					"unit": "tablespoon"
+				},
+				{
+					"name": "Cilantro",
+					"quant": "1/2",
+					"unit": "cup"
+				},
+				{
+					"name": "Kosher salt",
+					"quant": "1/2",
+					"unit": "teaspoon"
+				},
+				{
+					"name": "Lime",
+					"quant": 1,
+					"unit": "medium",
+				}
+			], // end ingredients
+
+			"steps": [
+				{ // step 1
+					"n": 1,
+					"title": "Cut Peppers",
+					"gifURL": "https://gph.is/2Ph2psO",
+					"details": "Thinly cut up Serrano peppers.",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 2
+					"n": 2,
+					"title": "Cut Cilantro",
+					"gifURL": "https://gph.is/2RHxyCk",
+					"details": "Chop cilantro to desired thickness",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 3
+					"n": 3,
+					"title": "Chop Onions",
+					"gifURL": "https://gph.is/2RHhvV2",
+					"details": "Chop the onion using technique showng",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 4
+					"n": 4,
+					"title": "Quick chop",
+					"gifURL": "https://gph.is/2RGDT0M",
+					"details": "Add onions, cilantro, and serrano peppers together and give it a slight chop.",
+					"timer": true,
+					"duration": 30
+				},
+				{ // step 5
+					"n": 5,
+					"title": "Grinding Technique",
+					"gifURL": "https://gph.is/2ATO0tr",
+					"details": "Add in kosher salt and use grinding technique to create a thinner, paste-like consistency.",
+					"timer": true,
+					"duration": 120 
+				},
+				{ // step 6
+					"n": 6,
+					"title": "Grinding Technique",
+					"gifURL": "https://gph.is/2ATO0tr",
+					"details": "Add in kosher salt and use grinding technique to create a thinner, paste-like consistency.",
+					"timer": true,
+					"duration": 120 
+				},
+				{ // step 7
+					"n": 7,
+					"title": "Prepare Avocados",
+					"gifURL": "https://gph.is/2RGixkf",
+					"details": "Cut and remove pit of avocados.",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 8
+					"n": 8,
+					"title": "Mash Guacamole",
+					"gifURL": "https://gph.is/2Ph0gxh",
+					"details": "Add in cilantro and onion paste. Add extra cilantro and lime for taste. Mash everything to desired consistency.",
+					"timer": false,
+					"duration": 0
+				},
+				{ // step 9
+					"n": 9,
+					"title": "Finished!",
+					"gifURL": "http://i68.tinypic.com/adzu6e.png",
+					"details": "Enjoy your delicious guacamole with some chips!",
+					"timer": false,
+					"duration": 0
+				}
+			] // end steps
+		} // end recipe 3: guacamole
+
+
+	] // END recipes list
+}
