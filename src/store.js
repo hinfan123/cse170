@@ -441,7 +441,93 @@ export default new Vuex.Store({
 						duration: 0
 					}
 				] // end steps
-			} // end recipe 3: guacamole
+			}, // end recipe 3: guacamole
+
+			{ //recipe 4
+				id: 4,
+				name: 'Kevins Famous Chili',
+				description: 'Chili made by the kevin malone',
+				duration: 25,
+				author: 'Kevin Malone',
+				owns: false,
+				private: false,
+				imgURL: 'https://www.thewholesomedish.com/wp-content/uploads/2018/05/600-X-900.jpg',
+
+				ingredients: [
+					{
+						name: 'Dried Ancho Chiles',
+						quantity: '3', //string
+						unit: 'ounce'
+					},
+					{
+						name: 'Dried Cascabel Chiles',
+						quantity: '1',
+						unit: 'ounce'
+					},
+					{
+						name: 'Dried Oregano',
+						quantity: '1',
+						unit: 'tablespoon'
+					},
+					{
+						name: 'Chicken Stock',
+						quantity: '32',
+						unit: 'ounces'
+					},
+					{
+						name: 'Vegetable Oil',
+						quantity: '2',
+						unit: 'tablespoon'
+					},
+					{
+						name: 'Chuck Steak',
+						quantity: '3',
+						unit: 'pounds'
+					},
+					{
+						name: 'Spanish Onion',
+						quantity: '1'
+					},
+					{
+						name: 'Brown Sugar',
+						quantity: '2',
+						unit: 'tablespoon'
+					},
+					{
+						name: 'Red Kidney Beans',
+						quantity: '12',
+						unit: 'ounces'
+					} // comma needed here or NO
+
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: 'Toasty Chillies',
+						gifURL: 'https://i.kym-cdn.com/photos/images/original/000/332/462/40b.gif',
+						details: 'Toast chillies on pan until fragrant and barely smoking',
+						timer: true,
+						duration: 0.3
+					},
+					{ // step 2
+						n: 2,
+						title: 'Getting to know eachother',
+						gifURL: 'http://i.imgur.com/g5O8fuE.gif',
+						details: 'Place everything in pot and simmer',
+						timer: true,
+						duration: 3
+					},
+					{ // step 3
+						n: 3,
+						title: 'Finished!',
+						gifURL: 'http://78.media.tumblr.com/tumblr_lwd88hxDip1qfhqloo1_500.gif',
+						details: "You're done! Now time to spill on the carpet",
+						timer: false,
+						duration: 0
+					}
+				] // end steps
+			}, // end recipe 1: spicy thai basil chicken
 
 
 		], // END recipes list
