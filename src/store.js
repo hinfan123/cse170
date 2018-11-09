@@ -9,11 +9,12 @@ export default new Vuex.Store({
 		recipeList: [
 			{
 				id: 1,
-				name: "Carbonara",
+				name: "Kevin's Famous Chili",
 				duration: 25,
 				private: false,
-				author: "Jack Ma",
-				owns: false
+				author: "Kevin Malone",
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 2,
@@ -21,7 +22,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Jeff Bezos",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 3,
@@ -29,7 +31,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Steve Jobs",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 4,
@@ -37,7 +40,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Bill Gates",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 5,
@@ -45,7 +49,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Mark Cuban",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 6,
@@ -53,7 +58,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Travis Kalanick",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 7,
@@ -61,7 +67,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Steve Wozniak",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 8,
@@ -77,7 +84,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Mark Zuckerberg",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 10,
@@ -85,7 +93,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Warren Buffet",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 11,
@@ -93,7 +102,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Elon Musk",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 12,
@@ -101,7 +111,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Brad Pitt",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 13,
@@ -109,7 +120,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Arbold Swarznegger",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 14,
@@ -117,7 +129,8 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Matt LeBlanc",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{
 				id: 15,
@@ -125,77 +138,88 @@ export default new Vuex.Store({
 				duration: 25,
 				private: false,
 				author: "Tom Cruise",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 16,
 				name: "Recipe 16",
 				duration: 25,
 				private: false,
 				author: "Keanu Reeves",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 17,
 				name: "Recipe 17",
 				duration: 25,
 				private: false,
 				author: "Jackie Chan",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 18,
 				name: "Recipe 18",
 				duration: 25,
 				private: false,
 				author: "Gigi Hadid",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 19,
 				name: "Recipe 19",
 				duration: 25,
 				private: false,
 				author: "Cara Delevingne",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 20,
 				name: "Recipe 20",
 				duration: 25,
 				private: false,
 				author: "Gal Gadot",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 21,
 				name: "Recipe 21",
 				duration: 25,
 				private: false,
 				author: "Tom Hiddleston",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 22,
 				name: "Recipe 22",
 				duration: 25,
 				private: false,
 				author: "Simon Pegg",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 23,
 				name: "Recipe 23",
 				duration: 25,
 				private: false,
 				author: "Charlize Theron",
-				owns: false
+				owns: false,
+				ingredients: []
 			},
 			{ id: 23,
 				name: "My Private Recipe",
 				duration: 25,
 				private: true,
 				author: "TestUser",
-				owns: true
+				owns: true,
+				ingredients: []
 			},
 			{ id: 23,
 				name: "My Public Recipe",
 				duration: 25,
 				private: false,
 				author: "TestUser",
-				owns: true
+				owns: true,
+				ingredients: []
 			},
 		],
 		searchQuery: '',
@@ -244,7 +268,7 @@ export default new Vuex.Store({
 			payload.id = state.idCounter
 			state.idCounter += 1
 			state.recipeList.unshift(payload)
-		}
+		},
 	},
 	actions: {
 		executeSearch: (context, query) => {
