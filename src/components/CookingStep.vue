@@ -11,7 +11,7 @@
 		</div>
 
 		<div v-if="step.timer" class="timer-container">
-			<cooking-timer :duration="10"
+			<cooking-timer :duration="step.duration"
 										 :timerActive.sync="timerActive"
 										 @timer-done="onTimerDone()"
 										 @has-started="hasStarted = true">

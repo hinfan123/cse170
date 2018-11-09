@@ -463,6 +463,15 @@ export default new Vuex.Store({
 				return _.includes(_.lowerCase(recipe.name), _.lowerCase(state.searchQuery))
 			})
 		},
+		dummyRecipes: state => {
+			let list = _.filter(state.recipeList, (recipe) => {
+				return _.includes(_.lowerCase(recipe.name), _.lowerCase(state.searchQuery))
+			})
+			_.forEach([1,2,3,4], () => {
+				list = _.concat(list, list)
+			})
+			return list
+		},
 		savedRecipes: state => {
 			return _.filter(state.recipeList, (recipe) => {
 				return _.indexOf(state.saved, recipe.id) !== -1

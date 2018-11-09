@@ -65,9 +65,9 @@
 				<div class="card-content">
 					<h2 class="color-default m-b-sm">Recipe Created!</h2>
 					<div class="is-flex justify-between">
-						<router-link to="/m/cook" tag="button" class="button primary">
+						<!-- <router-link to="/m/cook" tag="button" class="button primary">
 							Cook it now!
-						</router-link>
+						</router-link> -->
 						<router-link to="/" tag="button" class="button green">
 							Back to home page
 						</router-link>
@@ -139,6 +139,7 @@ export default {
 			}
 		},
 		savePrivateRecipe: function () {
+			this.convertDuration()
 			if (this.goodToSubmit()) {
 				this.saveRecipe({
 					name: this.recipeName,
@@ -157,6 +158,7 @@ export default {
 			}
 		},
 		savePublicRecipe: function () {
+			this.convertDuration()
 			if (this.goodToSubmit()) {
 				this.saveRecipe({
 					name: this.recipeName,
@@ -195,6 +197,13 @@ export default {
 				(!step.timer || step.duration)
 			})
 			return this.recipeName && this.timeCook && this.description && goodIngredients && goodSteps
+		},
+		convertDuration: function () {
+			_.forEach(this.steps, (step) => {
+				if (step.duration) {
+					step.duration = _.toNumber(step.duration) * 60
+				}
+			})
 		}
 	}
 }

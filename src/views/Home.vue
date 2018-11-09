@@ -4,13 +4,16 @@
 			<div v-for="(col, i) in columns" class="column p-none">
 				<div v-for="(recipe, j) in getColRecipes(col)"
 						 @click="openModal(recipe)"
-						 :class="['recipe-box', boxSizeArray[i][j]]">
+						 :class="['recipe-box', boxSizeArray[i][j]]"
+						 :style="{'background-image': genURL(recipe.imgURL)}">
 					<div :class="['save-btn', {'saved': isSaved(recipe.id)}]"
 							 @click.stop="onSaveBtnClick(recipe)">
 						<i class="fas fa-heart"></i>
 					</div>
-					<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>
-					<h6 class="m-none color-default">@{{ recipe.author }}</h6>
+					<div class="recipe-text is-flex flex-column">
+						<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>
+						<h6 class="m-none color-default">@{{ recipe.author }}</h6>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -53,8 +56,7 @@
 					</div>
 
 					<p class="color-default text-semibold">
-						This is a detailed description<br>
-						It could be many lines<br>
+						{{ clickedRecipe.description }}
 					</p>
 					<div class="is-flex justify-center">
 						<router-link :to="'/h/cook/' + clickedRecipe.id" tag="button" class="button primary is-large">
@@ -162,7 +164,8 @@ export default {
 	computed: {
 		...mapGetters([
 			'filteredRecipes',
-			'savedList'
+			'savedList',
+			'dummyRecipes'
 		])
 	},
 	methods: {
@@ -170,7 +173,7 @@ export default {
 			'toggleSaved'
 		]),
 		getColRecipes: function (col) {
-			return _.filter(this.filteredRecipes, (i, n) => {
+			return _.filter(this.dummyRecipes, (i, n) => {
 				//console.log(n % this.columns.length === col)
 				return (n % this.columns.length) === col
 			})
@@ -213,7 +216,7 @@ export default {
 		this.setupGrid()
 	},
 	watch: {
-		filteredRecipes: function () {
+		dummyRecipes: function () {
 			this.setupGrid()
 		}
 	}
