@@ -45,7 +45,6 @@
 					{{ reply.text}}
 				</div>
 			</div>
-
 			<div v-if="showReplyBox === i"
 					 v-input-focus-on-create
 					 class="input-container sm m-t-sm">
@@ -67,9 +66,7 @@
 </template>
 
 <style scoped lang="scss">
-.input-container {
-	width: 300px !important;
-}
+
 </style>
 
 <script>
