@@ -9,11 +9,12 @@ export default new Vuex.Store({
 		recipeList: [
 			{
 				id: 1,
-				name: "Kevin's Famous Chili",
+				name: "Thai Spicy Basil Chicken",
 				duration: 25,
 				private: false,
 				author: "Kevin Malone",
 				owns: false,
+
 				ingredients: []
 			},
 			{
@@ -205,7 +206,7 @@ export default new Vuex.Store({
 				owns: false,
 				ingredients: []
 			},
-			{ id: 23,
+			/*{ id: 23,
 				name: "My Private Recipe",
 				duration: 25,
 				private: true,
@@ -220,7 +221,7 @@ export default new Vuex.Store({
 				author: "TestUser",
 				owns: true,
 				ingredients: []
-			},
+			},*/
 		],
 		searchQuery: '',
 		saved: [1,3,4,5,8,12],

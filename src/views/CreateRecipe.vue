@@ -5,6 +5,7 @@
 			<h3>New Recipe Entry</h3>
 			<div class="recipe-container">
         <input placeholder="Name of dish" v-model="recipeName">
+        <input placeholder="Time to cook in minutes" v-model="timeCook">
 			</div>
 		</div>
 
@@ -64,7 +65,8 @@ export default {
 			ingredients: [],
 			ingredientToAdd: "",
 			modalActive: false,
-			recipeName: ''
+			recipeName: '',
+      timeCook: ''
 		}
 	},
 	methods: {
@@ -84,7 +86,7 @@ export default {
 		savePrivateRecipe: function () {
 			this.saveRecipe({
 				name: this.recipeName,
-				duration: 0,
+				duration: this.timeCook,
 				private: true,
 				author: 'TestUser',
 				ingredients: this.ingredients,
