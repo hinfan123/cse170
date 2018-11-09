@@ -206,7 +206,7 @@ export default new Vuex.Store({
 				owns: false,
 				ingredients: []
 			},
-			/*{ id: 23,
+			/*{ id: 24,
 				name: "My Private Recipe",
 				duration: 25,
 				private: true,
@@ -214,7 +214,7 @@ export default new Vuex.Store({
 				owns: true,
 				ingredients: []
 			},
-			{ id: 23,
+			{ id: 25,
 				name: "My Public Recipe",
 				duration: 25,
 				private: false,

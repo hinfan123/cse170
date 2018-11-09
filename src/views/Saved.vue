@@ -38,7 +38,7 @@ export default {
 	methods: {
 		...mapActions([
 			'toggleSaved'
-			])
+		]),
 	},
 	computed: {
 		...mapGetters(

@@ -10,21 +10,23 @@
 		</div>
 
 		<div class="img-container">
-			<div class="img"></div>
-		</div>
-
-		<h3>Ingredients</h3>
-
-		<div class="ingredient-container">
-			<div v-for="ingredient in ingredients"> 
-        <input placeholder="Name" v-model="ingredient.name">
-        <input placeholder="Quantity" v-model="ingredient.quantity">
-        <input placeholder="Units" v-model="ingredient.unit">
+			<div class="img">
       </div>
-			<input v-on:keyup.enter="onIngredientAdd()"
-						 v-model="ingredientToAdd"
-						 placeholder="Tap Enter to add...">
 		</div>
+
+    <div>
+		  <h3>Ingredients</h3>
+		  <div class="ingredient-container">
+			 <div v-for="ingredient in ingredients"> 
+          <input placeholder="Name" v-model="ingredient.name">
+          <input placeholder="Quantity" v-model="ingredient.quantity">
+          <input placeholder="Units" v-model="ingredient.unit">
+        </div>
+		  </div>
+        <input v-on:keyup.enter="onIngredientAdd()"
+               v-model="ingredientToAdd"
+               placeholder="Tap Enter to add...">
+    </div>
 
 		<br>
 		<button @click="savePublicRecipe()">
@@ -64,6 +66,8 @@ export default {
 		return {
 			ingredients: [],
 			ingredientToAdd: "",
+      quantityToAdd: "",
+      unitToAdd: "",
 			modalActive: false,
 			recipeName: '',
       timeCook: ''
@@ -77,8 +81,8 @@ export default {
 			if (this.ingredientToAdd) {
 				this.ingredients.push({
 					name: this.ingredientToAdd,
-					quantity: 0,
-					unit: ""
+					quantity: this.quantityToAdd,
+					unit: this.unitToAdd
 				})
 				this.ingredientToAdd = ""
 			}
