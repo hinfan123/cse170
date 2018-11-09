@@ -15,15 +15,18 @@
 		<h3>Ingredients</h3>
 
 		<div class="ingredient-container">
-			<input v-for="ingredient in ingredients"
-						 v-model="ingredient.name">
+			<div v-for="ingredient in ingredients"> 
+        <input placeholder="Name" v-model="ingredient.name">
+        <input placeholder="Quantity" v-model="ingredient.quantity">
+        <input placeholder="Units" v-model="ingredient.unit">
+      </div>
 			<input v-on:keyup.enter="onIngredientAdd()"
 						 v-model="ingredientToAdd"
 						 placeholder="Tap Enter to add...">
 		</div>
 
 		<br>
-		<button @click="">
+		<button @click="savePublicRecipe()">
 			Publish Recipe
 		</button>
 		<br>
@@ -73,7 +76,7 @@ export default {
 				this.ingredients.push({
 					name: this.ingredientToAdd,
 					quantity: 0,
-					units: ""
+					unit: ""
 				})
 				this.ingredientToAdd = ""
 			}
@@ -85,10 +88,21 @@ export default {
 				private: true,
 				author: 'TestUser',
 				ingredients: this.ingredients,
-				owner: 0
+				owns: true
 			})
 			this.modalActive = true
-		}
+		},
+    savePublicRecipe: function () {
+      this.saveRecipe({
+        name: this.recipeName,
+        duration: 0,
+        private: false,
+        author: 'TestUser',
+        ingredients: this.ingredients,
+        owns: true
+      })
+      this.modalActive = true
+    },
 	}
 }
 </script>
