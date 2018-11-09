@@ -6,6 +6,10 @@
 			"name": "Some very Delicious Food",
 			"duration": 25,
 			"author": "Jackie",
+			"imgURL": "",
+			"description": "",
+			"owns": false,
+			"private": false,
 
 			"ingredients": [
 				{
