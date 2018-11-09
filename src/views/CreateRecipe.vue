@@ -76,6 +76,19 @@
 			</div>
 		</b-modal>
 
+		<b-modal :active.sync="badInfoModalActive"
+						 :width="300"
+						 :canCancel="['escape', 'outside']">
+			<div class="card">
+				<div class="card-content">
+					<h3 class="color-default m-b-sm">Some Information is Missing!</h3>
+					<div class="is-flex justify-between">
+						<button class="button primary" @click="badInfoModalActive = false">OK</button>
+					</div>
+				</div>
+			</div>
+		</b-modal>
+
 	</div>
 </template>
 
@@ -95,6 +108,7 @@ export default {
 			ingredientToAdd: '',
 			description: '',
 			modalActive: false,
+			badInfoModalActive: false,
 			recipeName: '',
 			timeCook: '',
 			imgURL: undefined,
@@ -138,6 +152,8 @@ export default {
 					imgURL: this.imgURL
 				})
 				this.modalActive = true
+			} else {
+				this.badInfoModalActive = true
 			}
 		},
 		savePublicRecipe: function () {
@@ -154,6 +170,8 @@ export default {
 					imgURL: this.imgURL
 				})
 				this.modalActive = true
+			} else {
+				this.badInfoModalActive = true
 			}
 		},
 		addStep: function () {
