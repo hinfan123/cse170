@@ -88,7 +88,7 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/64aHH8NS43uqnJT9q0/giphy.gif',
 						details: 'Add chicken broth, oyster sauce, fish sauce, white sugar, and brown sugar together in bowl. Whisk together until well blended',
 						timer: true,
-						duration: 0.5
+						duration: 10
 					},
 					{ // step 2
 						n: 2,

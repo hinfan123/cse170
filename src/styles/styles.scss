@@ -134,6 +134,9 @@ h1, h2, h3, h4, h5, h6, p {
 button {
 	cursor: pointer;
 }
+button[disabled] {
+	cursor: not-allowed !important;
+}
 
 button.button {
 	background: transparent;
