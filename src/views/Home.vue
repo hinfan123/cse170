@@ -41,7 +41,8 @@
 					</div>
 
 					<div class="img-container">
-						<div class="img">
+						<div class="img"
+								 :style="{'background-image': genURL(clickedRecipe.imgURL)}">
 							<div class="img-carousel-btn">
 								<i class="fas fa-chevron-left"></i>
 							</div>
@@ -201,6 +202,11 @@ export default {
 		},
 		onSaveBtnClick: function (recipe) {
 			this.toggleSaved(recipe.id)
+		},
+		genURL: function (url) {
+			let actual = url? url :
+					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
+			return 'url(' + actual + ')'
 		}
 	},
 	created: function () {

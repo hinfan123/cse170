@@ -21,7 +21,7 @@
 									@click="currStep = 0">
 						PREP
 					</button>
-					<button v-for="step in steps"
+					<button v-for="step in recipe.steps"
 									:class="['step-btn', {'current': iscurrStep(step.n)}]"
 									:disabled="timerActive"
 									@click="onStepClick(step.n)">
@@ -57,10 +57,10 @@
 					</button>
 				</div>
 
-				<div v-for="step in steps">
+				<div v-for="step in recipe.steps">
 					<div v-if="iscurrStep(step.n)" class="content">
 						<cooking-step :step="step"
-													:lastStep="steps.length"
+													:lastStep="recipe.steps.length"
 													:timerActive.sync="timerActive"
 													@next-step="nextStep()"
 													@prev-step="prevStep()"
@@ -199,20 +199,6 @@ export default {
 			timerActive: false,
 			ignoreTimerModalActive: false,
 			showCommentsTab: true,
-			ingredientsList: [
-				{ name: "Ingredient 1", amount: 1, units: "L" },
-				{ name: "Ingredient 2", amount: 2, units: "mL" },
-				{ name: "Ingredient 3", amount: 3, units: "kg" },
-				{ name: "Ingredient 4", amount: 4, units: "g" },
-				{ name: "Ingredient 5", amount: 5, units: "mL" },
-				{ name: "Ingredient 6", amount: 6, units: "g" },
-			],
-			steps: [
-				{ n: 1, title: "First Step has timer", timer: true },
-				{ n: 2, title: "Second Step has no timer", timer: false },
-				{ n: 3, title: "Third Step also has no timer", timer: false },
-				{ n: 4, title: "Final Step has timer!", timer: true }
-			],
 			commentList: [
 				{
 					id: 1,
@@ -292,7 +278,7 @@ export default {
 		timerModalNext: function () {
 			this.timerModalActive = false
 			this.ignoreTimerModalActive = false
-			if (this.currStep < this.steps.length) {
+			if (this.currStep < this.recipe.steps.length) {
 				this.nextStep()
 			} else {
 				this.finishedModalActive = true

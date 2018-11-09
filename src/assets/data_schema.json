@@ -6,6 +6,10 @@
 			"name": "Some very Delicious Food",
 			"duration": 25,
 			"author": "Jackie",
+			"imgURL": "",
+			"description": "",
+			"owns": false,
+			"private": false,
 
 			"ingredients": [
 				{
@@ -25,7 +29,7 @@
 					"n": 1,
 					"title": "Fry Garlic",
 					"details": [
-						"Add oil to pan"
+						"Add oil to pan",
 						"Heat up pan for 2 minutes",
 						"Put garlic in",
 						"Fry for 3 minutes"
