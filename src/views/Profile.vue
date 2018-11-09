@@ -17,7 +17,7 @@
 		<button @click="toastPassword">change password</button>
 
 		<br><br>
-		<router-link to="/login" tag="button">
+		<router-link to="/" tag="button">
 			logout
 		</router-link>
 		<!-- <div class="field">
