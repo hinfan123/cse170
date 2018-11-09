@@ -1,10 +1,16 @@
 <template>
 	<div id="cook">
-		<div class="top-bar-cook">
-			<div class="back-btn" @click="goBackModalActive = true">
-				<i class="fas fa-chevron-left"></i>
+		<div class="is-flex justify-between align-center p-r-sm">
+			<div class="is-flex align-center">
+				<div class="back-btn" @click="goBackModalActive = true">
+					<i class="fas fa-chevron-left"></i>
+				</div>
+				<h2>Cooking {{ recipe.name }}</h2>
 			</div>
-			<h2>Cooking {{ recipe.name }}</h2>
+			<button class="button green"
+							@click="showCommentsTab = !showCommentsTab">
+				<i class="fas fa-comment-alt"></i>
+			</button>
 		</div>
 
 		<div class="columns">
@@ -66,7 +72,7 @@
 				</div>
 			</div>
 
-			<div class="column is-4 m-x-md">
+			<div class="comments-tab m-x-md" :class="{'fold': !showCommentsTab}">
 				<comments-section :comments="commentList"
 													commentBoxPlaceholder="Add a comment...">
 				</comments-section>
@@ -192,6 +198,7 @@ export default {
 			stepClicked: undefined,
 			timerActive: false,
 			ignoreTimerModalActive: false,
+			showCommentsTab: true,
 			ingredientsList: [
 				{ name: "Ingredient 1", amount: 1, units: "L" },
 				{ name: "Ingredient 2", amount: 2, units: "mL" },

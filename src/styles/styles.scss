@@ -52,6 +52,10 @@ html {
 	width: 0.4em;
 }*/
 
+h1, h2, h3, h4, h5, h6, p {
+	margin-bottom: 0.25em;
+}
+
 .content {
 	h1, h2, h3, h4, h5, h6, p {
 		margin-bottom: 0.25em;
@@ -59,19 +63,6 @@ html {
 	p:not(:last-child) {
 		margin-bottom: 0.5em;
 	}
-}
-
-.color-default {
-	color: $text !important;
-}
-.color-muted {
-	color: $muted !important;
-}
-.color-placeholder {
-	color: $placeholder !important;
-}
-.color-primary {
-	color: $primary !important;
 }
 
 #app {
@@ -128,6 +119,18 @@ html {
 	text-align: left;
 }
 
+.modal-background {
+	background-color: $modal-bg !important;
+	position: fixed !important;
+}
+
+.modal.is-active {
+	overflow-y: scroll !important;
+	.animation-content.modal-content {
+		overflow: visible !important;
+	}
+}
+
 button {
 	cursor: pointer;
 }
@@ -137,7 +140,13 @@ button.button {
 	border-radius: 6px;
 	text-transform: uppercase;
 	font-weight: 700;
+	&:focus:not(:active) {
+		box-shadow: none;
+	}
 	&:focus {
+		box-shadow: none;
+	}
+	&:active {
 		box-shadow: none;
 	}
 	&.primary {
@@ -185,26 +194,18 @@ button.button {
 	border-radius: 8px;
 	color: $text;
 	cursor: pointer;
-	&:hover {
-		background: $accent;
-	}
-}
-
-h1, h2, h3, h4, h5, h6, p {
-	margin-bottom: 0.5em;
+	&:hover { background: $accent; }
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: $placeholder;
-    opacity: 1; /* Firefox */
+   color: $placeholder;
+   opacity: 1; /* Firefox */
 }
-
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $placeholder;
+   color: $placeholder;
 }
-
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: $placeholder;
+   color: $placeholder;
 }
 
 .input-container {
@@ -212,9 +213,7 @@ h1, h2, h3, h4, h5, h6, p {
 	display: flex;
 	font-size: 16px;
 	width: 100%;
-	&.sm {
-		font-size: 14px;
-	}
+	&.sm { font-size: 14px; }
 	.icon-container {
 		position: absolute;
 		display: flex;
@@ -262,12 +261,6 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
-.top-bar-cook {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-}
-
 input.search-bar {
 	width: 400px;
 }
@@ -279,18 +272,6 @@ input.search-bar {
 		text-transform: uppercase;
 		margin: 0 10px;
 	}
-}
-
-.grid-container {
-	display: flex;
-	justify-content: center;
-	margin: 15px;
-}
-
-.grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	min-width: 800px;
 }
 
 .recipe-box {
@@ -513,10 +494,6 @@ input.search-bar {
 	}
 }
 
-.align-left {
-	align-self: flex-start;
-}
-
 .card {
 	border-radius: 10px;
 	background-color: $bg !important;
@@ -528,20 +505,8 @@ input.search-bar {
 	}
 }
 
-.modal-background {
-	background-color: $modal-bg !important;
-	position: fixed !important;
-}
-
-.modal.is-active {
-	overflow-y: scroll !important;
-
-	.animation-content.modal-content {
-		overflow: visible !important;
-	}
-}
-
 .comment-box {
+	overflow: hidden;
 	position: relative;
 	font-size: 14px;
 	padding: 0.5em 0.5em 0.5em 3.5em;
@@ -556,8 +521,8 @@ input.search-bar {
 	}
 	.comment-text {
 		font-size: 0.95em;
-		overflow-wrap: break-word;
-		word-wrap: break-word;
+		//overflow-wrap: break-word;
+		//word-wrap: break-word;
 	}
 	.profile-pic {
 		position: absolute;
@@ -567,4 +532,14 @@ input.search-bar {
 		top: 0.25em; left: 0.25em;
 		font-size: 2.5em;
 	}
+}
+
+.comments-tab {
+	width: 300px;
+	overflow: hidden;
+	transition: 200ms ease-in-out;
+	transform-origin: 100% 0%;
+ 	&.fold {
+ 		width: 0;
+ 	}
 }

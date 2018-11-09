@@ -31,6 +31,9 @@
 							<!-- <div class="duration text-semibold m-b-sm">
 								<i class="fas fa-heart"></i> 67
 							</div> -->
+							<button class="button pink" @click="onSaveBtnClick(clickedRecipe)">
+								<i class="fas fa-heart m-r-sm"></i> {{isSaved(clickedRecipe.id)? 'Saved' : 'Save'}}
+							</button>
 							<div class="duration text-semibold">
 								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
 							</div>
