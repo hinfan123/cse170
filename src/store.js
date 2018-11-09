@@ -297,7 +297,7 @@ export default new Vuex.Store({
 						duration: 0
 					},
 					{ // step 5
-						n: 5,
+						n: 6,
 						title: 'Scoop Meatballs',
 						gifURL: 'https://media.giphy.com/media/tJdwJbehOyPPEqQcQZ/giphy.gif',
 						details: 'Using a sorbet scoop, scoop meat mixture and place on baking sheet. Finish out the rest of the mixture.' ,
@@ -305,7 +305,7 @@ export default new Vuex.Store({
 						duration: 0
 					},
 					{ // step 5
-						n: 5,
+						n: 7,
 						title: 'Broil Meatballs',
 						gifURL: 'https://media.giphy.com/media/cRLPrORIDoY1NcTQKh/giphy.gif',
 						details: 'Place meatballs into the oven and broil until brown.',
@@ -313,7 +313,7 @@ export default new Vuex.Store({
 						duration: 300
 					},
 					{ // step 6
-						n: 6,
+						n: 8,
 						title: 'Transfer Meatballs',
 						gifURL: 'https://media.giphy.com/media/9GJcz3aUXyDWv0eN1I/giphy.gif',
 						details: 'Transfer meatballs into the tomato sauce. Turn up heat back to simmer to further cook the meatballs into the tomato sauce.',
@@ -321,7 +321,7 @@ export default new Vuex.Store({
 						duration: 180
 					},
 					{ // step 7
-						n: 7,
+						n: 9,
 						title: 'Finished!',
 						gifURL: 'http://i63.tinypic.com/dwop4p.jpg',
 						details: 'Enjoy your meatballs on its own or with some cooked spaghetti!',
