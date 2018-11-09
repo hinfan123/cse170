@@ -73,7 +73,7 @@ export default {
 		this.debounceSearch = _.debounce(
 			function () {
 				this.executeSearch(this.searchQuery)
-				this.$router.push('/')
+				this.$router.push('/home')
 			}, 400
 		)
 	}
