@@ -508,7 +508,7 @@ export default new Vuex.Store({
 						gifURL: 'https://i.kym-cdn.com/photos/images/original/000/332/462/40b.gif',
 						details: 'Toast chillies on pan until fragrant and barely smoking',
 						timer: true,
-						duration: 0.3
+						duration: 20
 					},
 					{ // step 2
 						n: 2,
@@ -516,7 +516,7 @@ export default new Vuex.Store({
 						gifURL: 'http://i.imgur.com/g5O8fuE.gif',
 						details: 'Place everything in pot and simmer',
 						timer: true,
-						duration: 3
+						duration: 180
 					},
 					{ // step 3
 						n: 3,
