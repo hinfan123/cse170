@@ -43,11 +43,11 @@
 					</div>
 					<div class="ingredient-container">
 						<h3>Here's what you need:</h3><br>
-						<div v-for="ingredient in ingredientsList" class="ingredient-entry">
+						<div v-for="ingredient in recipe.ingredients" class="ingredient-entry">
 							<h4>{{ ingredient.name }}</h4>
 							<div class="ingredient-amount">
-								<h4>{{ ingredient.amount }}</h4>
-								<h4>{{ ingredient.units }}</h4>
+								<h4>{{ ingredient.quantity }}</h4>
+								<h4>{{ ingredient.unit }}</h4>
 							</div>
 						</div>
 					</div>
