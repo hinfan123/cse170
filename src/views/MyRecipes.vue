@@ -9,6 +9,7 @@
 				</div> -->
 
 				<div class="recipe-list">
+					<div v-if="myPublishedRecipeList.length===0"> Looks like you have no recipes, go make some!</div>
 					<div v-for="recipe in myPublishedRecipeList" class="recipe-entry">
 						<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<!-- <div class="saved-btn">
@@ -47,6 +48,7 @@
 				</div> -->
 
 				<div class="recipe-list">
+					<div v-if="myPrivateRecipeList.length===0"> It looks like you have no recipes. Go make some! </div>
 					<div v-for="recipe in myPrivateRecipeList" class="recipe-entry">
 						<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<!-- <div class="saved-btn">
