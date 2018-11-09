@@ -44,10 +44,10 @@
 					<div class="ingredient-container">
 						<h3>Here's what you need:</h3><br>
 						<div v-for="ingredient in recipe.ingredients" class="ingredient-entry">
-							<h4>{{ ingredient.name }}</h4>
+							<h5 class="m-b-none">{{ ingredient.name }}</h5>
 							<div class="ingredient-amount">
-								<h4>{{ ingredient.quantity }}</h4>
-								<h4>{{ ingredient.unit }}</h4>
+								<h5 class="m-b-none m-r-sm">{{ ingredient.quantity }}</h5>
+								<h5 class="m-b-none">{{ ingredient.unit }}</h5>
 							</div>
 						</div>
 					</div>

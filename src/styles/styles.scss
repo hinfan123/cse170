@@ -292,17 +292,22 @@ input.search-bar {
 	background-position: center;
 	background-size: cover;
 
-	&.xs { height: 185px; }
-	&.sm { height: 218px; }
-	&.md { height: 241px; }
-	&.lg { height: 252px; }
-	&.xl { height: 267px; }
+	&.xs { height: 200px; }
+	&.sm { height: 235px; }
+	&.md { height: 216px; }
+	&.lg { height: 267px; }
+	&.xl { height: 282px; }
 	&:hover {
 		//box-shadow: 0 0 0 5px $accent;
 		&::before {
 			display: block;
 			content: '';
 		}
+	}
+	.recipe-text {
+		padding: 0.5em;
+		border-radius: 8px;
+		background: rgba(250,250,250,0.8);
 	}
 	.save-btn {
 		cursor: pointer;
@@ -349,6 +354,7 @@ input.search-bar {
 .ingredient-entry {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	margin: 5px 0;
 	.ingredient-amount {
 		margin: 0 15px;
@@ -429,7 +435,7 @@ input.search-bar {
 	display: flex;
 	justify-content: center;
 	.step-btn {
-		margin: 0 25px;
+		margin: 0 5px;
 		border: 1px solid #555555;
 		//border-radius: 3px;
 		padding: 5px 10px;
