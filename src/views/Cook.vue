@@ -31,7 +31,7 @@
 
 				<div v-if="iscurrStep(0)" class="content">
 					<div class="img-container">
-						<div class="img">
+						<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<div class="img-carousel-btn">
 								<i class="fas fa-chevron-left"></i>
 							</div>
@@ -283,6 +283,11 @@ export default {
 			} else {
 				this.finishedModalActive = true
 			}
+		},
+		genURL: function (url) {
+			let actual = url? url :
+					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
+			return 'url(' + actual + ')'
 		}
 	},
 	created: function () {

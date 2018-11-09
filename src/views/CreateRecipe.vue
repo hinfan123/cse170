@@ -85,6 +85,8 @@ input { width: 300px; }
 
 <script>
 import { mapGetters, mapActions} from 'vuex'
+import _ from 'lodash'
+
 export default {
 	name: 'create',
 	data: function () {
@@ -123,42 +125,58 @@ export default {
 			}
 		},
 		savePrivateRecipe: function () {
-			this.saveRecipe({
-				name: this.recipeName,
-				duration: this.timeCook,
-				private: true,
-				author: 'TestUser',
-				ingredients: this.ingredients,
-				owns: true,
-				steps: this.steps,
-				description: this.description,
-				imgURL: this.imgURL
-			})
-			this.modalActive = true
+			if (this.goodToSubmit()) {
+				this.saveRecipe({
+					name: this.recipeName,
+					duration: this.timeCook,
+					private: true,
+					author: 'TestUser',
+					ingredients: this.ingredients,
+					owns: true,
+					steps: this.steps,
+					description: this.description,
+					imgURL: this.imgURL
+				})
+				this.modalActive = true
+			}
 		},
 		savePublicRecipe: function () {
-			this.saveRecipe({
-				name: this.recipeName,
-				duration: this.timeCook,
-				private: false,
-				author: 'TestUser',
-				ingredients: this.ingredients,
-				owns: true,
-				steps: this.steps,
-				description: this.description,
-				imgURL: this.imgURL
-			})
-			this.modalActive = true
+			if (this.goodToSubmit()) {
+				this.saveRecipe({
+					name: this.recipeName,
+					duration: this.timeCook,
+					private: false,
+					author: 'TestUser',
+					ingredients: this.ingredients,
+					owns: true,
+					steps: this.steps,
+					description: this.description,
+					imgURL: this.imgURL
+				})
+				this.modalActive = true
+			}
 		},
 		addStep: function () {
 			this.steps.push({
-					n: this.steps.length + 1,
-					title: '',
-					details: '',
-					gifURL: '',
-					timer: false,
-					duration: undefined
+				n: this.steps.length + 1,
+				title: '',
+				details: '',
+				gifURL: '',
+				timer: false,
+				duration: undefined
 			})
+		},
+		goodToSubmit: function () {
+			let goodIngredients = true
+			_.forEach(this.ingredients, (ingredient) => {
+				goodIngredients = goodIngredients && ingredient.name && ingredient.quantity && ingredient.unit
+			})
+			let goodSteps = true
+			_.forEach(this.steps, (step) => {
+				goodSteps = goodSteps && step.title && step.details &&
+				(!step.timer || step.duration)
+			})
+			return this.recipeName && this.timeCook && this.description && goodIngredients && goodSteps
 		}
 	}
 }
