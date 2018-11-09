@@ -17,6 +17,7 @@
 		<div class="ingredient-container">
 			<input v-for="ingredient in ingredients"
 						 v-model="ingredient.name">
+
 			<input v-on:keyup.enter="onIngredientAdd()"
 						 v-model="ingredientToAdd"
 						 placeholder="Tap Enter to add...">

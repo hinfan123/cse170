@@ -1,3 +1,16 @@
+.color-default {
+  color: $text !important;
+}
+.color-muted {
+  color: $muted !important;
+}
+.color-placeholder {
+  color: $placeholder !important;
+}
+.color-primary {
+  color: $primary !important;
+}
+
 .flex-column {
   flex-direction: column !important;
 }
@@ -28,6 +41,11 @@
 .align-end {
   align-items: flex-end !important;
 }
+
+.align-left {
+  align-self: flex-start;
+}
+
 
 .full-width {
   width: 100% !important;

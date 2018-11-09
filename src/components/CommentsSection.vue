@@ -1,5 +1,5 @@
 <template>
-	<div class="content">
+	<div class="content p-xs">
 
 		<div class="input-container sm m-b-sm">
 			<div class="icon-container">
@@ -67,6 +67,9 @@
 </template>
 
 <style scoped lang="scss">
+.input-container {
+	width: 300px !important;
+}
 </style>
 
 <script>
