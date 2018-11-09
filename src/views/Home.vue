@@ -40,7 +40,7 @@
 						</div>
 					</div>
 
-					<div class="img-container">
+					<div class="img-container full-width">
 						<div class="img"
 								 :style="{'background-image': genURL(clickedRecipe.imgURL)}">
 							<div class="img-carousel-btn">

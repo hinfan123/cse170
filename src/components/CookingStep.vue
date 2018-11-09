@@ -2,7 +2,7 @@
 	<div class="content">
 		<h2 class="m-b-sm">{{ step.title }}</h2>
 		<div class="img-container">
-			<div class="img">
+			<div class="img" :style="{'background-image': genURL(step.gifURL)}">
 
 			</div>
 		</div>
@@ -91,7 +91,11 @@ export default {
 				this.$emit('ignore-timer')
 			}
 		},
-
+		genURL: function (url) {
+			let actual = url? url :
+					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
+			return 'url(' + actual + ')'
+		}
 	},
 	created: function () {
 	},
