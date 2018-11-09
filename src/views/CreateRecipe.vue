@@ -35,6 +35,7 @@
 			<input v-model="step.title"
 						 placeholder="Step title">
 			<textarea rows="3" v-model="step.details" placeholder="Add some details..."></textarea>
+			<input placeholder="Enter the URL to a gif or image representing the step..." v-model="step.gifURL">
 			<div class="field">
 				<b-checkbox v-model="step.timer">
 						Has timer?
@@ -93,7 +94,7 @@
 </template>
 
 <style scoped lang="scss">
-input { width: 300px; }
+input, textarea { width: 300px; margin-bottom: 10px; }
 </style>
 
 <script>

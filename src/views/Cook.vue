@@ -29,7 +29,7 @@
 					</button>
 				</div>
 
-				<div v-if="iscurrStep(0)" class="content">
+				<div v-show="iscurrStep(0)" class="content">
 					<div class="img-container">
 						<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<div class="img-carousel-btn">

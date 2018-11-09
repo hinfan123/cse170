@@ -4,14 +4,14 @@
 			<h2 class="align-left m-l-xxl">Published Recipes</h2>
 			<div class="is-flex justify-center align-center">
 
-				<div class="img-carousel-btn">
+				<!-- <div class="img-carousel-btn">
 					<i class="fas fa-chevron-left"></i>
-				</div>
+				</div> -->
 
 				<div class="recipe-list">
 					<div v-if="myPublishedRecipeList.length===0"> Looks like you have no recipes, go make some!</div>
 					<div v-for="recipe in myPublishedRecipeList" class="recipe-entry">
-						<div class="recipe-img">
+						<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<!-- <div class="saved-btn">
 								<i class="fas fa-heart"></i>
 							</div> -->
@@ -19,8 +19,7 @@
 						<div class="recipe-description">
 							<h4>{{ recipe.name }}</h4>
 							<p>
-								This is a recipe description<br>
-								It can be multiple lines<br>
+								{{ recipe.description }}
 							</p>
 							<div class="btn-container">
 								<!--<router-link to="/edit" tag="button" class="button yellow">
@@ -34,33 +33,32 @@
 					</div>
 				</div>
 
-				<div class="img-carousel-btn">
+				<!-- <div class="img-carousel-btn">
 					<i class="fas fa-chevron-right"></i>
 				</div>
-
+				 -->
 			</div>
 
 			<h2 class="align-left m-l-xxl">Private Recipes</h2>
 
 			<div class="is-flex justify-center align-center">
 
-				<div class="img-carousel-btn">
+				<!-- <div class="img-carousel-btn">
 					<i class="fas fa-chevron-left"></i>
-				</div>
+				</div> -->
 
 				<div class="recipe-list">
 					<div v-if="myPrivateRecipeList.length===0"> It looks like you have no recipes. Go make some! </div>
 					<div v-for="recipe in myPrivateRecipeList" class="recipe-entry">
-						<div class="recipe-img">
+						<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<!-- <div class="saved-btn">
 								<i class="fas fa-heart"></i>
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h3>{{ recipe.name }}</h3>
+							<h4>{{ recipe.name }}</h4>
 							<p>
-								This is a recipe description<br>
-								It can be multiple lines<br>
+								{{ recipe.description }}
 							</p>
 							<div class="btn-container">
 								<!--<router-link to="/edit" tag="button" class="button yellow">
@@ -74,9 +72,9 @@
 					</div>
 				</div>
 
-				<div class="img-carousel-btn">
+				<!-- <div class="img-carousel-btn">
 					<i class="fas fa-chevron-right"></i>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -98,7 +96,14 @@ export default {
 		...mapGetters([
 				'myPublishedRecipeList',
 				'myPrivateRecipeList'
-		]),
+		])
+	},
+	methods: {
+		genURL: function (url) {
+			let actual = url? url :
+					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
+			return 'url(' + actual + ')'
+		}
 	},
 	created: function () {
 	}
