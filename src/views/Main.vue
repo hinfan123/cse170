@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<div id="top-bar">
-			<router-link to="/home" tag="div" class="logo-container">
-				<i class="fas fa-utensils"></i>
+			<router-link to="/home" tag="div" class="logo-container text-bold">
+				EZ<i class="fas fa-utensils m-l-sm"></i>
 			</router-link>
 
 			<div class="input-container">
@@ -10,7 +10,7 @@
 					<i class="fas fa-search"></i>
 				</div>
 				<input type="text"
-							 placeholder="Look for recipes to cook..."
+							 placeholder="Search recipes on EZ-Chef..."
 							 v-model="searchQuery"
 							 @keyup="debounceSearch()">
 				<div v-if="searchQuery" class="icon-container clear" @click="clearQuery()">

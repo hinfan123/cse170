@@ -1,5 +1,9 @@
 <template>
-	<div class="content">
+	<div class="content p-xl">
+		<div class="logo-container text-bold">
+			EZ<i class="fas fa-utensils m-l-sm"></i>
+		</div>
+
 		<h2>{{ isSignup? "SIGN-UP" : "LOG-IN" }}</h2>
 		<input v-if="!isSignup" placeholder="username or email">
 		<input v-if="isSignup" placeholder="Username">
