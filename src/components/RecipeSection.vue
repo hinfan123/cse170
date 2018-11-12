@@ -1,24 +1,31 @@
 <template>
 	<div class="content">
 
-		<div>
-			<h3>{{ isEdit? 'Edit' : 'Create New' }} Recipe</h3>
-			<div class="recipe-container is-flex flex-column">
-				<input placeholder="Name of dish" v-model="recipe.name">
-				<input placeholder="Time to cook in minutes" v-model="recipe.duration">
-				<textarea rows="3" v-model="recipe.description" placeholder="Describe your recipe..."></textarea>
-				<input placeholder="Enter the URL to a picture of your dish" v-model="recipe.imgURL">
-				<div v-if="isEdit" class="field">
-					<b-checkbox v-model="recipe.private">
-							Private Recipe?
-					</b-checkbox>
+		<h3>{{ isEdit? 'Edit' : 'Create New' }} Recipe</h3>
+
+		<div class="is-flex align-center">
+			<div class="img-container sm m-r-lg">
+				<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
+				</div>
+			</div>
+
+			<div>
+				<div class="recipe-container is-flex flex-column">
+					<input placeholder="Name of dish" v-model="recipe.name">
+					<input placeholder="Time to cook in minutes" v-model="recipe.duration">
+					<textarea rows="3"
+										v-model="recipe.description"
+										placeholder="Describe your recipe...">
+					</textarea>
+					<input placeholder="Enter the URL to a picture of your dish" v-model="recipe.imgURL">
+					<div v-if="isEdit" class="field">
+						<b-checkbox v-model="recipe.private">
+								Private Recipe?
+						</b-checkbox>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- <div class="img-container">
-			<div class="img"></div>
-		</div> -->
 
 		<h3>Ingredients</h3>
 
@@ -37,16 +44,30 @@
 
 		<div v-for="(step, i) in recipe.steps" class="step-section is-flex flex-column">
 			<h4>Step {{ step.n }}</h4>
-			<input v-model="step.title"
-						 placeholder="Step title">
-			<textarea rows="3" v-model="step.details" placeholder="Add some details..."></textarea>
-			<input placeholder="Enter the URL to a gif or image representing the step..." v-model="step.gifURL">
-			<div class="field">
-				<b-checkbox v-model="step.timer">
-						Has timer?
-				</b-checkbox>
+
+			<div class="is-flex align-center">
+				<div class="img-container sm m-r-lg">
+					<div class="img" :style="{'background-image': genURL(step.gifURL)}">
+					</div>
+				</div>
+
+				<div class="is-flex flex-column">
+					<input v-model="step.title"
+								 placeholder="Step title">
+					<textarea rows="3"
+										v-model="step.details"
+										placeholder="Add some details...">
+					</textarea>
+					<input placeholder="Enter the URL to a gif or image representing the step..."
+								 v-model="step.gifURL">
+					<div class="field">
+						<b-checkbox v-model="step.timer">
+								Has timer?
+						</b-checkbox>
+					</div>
+					<input v-if="step.timer" v-model="step.duration" placeholder="How long in minutes?">
+				</div>
 			</div>
-			<input v-if="step.timer" v-model="step.duration" placeholder="How long in minutes?">
 			<br>
 		</div>
 

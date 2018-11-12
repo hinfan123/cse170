@@ -38,12 +38,7 @@ export default {
 	methods: {
 		...mapActions([
 			'toggleSaved'
-		]),
-		genURL: function (url) {
-			let actual = url? url :
-					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
-			return 'url(' + actual + ')'
-		}
+		])
 	},
 	computed: {
 		...mapGetters(

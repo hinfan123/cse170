@@ -283,11 +283,6 @@ export default {
 			} else {
 				this.finishedModalActive = true
 			}
-		},
-		genURL: function (url) {
-			let actual = url? url :
-					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
-			return 'url(' + actual + ')'
 		}
 	},
 	created: function () {
