@@ -4,11 +4,15 @@ import Router from 'vue-router'
 import Main from './views/Main.vue'
 import Home from './views/Home.vue'
 import Saved from './views/Saved.vue'
+
 import MyRecipes from './views/MyRecipes.vue'
-import Profile from './views/Profile.vue'
-import CreateRecipe from './views/CreateRecipe.vue'
-import Cook from './views/Cook.vue'
+import MyRecipesList from './views/MyRecipesList.vue'
 import EditRecipe from './views/EditRecipe.vue'
+
+import CreateRecipe from './views/CreateRecipe.vue'
+
+import Profile from './views/Profile.vue'
+import Cook from './views/Cook.vue'
 import Login from './views/Login.vue'
 
 Vue.use(Router)
@@ -35,7 +39,18 @@ export default new Router({
         },
         {
           path: '/myrecipes',
-          component: MyRecipes
+          component: MyRecipes,
+          children: [
+            {
+              path: '',
+              component: MyRecipesList
+            },
+            {
+              path: '/myrecipes/edit/:id',
+              name: 'edit',
+              component: EditRecipe
+            }
+          ]
         },
         {
           path: '/profile',
@@ -51,11 +66,6 @@ export default new Router({
       path: '/:prev/cook/:id',
       name: 'cook',
       component: Cook
-    },
-    {
-      path: '/edit',
-      name: 'edit',
-      component: EditRecipe
     }
   ]
 })

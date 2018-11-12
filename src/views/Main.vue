@@ -25,7 +25,7 @@
 				<router-link to="/saved">
 					Saved
 				</router-link>
-				<router-link to="/myrecipes">
+				<router-link to="/myrecipes" :class="{'router-link-active router-link-exact-active': inEdit}">
 					My Recipes
 				</router-link>
 				<router-link to="/profile">
@@ -68,6 +68,9 @@ export default {
 		}
 	},
 	computed: {
+		inEdit: function () {
+			return this.$route.name === 'edit'
+		}
 	},
 	created () {
 		this.debounceSearch = _.debounce(

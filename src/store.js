@@ -587,6 +587,12 @@ export default new Vuex.Store({
 			state.idCounter += 1
 			state.recipeList.unshift(payload)
 		},
+		UPDATE_RECIPE: (state, payload) => {
+			let idx = _.find(state.recipeList, (recipe) => {
+				return recipe.id === payload.id
+			})
+			state.recipeList[idx] = payload
+		}
 	},
 	actions: {
 		executeSearch: (context, query) => {
@@ -602,6 +608,9 @@ export default new Vuex.Store({
 		},
 		saveRecipe: (context, payload) => {
 			context.commit('ADD_RECIPE', payload)
+		},
+		updateRecipe: (context, payload) => {
+			context.commit('UPDATE_RECIPE', payload)
 		}
 	}
 })
