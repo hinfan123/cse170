@@ -96,20 +96,17 @@ export default {
 		toggleReplyBox: function (n) {
 			this.showReplyBox = this.showReplyBox === n? undefined : n
 			this.replyToAdd = ''
-			this.$nextTick(function () {
-				//this.$refs."comment-" + (n).$el.focus()
-			})
 		},
 		addComment: function () {
 			if (this.commentToAdd) {
 				this.comments.unshift({
-					id: 0,
 					commenter: "TestUser",
 					text: this.commentToAdd,
 					replies: []
 				})
 				this.commentToAdd = ''
 				this.showReplyBox = undefined
+				this.$refs.commentField.focus()
 				this.$refs.commentField.blur()
 			}
 		},

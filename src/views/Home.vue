@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<div class="columns m-t-md">
+		<div class="columns m-t-xs">
 			<div v-for="(col, i) in columns" class="column p-none">
 				<div v-for="(recipe, j) in getColRecipes(col)"
 						 @click="openModal(recipe)"
@@ -205,11 +205,6 @@ export default {
 		},
 		onSaveBtnClick: function (recipe) {
 			this.toggleSaved(recipe.id)
-		},
-		genURL: function (url) {
-			let actual = url? url :
-					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
-			return 'url(' + actual + ')'
 		}
 	},
 	created: function () {
