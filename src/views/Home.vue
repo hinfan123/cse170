@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<div class="columns m-t-md">
+		<div class="columns m-t-xs">
 			<div v-for="(col, i) in columns" class="column p-none">
 				<div v-for="(recipe, j) in getColRecipes(col)"
 						 @click="openModal(recipe)"

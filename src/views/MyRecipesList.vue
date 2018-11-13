@@ -1,7 +1,7 @@
 <template>
 	<div id="my-recipes">
 		<div class="content">
-			<h2 class="align-left m-l-xxl">Published Recipes</h2>
+			<h2 class="align-left m-l-xxl color-default">Published Recipes</h2>
 			<div class="is-flex justify-center align-center">
 
 				<!-- <div class="img-carousel-btn">
@@ -17,7 +17,7 @@
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h4>{{ recipe.name }}</h4>
+							<h4 class="color-default">{{ recipe.name }}</h4>
 							<p>
 								{{ recipe.description }}
 							</p>
@@ -39,7 +39,7 @@
 				 -->
 			</div>
 
-			<h2 class="align-left m-l-xxl">Private Recipes</h2>
+			<h2 class="align-left m-l-xxl color-default">Private Recipes</h2>
 
 			<div class="is-flex justify-center align-center">
 
@@ -56,7 +56,7 @@
 							</div> -->
 						</div>
 						<div class="recipe-description">
-							<h4>{{ recipe.name }}</h4>
+							<h4 class="color-default">{{ recipe.name }}</h4>
 							<p>
 								{{ recipe.description }}
 							</p>

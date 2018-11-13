@@ -8,7 +8,7 @@
 					</div>
 				</div>
 				<div class="recipe-description">
-					<h4 class="text-semibold">{{ recipe.name }}</h4>
+					<h4 class="text-semibold color-default">{{ recipe.name }}</h4>
 					<p class="text-regular color-muted">
 						@{{ recipe.author }}<br>
 						{{ recipe.description }}

@@ -14,6 +14,7 @@ $placeholder: #A7A7A7;
 $primary: #76ADB0;
 $muted: #8E8E8E;
 $modal-bg: rgba(25,25,25,0.9);
+$translucent: rgba(250,250,250,0.8);
 /*/
 // Dark theme
 $bg: #202020;
@@ -24,6 +25,7 @@ $placeholder: #828282;
 $primary: #75B0B0;
 $muted: #8E8E8E;
 $modal-bg: rgba(75,75,75,0.9);
+$translucent: rgba(30,30,30,0.8);
 //*/
 
 $pink: #EB8D96;
@@ -112,7 +114,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #main-content {
 	background: transparent;
-	margin-top: 75px;
+	margin-top: 80px;
 }
 
 #profile {
@@ -295,11 +297,11 @@ input.search-bar {
 	background-position: center;
 	background-size: cover;
 
-	&.xs { height: 200px; }
-	&.sm { height: 235px; }
-	&.md { height: 216px; }
-	&.lg { height: 267px; }
-	&.xl { height: 282px; }
+	&.xs { height: 235px; }
+	&.sm { height: 246px; }
+	&.md { height: 267px; }
+	&.lg { height: 282px; }
+	&.xl { height: 300px; }
 	&:hover {
 		//box-shadow: 0 0 0 5px $accent;
 		&::before {
@@ -310,7 +312,7 @@ input.search-bar {
 	.recipe-text {
 		padding: 0.5em;
 		border-radius: 8px;
-		background: rgba(250,250,250,0.8);
+		background: $translucent;
 	}
 	.save-btn {
 		cursor: pointer;

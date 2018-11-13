@@ -219,14 +219,14 @@ export default {
 		stepDurationToSeconds: function () {
 			_.forEach(this.recipe.steps, (step) => {
 				if (step.duration) {
-					step.duration = _.toNumber(step.duration) * 60
+					step.duration = _.toNumber(step.duration) * 60.0
 				}
 			})
 		},
 		stepDurationToMinutes: function () {
 			_.forEach(this.recipe.steps, (step) => {
 				if (step.duration) {
-					step.duration = _.toNumber(step.duration) / 60
+					step.duration = _.toNumber(step.duration) / 60.0
 				}
 			})
 		},

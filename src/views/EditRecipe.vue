@@ -19,18 +19,12 @@ export default {
 	},
 	data: function () {
 		return {
-
+			recipeToEdit: {}
 		}
-	},
-	computed: {
-		recipeToEdit: function() {
-			return this.$store.getters.getRecipeById(_.toNumber(this.$route.params.id))
-		}
-	},
-	methods: {
-
 	},
 	created: function() {
+		let recipeInStore = this.$store.getters.getRecipeById(_.toNumber(this.$route.params.id))
+		this.recipeToEdit = recipeInStore;
 	}
 }
 </script>

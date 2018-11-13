@@ -88,7 +88,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/64aHH8NS43uqnJT9q0/giphy.gif',
 						details: 'Add chicken broth, oyster sauce, fish sauce, white sugar, and brown sugar together in bowl. Whisk together until well blended',
 						timer: true,
-						duration: 10
+						duration: 10,
+						comments: []
 					},
 					{ // step 2
 						n: 2,
@@ -96,7 +97,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/2wXXmfG8w5Dpzcf6Fz/giphy.gif',
 						details: 'Thinly slice basil leaves',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 3
 						n: 3,
@@ -104,7 +106,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/LpkyFm03sUdiEAxZAy/giphy.gif',
 						details: 'Peel and thinly cut shallots',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 4
 						n: 4,
@@ -112,7 +115,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/9P3DEEByoWpOnuDfIv/giphy.gif',
 						details: 'Peel, slice, and mince garlic',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 5
 						n: 5,
@@ -120,7 +124,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/82wZfAVtQnVgXNzgZa/giphy.gif',
 						details: 'Thinly cut peppers.',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 6
 						n: 6,
@@ -128,7 +133,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/XJLZlF6t9cHZXH7i98/giphy.gif',
 						details: 'Coarsely chop chicken until it meets a grounded texture.',
 						timer: true,
-						duration: 240
+						duration: 240,
+						comments: []
 					},
 					{ // step 7
 						n: 7,
@@ -136,7 +142,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/3gJQeAEXs9yoslqNqp/giphy.gif',
 						details: 'Add oil to pan. Add grounded chicken to pan and stirfry.',
 						timer: true,
-						duration: 120
+						duration: 120,
+						comments: []
 					},
 					{ // step 8
 						n: 8,
@@ -144,7 +151,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/9RZXjV2h5LdPaNtsti/giphy.gif',
 						details: 'Stir in shallots, garlic, and sliced chillies.',
 						timer: true,
-						duration: 120
+						duration: 120,
+						comments: []
 					},
 					{ // step 9
 						n: 9,
@@ -152,7 +160,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/QmIEXxHmxa8mRZzvuw/giphy.gif',
 						details: 'Add only a splash of the sauce mixture. Keep stirring until the sauce is absorbed in the chicken.',
 						timer: true,
-						duration: 120
+						duration: 120,
+						comments: []
 					},
 					{ // step 10
 						n: 10,
@@ -160,7 +169,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/2tPowUFfm7AIVFRcSU/giphy.gif',
 						details: 'Add the rest of the sauce mixture. Keep stirring until the sauce is absorbed in the chicken.',
 						timer: true,
-						duration: 180
+						duration: 180,
+						comments: []
 					},
 					{ // step 11
 						n: 11,
@@ -168,7 +178,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/5tvKUuaMkJz8pifThh/giphy.gif',
 						details: 'Add the basil and stir into the chicken.',
 						timer: true,
-						duration: 120
+						duration: 120,
+						comments: []
 					},
 					{ // step 12
 						n: 12,
@@ -176,7 +187,8 @@ export default new Vuex.Store({
 						gifURL: 'http://i68.tinypic.com/o5q685.png',
 						details: 'Enjoy your Spicy Thai Basil Chicken with rice!',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					}
 
 				] // end steps
@@ -262,7 +274,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/1inOgeWV3EcUbfy06h/giphy.gif',
 						details: 'Using a tomato sauce of your choice, stir and bring it to a simmer on medium heat. Then reduce heat to low to keep sauce warm.',
 						timer: true,
-						duration: 180
+						duration: 180,
+						comments: []
 					},
 					{ // step 2
 						n: 2,
@@ -270,7 +283,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/LXQKgwV69cmvIvSNCa/giphy.gif',
 						details: 'Pre-heat oven to 500 F and keep on while preparing meatballs',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 3
 						n: 3,
@@ -278,7 +292,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/YjuF7BNn8liWKivFXs/giphy.gif',
 						details: 'Add breadcrumbs, milk, egg, Italian seasoning, olive oil, garlic powder, and red flakes together into a bowl. Whisk together until you have a thick, slurry consistency',
 						timer: true,
-						duration: 60
+						duration: 60,
+						comments: []
 					},
 					{ // step 4
 						n: 4,
@@ -286,7 +301,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/3d87Q5fPxDUSyreVgL/giphy.gif',
 						details: 'Combine beef and veal in a large bowl. Add salt, black pepper, white pepper, Parmigiano-Reggiano, and slurry made in previous step. Mix until combined',
 						timer: true,
-						duration: 180
+						duration: 180,
+						comments: []
 					},
 					{ // step 5
 						n: 5,
@@ -294,7 +310,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/kPmlOPx0BzX7kfyxOQ/giphy.gif',
 						details: 'Line baking sheet with aluminum foil. Brush it lightly with oil.',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 5
 						n: 6,
@@ -302,7 +319,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/tJdwJbehOyPPEqQcQZ/giphy.gif',
 						details: 'Using a sorbet scoop, scoop meat mixture and place on baking sheet. Finish out the rest of the mixture.' ,
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 5
 						n: 7,
@@ -310,7 +328,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/cRLPrORIDoY1NcTQKh/giphy.gif',
 						details: 'Place meatballs into the oven and broil until brown.',
 						timer: true,
-						duration: 300
+						duration: 300,
+						comments: []
 					},
 					{ // step 6
 						n: 8,
@@ -318,7 +337,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/9GJcz3aUXyDWv0eN1I/giphy.gif',
 						details: 'Transfer meatballs into the tomato sauce. Turn up heat back to simmer to further cook the meatballs into the tomato sauce.',
 						timer: true,
-						duration: 180
+						duration: 180,
+						comments: []
 					},
 					{ // step 7
 						n: 9,
@@ -326,7 +346,8 @@ export default new Vuex.Store({
 						gifURL: 'http://i63.tinypic.com/dwop4p.jpg',
 						details: 'Enjoy your meatballs on its own or with some cooked spaghetti!',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					}
 
 				] // end steps
@@ -382,7 +403,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/82wZfAVtQnVgXNzgZa/giphy.gif',
 						details: 'Thinly cut up Serrano peppers.',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 2
 						n: 2,
@@ -390,7 +412,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/9xrbFyFTwl3XfJZQwb/giphy.gif',
 						details: 'Chop cilantro to desired thickness',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 3
 						n: 3,
@@ -398,7 +421,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/1itBKqHdcuc0LihqzH/giphy.gif',
 						details: 'Chop the onion using technique showng',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 4
 						n: 4,
@@ -406,7 +430,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/5n4corltzrkahqtP9u/giphy.gif',
 						details: 'Add onions, cilantro, and serrano peppers together and give it a slight chop.',
 						timer: true,
-						duration: 30
+						duration: 30,
+						comments: []
 					},
 					{ // step 5
 						n: 5,
@@ -414,7 +439,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/69C1Ee1LEWGvBddcxt/giphy.gif',
 						details: 'Add in kosher salt and use grinding technique to create a thinner, paste-like consistency.',
 						timer: true,
-						duration: 120
+						duration: 120,
+						comments: []
 					},
 					{ // step 6
 						n: 6,
@@ -422,7 +448,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/fH0bH5jZVmNBsiDPR2/giphy.gif',
 						details: 'Cut and remove pit of avocados.',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 7
 						n: 7,
@@ -430,7 +457,8 @@ export default new Vuex.Store({
 						gifURL: 'https://media.giphy.com/media/vcdiV9CpApFB8JX0GS/giphy.gif',
 						details: 'Add in cilantro and onion paste. Add extra cilantro and lime for taste. Mash everything to desired consistency.',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					},
 					{ // step 8
 						n: 8,
@@ -438,7 +466,8 @@ export default new Vuex.Store({
 						gifURL: 'http://i68.tinypic.com/adzu6e.png',
 						details: 'Enjoy your delicious guacamole with some chips!',
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					}
 				] // end steps
 			}, // end recipe 3: guacamole
@@ -486,7 +515,8 @@ export default new Vuex.Store({
 					},
 					{
 						name: 'Spanish Onion',
-						quantity: '1'
+						quantity: '1',
+						unit: undefined
 					},
 					{
 						name: 'Brown Sugar',
@@ -508,7 +538,8 @@ export default new Vuex.Store({
 						gifURL: 'https://i.kym-cdn.com/photos/images/original/000/332/462/40b.gif',
 						details: 'Toast chillies on pan until fragrant and barely smoking',
 						timer: true,
-						duration: 20
+						duration: 20,
+						comments: []
 					},
 					{ // step 2
 						n: 2,
@@ -516,7 +547,8 @@ export default new Vuex.Store({
 						gifURL: 'http://i.imgur.com/g5O8fuE.gif',
 						details: 'Place everything in pot and simmer',
 						timer: true,
-						duration: 180
+						duration: 180,
+						comments: []
 					},
 					{ // step 3
 						n: 3,
@@ -524,7 +556,8 @@ export default new Vuex.Store({
 						gifURL: 'http://78.media.tumblr.com/tumblr_lwd88hxDip1qfhqloo1_500.gif',
 						details: "You're done! Now time to spill on the carpet",
 						timer: false,
-						duration: 0
+						duration: 0,
+						comments: []
 					}
 				] // end steps
 			}, // end recipe 1: spicy thai basil chicken
@@ -545,7 +578,7 @@ export default new Vuex.Store({
 			let list = _.filter(state.recipeList, (recipe) => {
 				return _.includes(_.lowerCase(recipe.name), _.lowerCase(state.searchQuery))
 			})
-			_.forEach([1,2,3,4], () => {
+			_.forEach([1,2,3], () => {
 				list = _.concat(list, list)
 			})
 			return list
@@ -588,9 +621,11 @@ export default new Vuex.Store({
 			state.recipeList.unshift(payload)
 		},
 		UPDATE_RECIPE: (state, payload) => {
-			let idx = _.find(state.recipeList, (recipe) => {
+			let idx = _.findIndex(state.recipeList, (recipe) => {
 				return recipe.id === payload.id
 			})
+			console.log(idx)
+			console.log(payload)
 			state.recipeList[idx] = payload
 		}
 	},
