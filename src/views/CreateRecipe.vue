@@ -13,7 +13,7 @@
 						Are you sure you want to leave? All unsaved information will be lost
 					</h5>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="promiseReject()">dont leave</button>
+						<button class="button primary" @click="promiseReject()">stay</button>
 						<button class="button pink" @click="promiseResolve()">Leave</button>
 					</div>
 				</div>
