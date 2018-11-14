@@ -30,21 +30,44 @@
 		<h3>Ingredients</h3>
 
 		<div class="ingredient-container">
-			<div v-for="ingredient in recipe.ingredients">
+			<div v-for="(ingredient, i) in recipe.ingredients"
+					 class="ingredient-entry">
 				<input placeholder="Name" v-model="ingredient.name">
 				<input placeholder="Quantity" v-model="ingredient.quantity">
 				<input placeholder="Units" v-model="ingredient.unit">
+				<div class="delete-btn"
+						 @click="recipe.ingredients.splice(i, 1)">
+					<i class="fas fa-times"></i>
+				</div>
 			</div>
-			<input v-on:keyup.enter="onIngredientAdd()"
-						 v-model="ingredientToAdd"
-						 placeholder="Tap Enter to add...">
+			<div class="is-flex align-center">
+				<input class="m-r-md"
+							 v-on:keyup.enter="onIngredientAdd()"
+							 v-model="ingredientToAdd"
+							 placeholder="Ingredient name?"
+							 ref="ingredientBox">
+				<input class="m-r-md"
+							 v-on:keyup.enter="onIngredientAdd()"
+							 v-model="quantityToAdd"
+							 placeholder="How much/many?"
+							 :disabled="!ingredientToAdd">
+				<input class="m-r-md"
+							 v-on:keyup.enter="onIngredientAdd()"
+							 v-model="unitToAdd"
+							 placeholder="How to measure this?"
+							 :disabled="!ingredientToAdd">
+				<h6 class="color-muted m-none">Tap enter to add!</h6>
+			</div>
 		</div>
 
 		<br>
 
 		<div v-for="(step, i) in recipe.steps" class="step-section is-flex flex-column">
-			<h4>Step {{ step.n }}</h4>
-
+			<h4>Step {{ i + 1 }}</h4>
+			<div class="delete-btn"
+					 @click="deleteStep(i)">
+				<i class="fas fa-times"></i>
+			</div>
 			<div class="is-flex align-center">
 				<div class="img-container sm m-r-lg">
 					<div class="img" :style="{'background-image': genURL(step.gifURL)}">
@@ -125,6 +148,27 @@
 
 <style scoped lang="scss">
 input, textarea { width: 300px; margin-bottom: 10px; }
+.step-section {
+	position: relative;
+	.delete-btn {
+		right: 5px; top: 5px;
+	}
+}
+.ingredient-entry {
+	padding-right: 2em;
+	position: relative;
+	.delete-btn {
+		right: 0;
+	}
+}
+.delete-btn {
+	position: absolute;
+	font-size: 1.25em;
+	cursor: pointer;
+}
+.ingredient-container {
+	input { width: 175px; }
+}
 </style>
 
 <script>
@@ -136,6 +180,8 @@ export default {
 	data: function () {
 		return {
 			ingredientToAdd: '',
+			quantityToAdd: '',
+			unitToAdd: '',
 			modalActive: false,
 			badInfoModalActive: false,
 			steps: [
@@ -163,10 +209,13 @@ export default {
 			if (this.ingredientToAdd) {
 				this.recipe.ingredients.push({
 					name: this.ingredientToAdd,
-					quantity: undefined,
-					unit: undefined
+					quantity: this.quantityToAdd,
+					unit: this.unitToAdd
 				})
-				this.ingredientToAdd = ""
+				this.ingredientToAdd = ''
+				this.quantityToAdd = ''
+				this.unitToAdd = ''
+				this.$refs.ingredientBox.focus()
 			}
 		},
 		saveEditedRecipe: function () {
@@ -196,7 +245,7 @@ export default {
 		},
 		addStep: function () {
 			this.recipe.steps.push({
-				n: this.recipe.steps.length + 1,
+				n: undefined,
 				title: '',
 				details: '',
 				gifURL: '',
@@ -238,6 +287,15 @@ export default {
 			} else {
 				this.badInfoModalActive = true
 			}
+		},
+		deleteStep: function (i) {
+			this.recipe.steps.splice(i, 1)
+			this.readjustStepNumbers()
+		},
+		readjustStepNumbers: function () {
+			_.forEach(this.recipe.steps, (step, i) => {
+				step.n = i + 1
+			})
 		}
 	},
 	created: function () {
