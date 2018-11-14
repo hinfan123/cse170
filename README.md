@@ -1,4 +1,4 @@
-# cse170
+# ez-chef
 
 ## Project setup
 ```
