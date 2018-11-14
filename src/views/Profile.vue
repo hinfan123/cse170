@@ -1,6 +1,6 @@
 <template>
 	<div id="profile" class="content">
-		<h3>Genral Information</h3>
+		<h3>General Information</h3>
 		<input placeholder="username">
 		<input placeholder="Email">
 		<input placeholder="First name">
@@ -17,27 +17,28 @@
 		<button @click="toastPassword">change password</button>
 
 		<br><br>
-		<router-link to="/login" tag="button">
+
+		<button @click="modalActive = true">
 			logout
-		</router-link>
-		<!-- <div class="field">
-			<label class="label">Username</label>
-			<div class="control">
-				<input class="input" type="text" placeholder="Ex. avocado devourer">
+		</button>
+
+		<b-modal :active.sync="modalActive"
+						 :width="250"
+						 :canCancel="['escape', 'outside']">
+			<div class="card">
+				<div class="card-content">
+					<h5 class="color-default m-b-sm">
+						Are you sure you want to logout?
+					</h5>
+					<div class="is-flex justify-between">
+						<button class="button primary" @click="modalActive = false">stay</button>
+						<router-link to="/" tag="button" class="button pink">
+							logout
+						</router-link>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="field">
-			<label class="label">First Name</label>
-			<div class="control">
-				<input class="input" type="text" placeholder="Enter your first name...">
-			</div>
-		</div>
-		<div class="field">
-			<label class="label">Last Name</label>
-			<div class="control">
-				<input class="input" type="text" placeholder="Enter your first name...">
-			</div>
-		</div> -->
+		</b-modal>
 	</div>
 </template>
 
@@ -47,6 +48,11 @@
 <script>
 export default {
 	name: 'profile',
+	data: function () {
+		return {
+			modalActive: false
+		}
+	},
 	methods: {
 		toast: function () {
 			this.$toast.open('Your information is saved')

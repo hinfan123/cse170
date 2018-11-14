@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<div class="columns m-t-md">
+		<div class="columns m-t-xs">
 			<div v-for="(col, i) in columns" class="column p-none">
 				<div v-for="(recipe, j) in getColRecipes(col)"
 						 @click="openModal(recipe)"
@@ -31,13 +31,10 @@
 							<h5 class="color-default">@{{ clickedRecipe.author }}</h5>
 						</div>
 						<div class="is-flex flex-column align-end">
-							<!-- <div class="duration text-semibold m-b-sm">
-								<i class="fas fa-heart"></i> 67
-							</div> -->
 							<button class="button pink" @click="onSaveBtnClick(clickedRecipe)">
 								<i class="fas fa-heart m-r-sm"></i> {{isSaved(clickedRecipe.id)? 'Saved' : 'Save'}}
 							</button>
-							<div class="duration text-semibold">
+							<div class="duration text-semibold m-t-sm">
 								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
 							</div>
 						</div>
@@ -46,12 +43,6 @@
 					<div class="img-container full-width">
 						<div class="img"
 								 :style="{'background-image': genURL(clickedRecipe.imgURL)}">
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-left"></i>
-							</div>
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-right"></i>
-							</div>
 						</div>
 					</div>
 
@@ -65,7 +56,7 @@
 					</div>
 
 					<h5>Comments</h5>
-					<comments-section :comments="commentList"
+					<comments-section :comments="clickedRecipe.recipeComments"
 														commentBoxPlaceholder="What do you think of this recipe?">
 					</comments-section>
 
@@ -122,43 +113,11 @@ export default {
 	},
 	data: function () {
 		return {
-			columns: [0,1,2],
+			columns: [0,1,2,3],
 			boxSizeArray: undefined,
 			boxSizes: ['xs','sm','md','lg', 'xl'],
 			modalActive: false,
-			clickedRecipe: undefined,
-			commentList: [
-				{
-					id: 1,
-					commenter: "LindaLovesFood",
-					text: "I made this for my kids yesterday, they loved it!!! Thanks!",
-					replies: [
-						{
-							commenter: "RecipeAuthor",
-							text: "Hey Linda, I'm glad your kids loved the food. I'll keep posting more recipes!"
-						},
-						{
-							commenter: "BoyfriendOfTheYear",
-							text: "That's great! I'll cook this for my girlfriend tonight!"
-						}
-					]
-				},
-				{
-					id: 2,
-					commenter: "The commenter's name",
-					text: "This is a comment. Comments should help enhance the recreation aspect of our apps by allowing users to socialize with others about their cooking.",
-					replies: [
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						},
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						}
-					]
-				}
-			]
+			clickedRecipe: undefined
 		}
 	},
 	computed: {
@@ -205,11 +164,6 @@ export default {
 		},
 		onSaveBtnClick: function (recipe) {
 			this.toggleSaved(recipe.id)
-		},
-		genURL: function (url) {
-			let actual = url? url :
-					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
-			return 'url(' + actual + ')'
 		}
 	},
 	created: function () {

@@ -18,9 +18,13 @@
 			</div>
 		</div>
 
+		<h5 v-if="comments.length <= 0" class="color-muted m-t-md">
+			There are no comments yet... :(
+		</h5>
+
 		<div v-for="(comment, i) in comments" class="comment-box full-width m-y-xs">
-			<div class="profile-pic">
-				<i class="fas fa-user-circle"></i>
+			<div class="profile-pic"
+					 :style="{'background-image': genProfilePicURL(comment.picURL)}">
 			</div>
 			<div class="commenter-name text-semibold">
 				{{ comment.commenter }}
@@ -35,8 +39,8 @@
 
 			<div v-for="(reply, i) in comment.replies"
 					 class="comment-box reply full-width m-y-sm">
-				<div class="profile-pic">
-					<i class="fas fa-user-circle"></i>
+				<div class="profile-pic"
+						 :style="{'background-image': genProfilePicURL(reply.picURL)}">
 				</div>
 				<div class="commenter-name text-semibold">
 					{{ reply.commenter }}
@@ -96,20 +100,18 @@ export default {
 		toggleReplyBox: function (n) {
 			this.showReplyBox = this.showReplyBox === n? undefined : n
 			this.replyToAdd = ''
-			this.$nextTick(function () {
-				//this.$refs."comment-" + (n).$el.focus()
-			})
 		},
 		addComment: function () {
 			if (this.commentToAdd) {
 				this.comments.unshift({
-					id: 0,
 					commenter: "TestUser",
 					text: this.commentToAdd,
+					picURL: undefined,
 					replies: []
 				})
 				this.commentToAdd = ''
 				this.showReplyBox = undefined
+				this.$refs.commentField.focus()
 				this.$refs.commentField.blur()
 			}
 		},
@@ -117,7 +119,8 @@ export default {
 			if (this.replyToAdd) {
 				this.comments[this.showReplyBox].replies.push({
 					commenter: "TestUser",
-					text: this.replyToAdd
+					text: this.replyToAdd,
+					picURL: undefined
 				})
 				this.replyToAdd = ''
 			}

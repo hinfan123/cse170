@@ -1,99 +1,76 @@
 <template>
-	<div class="content">
-
-		<div class="top-bar-cook">
-			<router-link to="/myrecipes" tag="div" class="back-btn">
-				<i class="fas fa-chevron-left"></i>
-			</router-link>
-			<h2>Editing {{ recipeName }}</h2>
-		</div>
-		<div>
-			<input v-model="recipeName" placeholder="What's this dish called?">
-		</div>
-		<div class="img-container">
-			<div class="img"></div>
-		</div>
-		<h3>Ingredients</h3>
-		<div class="ingredient-container">
-			<input v-for="ingredient in ingredients"
-						 v-model="ingredient.name">
-			<input v-on:keyup.enter="onIngredientAdd()"
-						 v-model="ingredientToAdd"
-						 placeholder="Tap Enter to add...">
-		</div>
-		<button @click="modalActive = true">save as private recipe</button>
-		<button @click="modalActive = true">save and publish recipe</button>
-
-		<b-modal :active.sync="modalActive"
-						 :width="275"
-						 :canCancel="false">
+	<div>
+		<recipe-section :recipe="recipeToEdit"
+										:isEdit="true"
+										@bypassRouteGuard="bypassRouteGuard = true">
+		</recipe-section>
+		<b-modal :active.sync="loseInfoModalActive"
+						 :width="300"
+						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm">Recipe Saved!</h2>
-					<div class="is-flex">
-						<router-link to="/myrecipes" tag="button" class="button primary">
-							OK
-						</router-link>
+					<h5 class="color-default m-b-sm">
+						Are you sure you want to leave? All unsaved information will be lost
+					</h5>
+					<div class="is-flex justify-between">
+						<button class="button primary" @click="promiseReject()">stay</button>
+						<button class="button pink" @click="promiseResolve()">Leave</button>
 					</div>
 				</div>
 			</div>
 		</b-modal>
-	
 	</div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 </style>
 
 <script>
+import _ from 'lodash'
+
+import RecipeSection from '@/components/RecipeSection.vue'
+
 export default {
 	name: 'edit',
+	components: {
+		RecipeSection
+	},
 	data: function () {
 		return {
-			recipeName: "This recipe",
-			modalActive: false,
-			ingredients: [
-				{
-					name: "Ingredient 1",
-					quantity: 5,
-					units: "cups"
-				},
-				{
-					name: "Ingredient 2",
-					quantity: 100,
-					units: "mL"
-				},
-				{
-					name: "Ingredient 3",
-					quantity: 1,
-					units: "kg"
-				},
-				{
-					name: "Ingredient 4",
-					quantity: 500,
-					units: "g"
-				},
-				{
-					name: "Ingredient 5",
-					quantity: 2,
-					units: "pieces"
-				}
-			],
-			ingredientToAdd: ""
+			recipeToEdit: {},
+			loseInfoModalActive: false,
+			bypassRouteGuard: false
 		}
 	},
 	methods: {
-		onIngredientAdd: function () {
-			if (this.ingredientToAdd) {
-				this.ingredients.push({
-					name: this.ingredientToAdd,
-					quantity: 0,
-					units: ""
-				})
-				this.ingredientToAdd = ""
-			}
+		promiseResolve: () => {},
+		promiseReject: () => {}
+	},
+	created: function() {
+		let recipeID = this.$route.params.id
+		let recipeInStore = this.$store.getters.getRecipeById(_.toNumber(recipeID))
+		this.recipeToEdit = JSON.parse(JSON.stringify(recipeInStore))
+	},
+	beforeRouteLeave: function (to, from, next) {
+		let self = this // this is undefined within promise use self reference
+		if (!this.bypassRouteGuard) {
+			this.loseInfoModalActive = true
+			let p = new Promise( (resolve, reject) => {
+				this.promiseReject = reject
+				this.promiseResolve = resolve
+			});
+			p.then(function () {
+				next()
+			})
+			.catch(function () {
+				next(false)
+			})
+			.finally(function () {
+				self.loseInfoModalActive = false
+			})
+		} else {
+			next()
 		}
-		
 	}
 }
 </script>

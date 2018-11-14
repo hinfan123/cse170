@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<div id="top-bar">
-			<router-link to="/" tag="div" class="logo-container">
-				<i class="fas fa-utensils"></i>
+			<router-link to="/home" tag="div" class="logo-container text-bold">
+				EZ<i class="fas fa-utensils m-l-sm"></i>
 			</router-link>
 
 			<div class="input-container">
@@ -10,7 +10,7 @@
 					<i class="fas fa-search"></i>
 				</div>
 				<input type="text"
-							 placeholder="Look for recipes to cook..."
+							 placeholder="Search recipes on EZ-Chef..."
 							 v-model="searchQuery"
 							 @keyup="debounceSearch()">
 				<div v-if="searchQuery" class="icon-container clear" @click="clearQuery()">
@@ -19,13 +19,13 @@
 			</div>
 
 			<div id="nav">
-				<router-link to="/">
+				<router-link to="/home">
 					Home
 				</router-link>
 				<router-link to="/saved">
 					Saved
 				</router-link>
-				<router-link to="/myrecipes">
+				<router-link to="/myrecipes" :class="{'router-link-active router-link-exact-active': inEdit}">
 					My Recipes
 				</router-link>
 				<router-link to="/profile">
@@ -68,12 +68,15 @@ export default {
 		}
 	},
 	computed: {
+		inEdit: function () {
+			return this.$route.name === 'edit'
+		}
 	},
 	created () {
 		this.debounceSearch = _.debounce(
 			function () {
 				this.executeSearch(this.searchQuery)
-				this.$router.push('/')
+				this.$router.push('/home')
 			}, 400
 		)
 	}

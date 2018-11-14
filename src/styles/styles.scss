@@ -14,6 +14,7 @@ $placeholder: #A7A7A7;
 $primary: #76ADB0;
 $muted: #8E8E8E;
 $modal-bg: rgba(25,25,25,0.9);
+$translucent: rgba(250,250,250,0.8);
 /*/
 // Dark theme
 $bg: #202020;
@@ -24,6 +25,7 @@ $placeholder: #828282;
 $primary: #75B0B0;
 $muted: #8E8E8E;
 $modal-bg: rgba(75,75,75,0.9);
+$translucent: rgba(75,75,75,0.85);
 //*/
 
 $pink: #EB8D96;
@@ -112,7 +114,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #main-content {
 	background: transparent;
-	margin-top: 75px;
+	margin-top: 80px;
 }
 
 #profile {
@@ -133,6 +135,9 @@ h1, h2, h3, h4, h5, h6, p {
 
 button {
 	cursor: pointer;
+}
+button[disabled] {
+	cursor: not-allowed !important;
 }
 
 button.button {
@@ -188,7 +193,7 @@ button.button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.35em;
+	padding: 0.1em 0.25em;
 	margin-left: 0.25em;
 	margin-right: 0.35em;
 	border-radius: 8px;
@@ -292,11 +297,11 @@ input.search-bar {
 	background-position: center;
 	background-size: cover;
 
-	&.xs { height: 200px; }
-	&.sm { height: 235px; }
-	&.md { height: 216px; }
-	&.lg { height: 267px; }
-	&.xl { height: 282px; }
+	&.xs { height: 255px; }
+	&.sm { height: 266px; }
+	&.md { height: 287px; }
+	&.lg { height: 302px; }
+	&.xl { height: 320px; }
 	&:hover {
 		//box-shadow: 0 0 0 5px $accent;
 		&::before {
@@ -307,7 +312,7 @@ input.search-bar {
 	.recipe-text {
 		padding: 0.5em;
 		border-radius: 8px;
-		background: rgba(250,250,250,0.8);
+		background: $translucent;
 	}
 	.save-btn {
 		cursor: pointer;
@@ -371,6 +376,13 @@ input.search-bar {
 	align-items: center;
 	margin: 15px 0;
 	width: 500px;
+	&.sm {
+		width: 275px;
+		height: 200px;
+		.img {
+			height: 200px;
+		}
+	}
 	.img {
 		width: 100%;
 		height: 325px;
@@ -538,6 +550,12 @@ input.search-bar {
 		align-items: center;
 		top: 0.25em; left: 0.25em;
 		font-size: 2.5em;
+		border-radius: 50%;
+		height: 35px;
+		width: 35px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
 	}
 }
 
@@ -549,4 +567,31 @@ input.search-bar {
  	&.fold {
  		width: 0;
  	}
+}
+
+.edit-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 65px; left: 0; right: 0;
+	background: rgba(255,255,255,0.75);
+	padding: 0.75em;
+	z-index: 30;
+	button {
+		cursor: pointer;
+		padding: 0.5em;
+		font-size: 20px;
+		color: #444444;
+		font-weight: 700;
+		border-radius: 8px;
+		border-style: none;
+		background: transparent;
+		i {
+			margin-right: 0.75em;
+		}
+		&:hover {
+			background: $accent;
+		}
+	}
 }

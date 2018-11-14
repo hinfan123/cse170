@@ -32,13 +32,6 @@
 				<div v-show="iscurrStep(0)" class="content">
 					<div class="img-container">
 						<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-left"></i>
-							</div>
-
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-right"></i>
-							</div>
 						</div>
 					</div>
 					<div class="ingredient-container">
@@ -73,7 +66,7 @@
 			</div>
 
 			<div class="comments-tab m-x-md" :class="{'fold': !showCommentsTab}">
-				<comments-section :comments="commentList"
+				<comments-section :comments="recipe.stepsComments"
 													commentBoxPlaceholder="Add a comment...">
 				</comments-section>
 			</div>
@@ -107,7 +100,7 @@
 						<button class="button primary" @click="finishedModalActive = false">
 							Back
 						</button>
-						<router-link to="/" tag="button" class="button">
+						<router-link to="/home" tag="button" class="button">
 							Done Cooking
 						</router-link>
 					</div>
@@ -198,50 +191,14 @@ export default {
 			stepClicked: undefined,
 			timerActive: false,
 			ignoreTimerModalActive: false,
-			showCommentsTab: true,
-			commentList: [
-				{
-					id: 1,
-					commenter: "iDontKnowHowToCook",
-					text: "Hey everyone, I'm confused about step 2, can someone explain please?",
-					replies: [
-						{
-							commenter: "MrNiceGuy",
-							text: "What part confused you? I am here to help"
-						},
-						{
-							commenter: "iDontKnowHowToCook",
-							text: "Whats an an oven? I have never heard of such a thing :("
-						},
-						{
-							commenter: "MrNiceGuy",
-							text: "..."
-						}
-					]
-				},
-				{
-					id: 2,
-					commenter: "KnowItAll",
-					text: "Everyone, on step 3, it is better to leave the garlic in the pan for 2 more minutes after the timer runs out, trust me.",
-					replies: [
-						{
-							commenter: "JustAnotherUser",
-							text: "Thanks for the tip, I'll try it out!"
-						},
-						{
-							commenter: "JustAnotherUser",
-							text: "Hmmm it really is better if you leave the garlic in there for longer. Great tip!"
-						}
-					]
-				}
-			]
+			showCommentsTab: true
 		}
 	},
 	computed: {
 		prevRoute: function () {
 			let prev = ''
 			if (this.$route.params.prev === 'h') {
-				prev = ''
+				prev = 'home'
 			} else if (this.$route.params.prev === 's') {
 				prev = 'saved'
 			} else if (this.$route.params.prev === 'm') {
@@ -283,11 +240,6 @@ export default {
 			} else {
 				this.finishedModalActive = true
 			}
-		},
-		genURL: function (url) {
-			let actual = url? url :
-					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
-			return 'url(' + actual + ')'
 		}
 	},
 	created: function () {
