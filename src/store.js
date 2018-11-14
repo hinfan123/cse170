@@ -190,10 +190,8 @@ export default new Vuex.Store({
 						duration: 0,
 						comments: []
 					}
-
 				] // end steps
 			}, // end recipe 1: spicy thai basil chicken
-
 			{ // start recipe 2: spaghetti & meatballs
 				id: 2,
 				name: 'Spaghetti & Meatballs',
@@ -351,8 +349,7 @@ export default new Vuex.Store({
 					}
 
 				] // end steps
-			}, // end recipe 2: spaghetti & meatballs
-
+			}, // end recipe 2: spaghetti & meatball
 			{ // start recipe 3: guacamole
 				id: 3,
 				name: 'Guacamole',
@@ -471,7 +468,6 @@ export default new Vuex.Store({
 					}
 				] // end steps
 			}, // end recipe 3: guacamole
-
 			{ //recipe 4
 				id: 4,
 				name: 'Kevins Famous Chili',
@@ -561,8 +557,422 @@ export default new Vuex.Store({
 					}
 				] // end steps
 			}, // end recipe 1: spicy thai basil chicken
+			{ //recipe 4
+				id: 5,
+				name: 'Slow Cooker Jerk Chicken',
+				description: 'Jerk chicken with authentic jamaican flavors',
+				duration: 480,
+				author: 'Hien',
+				owns: false,
+				private: false,
+				imgURL: 'https://dinnerthendessert.com/wp-content/uploads/2017/02/Slow-Cooker-Jerk-Chicken-2-e1486362861446.jpg',
 
+				ingredients: [
+					{
+						name: 'Chicken Thighs',
+						quantity: '6', //string
+					},
+					{
+						name: 'Green Onion',
+						quantity: '3',
+					},
+					{
+						name: 'Yello Onion',
+						quantity: '1/2',
+					},
+					{
+						name: 'Jalapeno Pepper',
+						quantity: '1/2',
+					},
+					{
+						name: 'Vegetable Oil',
+						quantity: '2',
+						unit: 'tablespoon'
+					},
+					{
+						name: 'Soy Sauce',
+						quantity: '1/3',
+						unit: 'cup'
+					},
+					{
+						name: 'Distilled White Vinegar',
+						quantity: '1/4'
+					},
+					{
+						name: 'Brown Sugar',
+						quantity: '1',
+						unit: 'tablespoon'
+					},
+					{
+						name: 'Thyme',
+						quantity: '2',
+						unit: 'teaspoons'					
+					},
+					{
+						name: 'Ground Cloves',
+						quantity: '1/4',
+						unit: 'teaspoon'
+					},
+					{
+						name: 'Ground Nutmeg',
+						quantity: '1/4',
+						unit: 'teaspoon'
+					},
+					{
+						name: 'Ground Allspice',
+						quantity: '1/4',
+						unit: 'teaspoon'
+					}
+					// comma needed here or NO
+				], // end ingredients
 
+				steps: [
+					{ // step 1
+						n: 1,
+						title: 'Brown Chicken',
+						gifURL: 'https://media2.giphy.com/media/l0MYRbu9nSxqQQn8k/giphy.gif?cid=3640f6095be6184d7a32544a6fe774ae',
+						details: 'Brown chicken thighs on a large skillet on medium high heat',
+						timer: true,
+						duration: 180
+					},
+					{ // step 2
+						n: 2,
+						title: 'Making Sauce',
+						gifURL: 'https://media2.giphy.com/media/3oEduNF7DlpxgcHVJe/giphy.gif?cid=3640f6095be617b5627041653272f037',
+						details: 'Puree the green onions, onion, jalapeno, soy sauce, Vinegar, vegetable oil, brown sugar, thyme, cloves, nutmeg and allspice',
+						timer: false,
+						duration: 0
+					},
+					{ // step 3
+						n: 3,
+						title: 'Throw into Slow Cooker',
+						gifURL: 'https://media2.giphy.com/media/4B5F7kS2AI4IE/giphy.gif?cid=3640f6095be617ec724762615171967e',
+						details: "Add the chidken and sauce into the slowe cooker and let it ride",
+						timer: true,
+						duration: 480
+					},
+					{
+						n: 4,
+						title: 'Done!',
+						gifURL: 'https://dinnerthendessert.com/wp-content/uploads/2017/02/Slow-Cooker-Jerk-Chicken-2-e1486362861446.jpg',
+						details: 'Congrats you are done!',
+						timer: false,
+						duration: 0
+					}
+				] // end steps
+			}, // end recipe 4: kevin's chili
+			{ //recipe 4
+				id: 6,
+				name: 'Cereal',
+				description: 'Breakfast of Champions',
+				duration: 180,
+				author: 'Homer Simpson',
+				owns: false,
+				private: false,
+				imgURL: 'https://images.unsplash.com/photo-1521483451569-e33803c0330c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=29cc8c2559e8e871584bc355e644832b&auto=format&fit=crop&w=3077&q=80',
+
+				ingredients: [
+					{
+						name: 'Cereal',
+						quantity: 'How Much Ever You want', //string
+					},
+					{
+						name: 'Milk',
+						quantity: '1-2',
+						unit: 'cups',
+					},
+					// comma needed here or NO
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: 'Pour Cereal',
+						gifURL: 'https://media1.giphy.com/media/mcp8ZwgDAEA9y/giphy.gif?cid=3640f6095be61b3b5574493163a470b5',
+						details: 'Pour cereal into bowl, CEREAL FIRST. NEVER MILK FIRST',
+						timer: false,
+						duration: 60
+					},
+					{ // step 2
+						n: 2,
+						title: 'Pour Milk',
+						gifURL: 'https://media3.giphy.com/media/gQzoxR4vrBYg8/giphy.gif?cid=3640f6095be61bc03441432f2e274676',
+						details: 'Pour Milk into bowl',
+						timer: false,
+						duration: 60
+					},
+					{ // step 3
+						n: 3,
+						title: 'Congrats you made cereal',
+						gifURL: 'https://media3.giphy.com/media/A5ugHVbuFL3uo/giphy.gif?cid=3640f6095be6184d7a32544a6fe774ae',
+						details: "Enjoy your bowl of cereal",
+						timer: false,
+						duration: 60
+					},
+				] // end steps
+			}, // end recipe 4: kevin's chili
+			{ //recipe 4
+				id: 7,
+				name: 'Spaghetti Tacos',
+				description: 'Spaghetti in a Taco Shell',
+				duration: 240,
+				author: 'Spencer',
+				owns: true,
+				private: false,
+				imgURL: 'https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg',
+
+				ingredients: [
+					{
+						name: 'Spaghetti',
+						quantity: '1/2',
+						unit: 'cups' //string
+					},
+					{
+						name: 'Taco Shells',
+						quantity: 'A lot',
+					},
+					{
+						name: 'Tomato Sauce',
+						quantity: '1',
+						unit: 'jar'
+					},
+					{
+						name: 'Ground Beef',
+						quantity: '1/2',
+						unit: 'pound'
+					},
+					// comma needed here or NO
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: 'Boil Pasta',
+						gifURL: 'https://media3.giphy.com/media/443oviLMahn5FEqq2D/200w.webp?cid=3640f6095be61f32372e4636417bd899',
+						details: 'Boil Pasta',
+						timer: true,
+						duration: 600
+					},
+					{ // step 2
+						n: 2,
+						title: 'Cook Meat',
+						gifURL: 'https://media1.giphy.com/media/l378v5zfXnryQFG1y/200w.webp?cid=3640f6095be61f5472684b716b290c93',
+						details: 'Cook meat in pan',
+						timer: true,
+						duration: 300
+					},
+					{ // step 3
+						n: 3,
+						title: 'Mix Pasta with meat and tomato sauce',
+						gifURL: 'https://media0.giphy.com/media/dZRlFW1sbFEpG/giphy.webp?cid=3640f6095be61f7c7a346167671aa393',
+						details: "Cook tomato sauce with pasta and meat",
+						timer: true,
+						duration: 300
+					},
+					{
+						n: 4,
+						title: 'Combine pasta with Tacos',
+						gifURL: 'https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg',
+						details: 'Enjoy!',
+						timer: false,
+						duration: 0
+					}
+				] // end steps
+			}, // end recipe 4: kevin's chili
+			{ //recipe 4
+				id: 8,
+				name: 'Spicy Garlic Lime Chicken',
+				description: 'Chicken with a little kick',
+				duration: 25,
+				author: 'Perez',
+				owns: false,
+				private: false,
+				imgURL: 'https://sweetpeasandsaffron.com/wp-content/uploads/2018/07/Perfect-Baked-Chicken-Breast-5.jpg',
+
+				ingredients: [
+					{
+						name: 'Salt',
+						quantity: '3/4', //string
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Black Pepper',
+						quantity: '1/4',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Cayenne Pepper',
+						quantity: '1/4',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Paprika',
+						quantity: '1/8',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Garlic Powder',
+						quantity: '1/4',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Onion powder',
+						quantity: '1/8',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Dried Thyme',
+						quantity: '1/4',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Dried parsley',
+						quantity: '1/4',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'chicken Breast',
+						quantity: '4',
+						unit: 'pieces',
+					},					{
+						name: 'Butter',
+						quantity: '2',
+						unit: 'tablespoon',
+					},
+					{
+						name: 'olive oil',
+						quantity: '1',
+						unit: 'tablespoon',
+					},
+					// comma needed here or NO
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: 'Mix',
+						gifURL: 'https://media.giphy.com/media/2xPMQQrcFVHshHFJ90/giphy.gif',
+						details: 'Mix salt, black pepper, cayenne, paprika, garlic poweder, onion powder, thyme and parsely',
+						timer: false,
+						duration: 60
+					},
+					{ // step 2
+						n: 2,
+						title: 'Cover Chicken with spices',
+						gifURL: 'https://media.giphy.com/media/2tRpFJMpiIwGhsuOMn/giphy.gif',
+						details: 'Rub spice mix onto chicken breasts',
+						timer: false,
+						duration: 60
+					},
+					{ // step 3
+						n: 3,
+						title: 'Cook Chicken on Pan',
+						gifURL: 'https://media.giphy.com/media/8FA0ZE01IF29WAoHqC/giphy.gif',
+						details: 'Heat butter on pan and saute chicken until golden brown, sprinkle with lime juice and cook 5 more min',
+						timer: false,
+						duration: 60
+					},
+					{
+						n: 4,
+						title: 'Done!',
+						gifURL: 'https://media.giphy.com/media/kExFYiM3wmCKCgdolR/giphy.gif',
+						details: 'Enjoy Your Meal!',
+						timer: false,
+						duration: 0,
+					}
+				] // end steps
+			}, // end recipe 4: kevin's chili
+			{ //recipe 4
+				id: 9,
+				name: 'French Toast',
+				description: 'Waffle killer',
+				duration: 15,
+				author: 'CrackerJacks',
+				owns: true,
+				private: false,
+				imgURL: 'https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/800/quick-and-easy-french-toast.ashx?vd=20180710T034231Z&hash=FF5BBBC3BD24EBCC8B311AE653BCA55BE8B74516',
+
+				ingredients: [
+					{
+						name: 'Texas Toast or Thick Cut Bread',
+						quantity: '6', //string
+						unit: 'pieces',
+					},
+					{
+						name: 'Eggs',
+						quantity: '2',
+					},
+					{
+						name: 'Milk or cream',
+						quantity: '1/4',
+						unit: 'cup',
+					},
+					{
+						name: 'Sugar',
+						quantity: '1',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Cinnamon',
+						quantity: '1/4',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'Salt',
+						quantity: '1/2',
+						unit: 'teaspoon',
+					},
+					{
+						name: 'vanilla extract',
+						quantity: '1',
+						unit: 'drop',
+					},
+					{
+						name: 'Butter',
+						quantity: '1/2',
+						unit: 'tablespoon',
+					},
+					{
+						name: 'olive oil',
+						quantity: '1/2',
+						unit: 'tablespoon',
+					},
+					// comma needed here or NO
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: 'Mix',
+						gifURL: 'https://media.giphy.com/media/7FgYiCHdjD0797zVmD/giphy.gif',
+						details: 'Whisk eggs and add milk or cream',
+						timer: false,
+						duration: 60
+					},
+					{ // step 2
+						n: 2,
+						title: 'Add spices',
+						gifURL: 'https://media.giphy.com/media/jUhnVkZ0kwZg967Ap1/giphy.gif',
+						details: 'Add Cinnamon, salt, and vanilla extract',
+					},
+					{ // step 3
+						n: 3,
+						title: 'Cooking process',
+						gifURL: 'https://media.giphy.com/media/43J6lI4dUPBaU8t6K4/giphy.gif',
+						details: 'Dip bread in mixture and pan fry',
+						timer: false,
+						duration: 60
+					},
+					{
+						n: 4,
+						title: 'Done!',
+						gifURL: 'https://media.giphy.com/media/2xPPtyPH1R9oRhDU12/giphy.gif',
+						details: 'Take off pan and add syrup!',
+						timer: false,
+						duration: 0,
+					}
+				] // end steps
+			}, // end recipe 4: kevin's chili
 		], // END recipes list
 		searchQuery: '',
 		saved: [1,3,4,5,8,12],
