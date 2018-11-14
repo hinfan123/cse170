@@ -73,7 +73,7 @@
 			</div>
 
 			<div class="comments-tab m-x-md" :class="{'fold': !showCommentsTab}">
-				<comments-section :comments="commentList"
+				<comments-section :comments="recipe.stepsComments"
 													commentBoxPlaceholder="Add a comment...">
 				</comments-section>
 			</div>
@@ -198,43 +198,7 @@ export default {
 			stepClicked: undefined,
 			timerActive: false,
 			ignoreTimerModalActive: false,
-			showCommentsTab: true,
-			commentList: [
-				{
-					id: 1,
-					commenter: "iDontKnowHowToCook",
-					text: "Hey everyone, I'm confused about step 2, can someone explain please?",
-					replies: [
-						{
-							commenter: "MrNiceGuy",
-							text: "What part confused you? I am here to help"
-						},
-						{
-							commenter: "iDontKnowHowToCook",
-							text: "Whats an an oven? I have never heard of such a thing :("
-						},
-						{
-							commenter: "MrNiceGuy",
-							text: "..."
-						}
-					]
-				},
-				{
-					id: 2,
-					commenter: "KnowItAll",
-					text: "Everyone, on step 3, it is better to leave the garlic in the pan for 2 more minutes after the timer runs out, trust me.",
-					replies: [
-						{
-							commenter: "JustAnotherUser",
-							text: "Thanks for the tip, I'll try it out!"
-						},
-						{
-							commenter: "JustAnotherUser",
-							text: "Hmmm it really is better if you leave the garlic in there for longer. Great tip!"
-						}
-					]
-				}
-			]
+			showCommentsTab: true
 		}
 	},
 	computed: {

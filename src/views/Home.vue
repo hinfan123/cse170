@@ -65,7 +65,7 @@
 					</div>
 
 					<h5>Comments</h5>
-					<comments-section :comments="commentList"
+					<comments-section :comments="clickedRecipe.recipeComments"
 														commentBoxPlaceholder="What do you think of this recipe?">
 					</comments-section>
 
@@ -126,39 +126,7 @@ export default {
 			boxSizeArray: undefined,
 			boxSizes: ['xs','sm','md','lg', 'xl'],
 			modalActive: false,
-			clickedRecipe: undefined,
-			commentList: [
-				{
-					id: 1,
-					commenter: "LindaLovesFood",
-					text: "I made this for my kids yesterday, they loved it!!! Thanks!",
-					replies: [
-						{
-							commenter: "RecipeAuthor",
-							text: "Hey Linda, I'm glad your kids loved the food. I'll keep posting more recipes!"
-						},
-						{
-							commenter: "BoyfriendOfTheYear",
-							text: "That's great! I'll cook this for my girlfriend tonight!"
-						}
-					]
-				},
-				{
-					id: 2,
-					commenter: "The commenter's name",
-					text: "This is a comment. Comments should help enhance the recreation aspect of our apps by allowing users to socialize with others about their cooking.",
-					replies: [
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						},
-						{
-							commenter: "Replier's name",
-							text: "This is a reply to a comment, it could be as long as the user wishes"
-						}
-					]
-				}
-			]
+			clickedRecipe: undefined
 		}
 	},
 	computed: {

@@ -18,6 +18,10 @@
 			</div>
 		</div>
 
+		<h5 v-if="comments.length <= 0" class="color-muted m-t-md">
+			There are no comments yet... :(
+		</h5>
+
 		<div v-for="(comment, i) in comments" class="comment-box full-width m-y-xs">
 			<div class="profile-pic">
 				<i class="fas fa-user-circle"></i>
