@@ -44,22 +44,22 @@ export default new Vuex.Store({
 					{
 						commenter: "iDontKnowHowToCook",
 						text: "Hey everyone, I'm confused about step 7, can someone explain please?",
-						picURL: undefined,
+						picURL: "https://i.imgflip.com/iewbb.jpg",
 						replies: [
 							{
 								commenter: "MrNiceGuy",
 								text: "What part confused you? I am here to help",
-								picURL: undefined
+								picURL: "https://verbalinsanity.files.wordpress.com/2011/08/old-man-with-thumbs-up.jpg?w=320&h=247"
 							},
 							{
 								commenter: "iDontKnowHowToCook",
 								text: "Whats an a fry pan? I have never heard of such a thing :(",
-								picURL: undefined
+								picURL: "https://i.imgflip.com/iewbb.jpg"
 							},
 							{
 								commenter: "MrNiceGuy",
 								text: "...",
-								picURL: undefined
+								picURL: "https://verbalinsanity.files.wordpress.com/2011/08/old-man-with-thumbs-up.jpg?w=320&h=247"
 							}
 						]
 					}

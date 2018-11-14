@@ -23,8 +23,8 @@
 		</h5>
 
 		<div v-for="(comment, i) in comments" class="comment-box full-width m-y-xs">
-			<div class="profile-pic">
-				<i class="fas fa-user-circle"></i>
+			<div class="profile-pic"
+					 :style="{'background-image': genProfilePicURL(comment.picURL)}">
 			</div>
 			<div class="commenter-name text-semibold">
 				{{ comment.commenter }}
@@ -39,8 +39,8 @@
 
 			<div v-for="(reply, i) in comment.replies"
 					 class="comment-box reply full-width m-y-sm">
-				<div class="profile-pic">
-					<i class="fas fa-user-circle"></i>
+				<div class="profile-pic"
+						 :style="{'background-image': genProfilePicURL(reply.picURL)}">
 				</div>
 				<div class="commenter-name text-semibold">
 					{{ reply.commenter }}
