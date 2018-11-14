@@ -106,6 +106,7 @@ export default {
 				this.comments.unshift({
 					commenter: "TestUser",
 					text: this.commentToAdd,
+					picURL: undefined,
 					replies: []
 				})
 				this.commentToAdd = ''
@@ -118,7 +119,8 @@ export default {
 			if (this.replyToAdd) {
 				this.comments[this.showReplyBox].replies.push({
 					commenter: "TestUser",
-					text: this.replyToAdd
+					text: this.replyToAdd,
+					picURL: undefined
 				})
 				this.replyToAdd = ''
 			}
