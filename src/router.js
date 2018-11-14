@@ -25,13 +25,13 @@ export default new Router({
       component: Login
     },
     {
-      path: '/home',
-      name: 'home',
+      path: '',
       component: Main,
       children: [
         {
-          path: '',
-          component: Home
+          path: '/home',
+          component: Home,
+          name: 'home'
         },
         {
           path: '/saved',

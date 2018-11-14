@@ -43,12 +43,6 @@
 					<div class="img-container full-width">
 						<div class="img"
 								 :style="{'background-image': genURL(clickedRecipe.imgURL)}">
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-left"></i>
-							</div>
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-right"></i>
-							</div>
 						</div>
 					</div>
 

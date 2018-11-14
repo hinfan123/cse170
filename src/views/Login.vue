@@ -50,7 +50,7 @@ export default {
 		return {
 			isSignup: false,
 			modalActive: false,
-			freeLogin: true,
+			freeLogin: false,
 			enteredUsername: undefined,
 			enteredPassword: undefined
 		}

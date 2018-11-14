@@ -6,7 +6,7 @@
 				<i class="fas fa-chevron-left"></i>BACK
 			</router-link>
 			<h3 class="m-none">Editing Recipe: {{recipe.name}}</h3>
-			<button @click="saveRecipe()" class="m-r-xxl">
+			<button @click="saveEditedRecipe()" class="m-r-xxl">
 				<i class="fas fa-check"></i>Save
 			</button>
 		</div>
@@ -109,7 +109,6 @@
 				Add a step
 			</button>
 
-			<br>
 			<div v-if="!isEdit" class="is-flex">
 				<button @click="savePublicRecipe()">
 					Publish Recipe
@@ -118,6 +117,8 @@
 					Save as Private Recipe
 				</button>
 			</div>
+
+			<br>
 		</div>
 
 		<b-modal :active.sync="modalActive"
@@ -226,12 +227,10 @@ export default {
 				this.$refs.ingredientBox.focus()
 			}
 		},
-		saveEditedRecipe: function () {
-
-		},
 		savePrivateRecipe: function () {
-			this.stepDurationToSeconds()
 			if (this.goodToSubmit()) {
+				this.$emit('bypassRouteGuard')
+				this.stepDurationToSeconds()
 				this.recipe.owns = true
 				this.recipe.private = true
 				this.saveRecipe(this.recipe)
@@ -241,8 +240,9 @@ export default {
 			}
 		},
 		savePublicRecipe: function () {
-			this.stepDurationToSeconds()
 			if (this.goodToSubmit()) {
+				this.$emit('bypassRouteGuard')
+				this.stepDurationToSeconds()
 				this.recipe.owns = true
 				this.recipe.private = false
 				this.saveRecipe(this.recipe)
@@ -287,10 +287,11 @@ export default {
 				}
 			})
 		},
-		saveRecipe: function () {
+		saveEditedRecipe: function () {
 			this.stepDurationToSeconds()
 			if (this.goodToSubmit()) {
 				this.updateRecipe(this.recipe)
+				this.$emit('bypassRouteGuard')
 				this.$router.push('/myrecipes')
 			} else {
 				this.badInfoModalActive = true

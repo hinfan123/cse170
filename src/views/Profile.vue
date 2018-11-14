@@ -17,9 +17,28 @@
 		<button @click="toastPassword">change password</button>
 
 		<br><br>
-		<router-link to="/" tag="button">
+
+		<button @click="modalActive = true">
 			logout
-		</router-link>
+		</button>
+
+		<b-modal :active.sync="modalActive"
+						 :width="250"
+						 :canCancel="['escape', 'outside']">
+			<div class="card">
+				<div class="card-content">
+					<h5 class="color-default m-b-sm">
+						Are you sure you want to logout?
+					</h5>
+					<div class="is-flex justify-between">
+						<button class="button primary" @click="modalActive = false">stay</button>
+						<router-link to="/" tag="button" class="button pink">
+							logout
+						</router-link>
+					</div>
+				</div>
+			</div>
+		</b-modal>
 	</div>
 </template>
 
@@ -29,6 +48,11 @@
 <script>
 export default {
 	name: 'profile',
+	data: function () {
+		return {
+			modalActive: false
+		}
+	},
 	methods: {
 		toast: function () {
 			this.$toast.open('Your information is saved')

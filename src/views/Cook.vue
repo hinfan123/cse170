@@ -32,13 +32,6 @@
 				<div v-show="iscurrStep(0)" class="content">
 					<div class="img-container">
 						<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-left"></i>
-							</div>
-
-							<div class="img-carousel-btn">
-								<i class="fas fa-chevron-right"></i>
-							</div>
 						</div>
 					</div>
 					<div class="ingredient-container">

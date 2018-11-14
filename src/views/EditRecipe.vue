@@ -1,23 +1,24 @@
 <template>
 	<div>
 		<recipe-section :recipe="recipeToEdit"
-										:isEdit="true">
+										:isEdit="true"
+										@bypassRouteGuard="bypassRouteGuard = true">
 		</recipe-section>
-		<!-- <b-modal :active.sync="loseInfoModalActive"
-						 :width="400"
+		<b-modal :active.sync="loseInfoModalActive"
+						 :width="300"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h3 class="color-default m-b-sm">
+					<h5 class="color-default m-b-sm">
 						Are you sure you want to leave? All unsaved information will be lost
-					</h3>
+					</h5>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="rejectRoutePromise()">dont leave</button>
-						<button class="button pink" @click="resolveRoutePromise()">Leave</button>
+						<button class="button primary" @click="promiseReject()">dont leave</button>
+						<button class="button pink" @click="promiseResolve()">Leave</button>
 					</div>
 				</div>
 			</div>
-		</b-modal> -->
+		</b-modal>
 	</div>
 </template>
 
@@ -37,29 +38,39 @@ export default {
 	data: function () {
 		return {
 			recipeToEdit: {},
-			loseInfoModalActive: false
+			loseInfoModalActive: false,
+			bypassRouteGuard: false
 		}
 	},
 	methods: {
+		promiseResolve: () => {},
+		promiseReject: () => {}
 	},
 	created: function() {
-		let recipeInStore = this.$store.getters.getRecipeById(_.toNumber(this.$route.params.id))
-		this.recipeToEdit = JSON.parse(JSON.stringify(recipeInStore));
+		let recipeID = this.$route.params.id
+		let recipeInStore = this.$store.getters.getRecipeById(_.toNumber(recipeID))
+		this.recipeToEdit = JSON.parse(JSON.stringify(recipeInStore))
 	},
-	/*beforeRouteLeave: function (to, from, next) {
+	beforeRouteLeave: function (to, from, next) {
+		let self = this // this is undefined within promise use self reference
+		if (!this.bypassRouteGuard) {
 			this.loseInfoModalActive = true
-			let p = new Promise( function (resolve, reject) {
-
-		    reject()
+			let p = new Promise( (resolve, reject) => {
+				this.promiseReject = reject
+				this.promiseResolve = resolve
 			});
-
 			p.then(function () {
+				next()
+			})
+			.catch(function () {
+				next(false)
+			})
+			.finally(function () {
+				self.loseInfoModalActive = false
+			})
+		} else {
 			next()
-		})
-		.catch(function () {
-			this.loseInfoModalActive = false
-			next(false)
-		});
-	}*/
+		}
+	}
 }
 </script>
