@@ -31,13 +31,10 @@
 							<h5 class="color-default">@{{ clickedRecipe.author }}</h5>
 						</div>
 						<div class="is-flex flex-column align-end">
-							<!-- <div class="duration text-semibold m-b-sm">
-								<i class="fas fa-heart"></i> 67
-							</div> -->
 							<button class="button pink" @click="onSaveBtnClick(clickedRecipe)">
 								<i class="fas fa-heart m-r-sm"></i> {{isSaved(clickedRecipe.id)? 'Saved' : 'Save'}}
 							</button>
-							<div class="duration text-semibold">
+							<div class="duration text-semibold m-t-sm">
 								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
 							</div>
 						</div>

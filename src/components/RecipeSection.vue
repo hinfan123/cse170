@@ -5,7 +5,7 @@
 			<router-link v-if="isEdit" tag="button" to="/myrecipes" class="m-l-xxl">
 				<i class="fas fa-chevron-left"></i>BACK
 			</router-link>
-			<h3 class="m-none">Edit Recipe</h3>
+			<h3 class="m-none">Editing Recipe: {{recipe.name}}</h3>
 			<button @click="saveRecipe()" class="m-r-xxl">
 				<i class="fas fa-check"></i>Save
 			</button>

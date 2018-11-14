@@ -14,7 +14,7 @@
 			<input v-if="isSignup" placeholder="Last name">
 			<input v-if="isSignup" placeholder="password" type="password">
 			<input v-if="isSignup" placeholder="Re-enter password" type="password">
-			<button v-if="!isSignUp" @click="onLogin()">
+			<button v-if="!isSignup" @click="onLogin()">
 				login
 			</button>
 			<button v-if="!isSignup" @click="isSignup = true">signup</button>
