@@ -297,11 +297,11 @@ input.search-bar {
 	background-position: center;
 	background-size: cover;
 
-	&.xs { height: 235px; }
-	&.sm { height: 246px; }
-	&.md { height: 267px; }
-	&.lg { height: 282px; }
-	&.xl { height: 300px; }
+	&.xs { height: 255px; }
+	&.sm { height: 266px; }
+	&.md { height: 287px; }
+	&.lg { height: 302px; }
+	&.xl { height: 320px; }
 	&:hover {
 		//box-shadow: 0 0 0 5px $accent;
 		&::before {

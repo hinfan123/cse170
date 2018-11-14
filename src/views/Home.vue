@@ -122,7 +122,7 @@ export default {
 	},
 	data: function () {
 		return {
-			columns: [0,1,2],
+			columns: [0,1,2,3],
 			boxSizeArray: undefined,
 			boxSizes: ['xs','sm','md','lg', 'xl'],
 			modalActive: false,
