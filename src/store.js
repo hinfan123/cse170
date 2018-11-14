@@ -1114,9 +1114,7 @@ export default new Vuex.Store({
 			let idx = _.findIndex(state.recipeList, (recipe) => {
 				return recipe.id === payload.id
 			})
-			console.log(idx)
-			console.log(payload)
-			state.recipeList[idx] = payload
+			state.recipeList.splice(idx, 1, payload)
 		}
 	},
 	actions: {

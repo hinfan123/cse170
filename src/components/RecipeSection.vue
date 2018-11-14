@@ -1,116 +1,124 @@
 <template>
 	<div class="content">
 
-		<h3>{{ isEdit? 'Edit' : 'Create New' }} Recipe</h3>
-
-		<div class="is-flex align-center">
-			<div class="img-container sm m-r-lg">
-				<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
-				</div>
-			</div>
-
-			<div>
-				<div class="recipe-container is-flex flex-column">
-					<input placeholder="Name of dish" v-model="recipe.name">
-					<input placeholder="Time to cook in minutes" v-model="recipe.duration">
-					<textarea rows="3"
-										v-model="recipe.description"
-										placeholder="Describe your recipe...">
-					</textarea>
-					<input placeholder="Enter the URL to a picture of your dish" v-model="recipe.imgURL">
-					<div v-if="isEdit" class="field">
-						<b-checkbox v-model="recipe.private">
-								Private Recipe?
-						</b-checkbox>
-					</div>
-				</div>
-			</div>
+		<div v-if="isEdit" class="edit-bar">
+			<router-link v-if="isEdit" tag="button" to="/myrecipes" class="m-l-xxl">
+				<i class="fas fa-chevron-left"></i>BACK
+			</router-link>
+			<h3 class="m-none">Edit Recipe</h3>
+			<button @click="saveRecipe()" class="m-r-xxl">
+				<i class="fas fa-check"></i>Save
+			</button>
 		</div>
 
-		<h3>Ingredients</h3>
+		<h3 v-if="!isEdit" class="m-none">Create New Recipe</h3>
 
-		<div class="ingredient-container">
-			<div v-for="(ingredient, i) in recipe.ingredients"
-					 class="ingredient-entry">
-				<input placeholder="Name" v-model="ingredient.name">
-				<input placeholder="Quantity" v-model="ingredient.quantity">
-				<input placeholder="Units" v-model="ingredient.unit">
-				<div class="delete-btn"
-						 @click="recipe.ingredients.splice(i, 1)">
-					<i class="fas fa-times"></i>
-				</div>
-			</div>
-			<div class="is-flex align-center">
-				<input class="m-r-md"
-							 v-on:keyup.enter="onIngredientAdd()"
-							 v-model="ingredientToAdd"
-							 placeholder="Ingredient name?"
-							 ref="ingredientBox">
-				<input class="m-r-md"
-							 v-on:keyup.enter="onIngredientAdd()"
-							 v-model="quantityToAdd"
-							 placeholder="How much/many?"
-							 :disabled="!ingredientToAdd">
-				<input class="m-r-md"
-							 v-on:keyup.enter="onIngredientAdd()"
-							 v-model="unitToAdd"
-							 placeholder="How to measure this?"
-							 :disabled="!ingredientToAdd">
-				<h6 class="color-muted m-none">Tap enter to add!</h6>
-			</div>
-		</div>
-
-		<br>
-
-		<div v-for="(step, i) in recipe.steps" class="step-section is-flex flex-column">
-			<h4>Step {{ i + 1 }}</h4>
-			<div class="delete-btn"
-					 @click="deleteStep(i)">
-				<i class="fas fa-times"></i>
-			</div>
+		<div class="content m-t-xl">
 			<div class="is-flex align-center">
 				<div class="img-container sm m-r-lg">
-					<div class="img" :style="{'background-image': genURL(step.gifURL)}">
+					<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
 					</div>
 				</div>
 
-				<div class="is-flex flex-column">
-					<input v-model="step.title"
-								 placeholder="Step title">
-					<textarea rows="3"
-										v-model="step.details"
-										placeholder="Add some details...">
-					</textarea>
-					<input placeholder="Enter the URL to a gif or image representing the step..."
-								 v-model="step.gifURL">
-					<div class="field">
-						<b-checkbox v-model="step.timer">
-								Has timer?
-						</b-checkbox>
+				<div>
+					<div class="recipe-container is-flex flex-column">
+						<input placeholder="Name of dish" v-model="recipe.name">
+						<input placeholder="Time to cook in minutes" v-model="recipe.duration">
+						<textarea rows="3"
+											v-model="recipe.description"
+											placeholder="Describe your recipe...">
+						</textarea>
+						<input placeholder="Enter the URL to a picture of your dish" v-model="recipe.imgURL">
+						<div v-if="isEdit" class="field">
+							<b-checkbox v-model="recipe.private">
+									Private Recipe?
+							</b-checkbox>
+						</div>
 					</div>
-					<input v-if="step.timer" v-model="step.duration" placeholder="How long in minutes?">
 				</div>
 			</div>
+
+			<h3>Ingredients</h3>
+
+			<div class="ingredient-container">
+				<div v-for="(ingredient, i) in recipe.ingredients"
+						 class="ingredient-entry">
+					<input placeholder="Name" v-model="ingredient.name">
+					<input placeholder="Quantity" v-model="ingredient.quantity">
+					<input placeholder="Units" v-model="ingredient.unit">
+					<div class="delete-btn"
+							 @click="recipe.ingredients.splice(i, 1)">
+						<i class="fas fa-times"></i>
+					</div>
+				</div>
+				<div class="is-flex align-center">
+					<input class="m-r-md"
+								 v-on:keyup.enter="onIngredientAdd()"
+								 v-model="ingredientToAdd"
+								 placeholder="Ingredient name?"
+								 ref="ingredientBox">
+					<input class="m-r-md"
+								 v-on:keyup.enter="onIngredientAdd()"
+								 v-model="quantityToAdd"
+								 placeholder="How much/many?"
+								 :disabled="!ingredientToAdd">
+					<input class="m-r-md"
+								 v-on:keyup.enter="onIngredientAdd()"
+								 v-model="unitToAdd"
+								 placeholder="How to measure this?"
+								 :disabled="!ingredientToAdd">
+					<h6 class="color-muted m-none">Tap enter to add!</h6>
+				</div>
+			</div>
+
 			<br>
-		</div>
 
-		<button @click="addStep()">
-			Add a step
-		</button>
+			<div v-for="(step, i) in recipe.steps" class="step-section is-flex flex-column">
+				<h4>Step {{ i + 1 }}</h4>
+				<div class="delete-btn"
+						 @click="deleteStep(i)">
+					<i class="fas fa-times"></i>
+				</div>
+				<div class="is-flex align-center">
+					<div class="img-container sm m-r-lg">
+						<div class="img" :style="{'background-image': genURL(step.gifURL)}">
+						</div>
+					</div>
 
-		<br>
-		<div v-if="!isEdit" class="is-flex">
-			<button @click="savePublicRecipe()">
-				Publish Recipe
+					<div class="is-flex flex-column">
+						<input v-model="step.title"
+									 placeholder="Step title">
+						<textarea rows="3"
+											v-model="step.details"
+											placeholder="Add some details...">
+						</textarea>
+						<input placeholder="Enter the URL to a gif or image representing the step..."
+									 v-model="step.gifURL">
+						<div class="field">
+							<b-checkbox v-model="step.timer">
+									Has timer?
+							</b-checkbox>
+						</div>
+						<input v-if="step.timer" v-model="step.duration" placeholder="How long in minutes?">
+					</div>
+				</div>
+				<br>
+			</div>
+
+			<button @click="addStep()">
+				Add a step
 			</button>
-			<button @click="savePrivateRecipe()">
-				Save as Private Recipe
-			</button>
-		</div>
 
-		<button v-if="isEdit" @click="saveRecipe()">
-			SAVE CHANGES
-		</button>
+			<br>
+			<div v-if="!isEdit" class="is-flex">
+				<button @click="savePublicRecipe()">
+					Publish Recipe
+				</button>
+				<button @click="savePrivateRecipe()">
+					Save as Private Recipe
+				</button>
+			</div>
+		</div>
 
 		<b-modal :active.sync="modalActive"
 						 :width="400"
