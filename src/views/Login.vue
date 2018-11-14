@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
 	name: 'login',
 	data: function () {
@@ -55,7 +57,7 @@ export default {
 	},
 	computed: {
 		correctLogin: function () {
-			return this.enteredUsername === 'testuser' && this.enteredPassword === '69'
+			return _.toLower(this.enteredUsername) === 'testuser' && this.enteredPassword === '69'
 		}
 	},
 	methods: {
