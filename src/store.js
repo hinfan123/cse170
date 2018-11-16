@@ -13,8 +13,8 @@ export default new Vuex.Store({
 				description: "Ground chicken with basil",
 				duration: 25,
 				author: "Jackie",
-				owns: true,
-				private: true,
+				owns: false,
+				private: false,
 				imgURL: "http://i68.tinypic.com/o5q685.png",
 				recipeComments: [
 					{
@@ -247,7 +247,7 @@ export default new Vuex.Store({
 				description: "Fastest made meatballs",
 				duration: 60,
 				author: "Steve",
-				owns: true,
+				owns: false,
 				private: false,
 				imgURL: "http://i63.tinypic.com/dwop4p.jpg",
 				recipeComments: [
@@ -445,7 +445,7 @@ export default new Vuex.Store({
 				description: "Authentic guacamole",
 				duration: 20,
 				author: "Bill",
-				owns: true,
+				owns: false,
 				private: false,
 				imgURL: "http://i68.tinypic.com/adzu6e.png",
 				recipeComments: [
@@ -596,9 +596,9 @@ export default new Vuex.Store({
 				name: "Kevins Famous Chili",
 				description: "Chili made by the kevin malone",
 				duration: 25,
-				author: "Kevin Malone",
-				owns: false,
-				private: false,
+				author: "testuser",
+				owns: true,
+				private: true,
 				imgURL: "https://www.thewholesomedish.com/wp-content/uploads/2018/05/600-X-900.jpg",
 				recipeComments: [
 					{
@@ -608,7 +608,7 @@ export default new Vuex.Store({
 						replies: [
 							{
 								commenter: "Holly",
-								text: "It's ok kevin, I'm happy you tried.",
+								text: "It's ok, I'm happy you tried.",
 								picURL: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Hollytheoffice.jpg/220px-Hollytheoffice.jpg"
 							}
 						]
@@ -899,7 +899,7 @@ export default new Vuex.Store({
 				name: "Spaghetti Tacos",
 				description: "Spaghetti in a Taco Shell",
 				duration: 240,
-				author: "Spencer",
+				author: "testuser",
 				owns: true,
 				private: false,
 				imgURL: "https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg",
@@ -1132,7 +1132,7 @@ export default new Vuex.Store({
 				description: "Waffle killer",
 				duration: 15,
 				author: "CrackerJacks",
-				owns: true,
+				owns: false,
 				private: false,
 				imgURL: "https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/800/quick-and-easy-french-toast.ashx?vd=20180710T034231Z&hash=FF5BBBC3BD24EBCC8B311AE653BCA55BE8B74516",
 				recipeComments: [
@@ -1233,6 +1233,165 @@ export default new Vuex.Store({
 					}
 				] // end steps
 			}, // end recipe 4: kevin"s chili
+			{
+				id: 10,
+				name: "One pot Mac n Cheese",
+				description: "Mac n cheese without the mess",
+				duration: 20,
+				author: "testuser",
+				owns: true,
+				private: false,
+				imgURL: "https://i.imgur.com/PI8ntRt.jpg",
+				recipeComments: [
+					{
+						commenter: "Samthecookingguy",
+						text: "Very easy recipe!",
+						picURL: "https://pbs.twimg.com/profile_images/468902160348872704/2rJY_wsX_400x400.jpeg",
+						replies: []
+					},
+					{
+						commenter: "randomGuy",
+						text: "I love this recipe because it makes clean up so easy",
+						picURL: "https://i.imgur.com/L2Dcj4p.jpg",
+						replies: [
+							{
+								commenter: "Spencer",
+								text: "Not even I can mess this up",
+								picURL: "https://i.imgur.com/JAe1JvH.jpg"
+							}
+						]
+					}
+				],
+				stepsComments: [],
+
+				ingredients: [
+					{
+						name: "Macaroni",
+						quantity: "2", //string
+						unit: "cup"
+					},
+					{
+						name: "Milk",
+						quantity: 2,
+						unit: "cup"
+					},
+					{
+						name: "Mustard Powder",
+						quantity: "1/2",
+						unit: "teaspoon"
+					},
+					{
+						name: "Butter",
+						quantity: 1,
+						unit: "tablespoon"
+					},
+					{
+						name: "Chicken Broth",
+						quantity: "1/2",
+						unit: "cup"
+					},
+					{
+						name: "Cheese",
+						quantity: 1,
+						unit: "cup"
+					},
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: "Gettng to know each other",
+						gifURL: "https://i.giphy.com/media/OqBVv0UWI03sbplA72/giphy.webp",
+						details: "Add everything to pot and bring to boil and simmer",
+						timer: false,
+						duration: undefined,
+
+					},
+					{ // step 2
+						n: 2,
+						title: "Add cheese",
+						gifURL: "https://i.giphy.com/media/9tXEdM8YNswvgyIQM8/giphy.webp",
+						details: "Add cheese to mixture when thick",
+						timer: false,
+						duration: 0,
+
+					},
+					{ // step 3
+						n: 3,
+						title: "Enjoy!",
+						gifURL: "https://i.giphy.com/media/1evbPHdzBY5HWmHNoG/giphy.webp",
+						details: "Mac n cheese is done, add anything you want to the top (bacon bits)",
+						timer: false,
+						duration: 0,
+					}
+				] // end steps
+			},
+			{
+				id: 11,
+				name: "Peanut Butter Banana Sandwhich",
+				description: "When its late and you are lazy",
+				duration: 20,
+				author: "testuser",
+				owns: true,
+				private: true,
+				imgURL: "https://hurrythefoodup.com/wp-content/uploads/2014/12/banana-peanut-butter-sandwich-2.jpg",
+				recipeComments: [],
+				stepsComments: [],
+
+				ingredients: [
+					{
+						name: "Bread",
+						quantity: "2", //string
+						unit: "slices"
+					},
+					{
+						name: "Peanut butter",
+						quantity: 2,
+						unit: "tablespoon"
+					},
+					{
+						name: "Banana",
+						quantity: "1"
+					},
+				], // end ingredients
+
+				steps: [
+					{ // step 1
+						n: 1,
+						title: "Toast",
+						gifURL: "https://media0.giphy.com/media/26uf0NdX2Y21ZRmFO/giphy.gif?cid=3640f6095bee49b1385530686b8f3b49",
+						details: "Toast Bread",
+						timer: false,
+						duration: undefined,
+
+					},
+					{ // step 2
+						n: 2,
+						title: "Spread peanut butter",
+						gifURL: "https://media0.giphy.com/media/29yGKKh9FRrzi/giphy.gif?cid=3640f6095bee49cd3768345149f2ea1f",
+						details: "Spread peanut butter onto your toast, be very liberal",
+						timer: false,
+						duration: 0,
+
+					},
+					{ // step 3
+						n: 3,
+						title: "Chop Banana and add to toast",
+						gifURL: "https://media1.giphy.com/media/xT77XHUkpCtKbmtuH6/giphy.gif?cid=3640f6095bee4a0e48697237363ed0d7",
+						details: "Chop your banana into bite size pieces",
+						timer: false,
+						duration: 0,
+					},
+					{
+						n: 4,
+						title: "Enjoy",
+						gifURL: "https://media2.giphy.com/media/IB9foBA4PVkKA/giphy.gif?cid=3640f6095bee4a3974394e4573a8b48cp",
+						details: "Enjoy with some milk",
+						timer: false,
+						duration: 0,
+					}
+				] // end steps
+			},  
 		], // END recipes list
 		searchQuery: "",
 		saved: [1,3,4,5,8,12],
