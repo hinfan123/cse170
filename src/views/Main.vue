@@ -25,7 +25,8 @@
 				<router-link to="/saved">
 					Saved
 				</router-link>
-				<router-link to="/myrecipes" :class="{'router-link-active router-link-exact-active': inEdit}">
+				<router-link to="/myrecipes"
+										 :class="{'router-link-active router-link-exact-active': inEdit}">
 					My Recipes
 				</router-link>
 				<router-link to="/profile">

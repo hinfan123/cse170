@@ -37,7 +37,8 @@ export default new Vuex.Store({
 					{
 						commenter: "randomGuy",
 						text: "Good stuff!",
-						picURL: undefined
+						picURL: undefined,
+						replies: []
 					}
 				],
 				stepsComments: [
@@ -410,7 +411,7 @@ export default new Vuex.Store({
 				author: "Bill",
 				owns: true,
 				private: false,
-				imgURL: "http://i68.tinypic.com/adzu6e.png",
+				imgURL: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Homemade-Guacamole_EXPS_THJJ18_38391_D01_31_3b-5.jpg",
 				recipeComments: [
 				],
 				stepsComments: [
