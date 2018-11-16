@@ -20,12 +20,12 @@ export default new Vuex.Store({
 					{
 						commenter: "LindaLovesFood",
 						text: "I made this for my kids yesterday, they loved it!!! Thanks Jackie!",
-						picURL: undefined,
+						picURL: "https://i.imgur.com/sFeEzRl.gif",
 						replies: [
 							{
 								commenter: "Jackie",
 								text: "Hey Linda, I'm glad your kids loved the food. I'll keep posting more recipes!",
-								picURL: undefined
+								picURL: "https://i.imgur.com/Jgx3XRp.jpg"
 							},
 							{
 								commenter: "BoyfriendOfTheYear",
@@ -37,8 +37,7 @@ export default new Vuex.Store({
 					{
 						commenter: "randomGuy",
 						text: "Good stuff!",
-						picURL: undefined,
-						replies: []
+						picURL: "https://i.imgur.com/L2Dcj4p.jpg"
 					}
 				],
 				stepsComments: [
@@ -251,8 +250,42 @@ export default new Vuex.Store({
 				private: false,
 				imgURL: "http://i63.tinypic.com/dwop4p.jpg",
 				recipeComments: [
+					{
+						commenter: "ThisIsPatrick",
+						text: "Such a classic dish and is always amazing",
+						picURL: "https://i.imgur.com/3JaDR.jpg",
+						replies: [
+							{
+								commenter: "IloveMeatballs",
+								text: "Especially with meatballs",
+								picURL: undefined
+							}
+						]
+					},
+					{
+						commenter: "Sarah",
+						text: "You should try adding lime juice to the recipe!",
+						picURL: "https://i.imgur.com/HgWpe7G.png"
+					}
 				],
 				stepsComments: [
+					{
+						commenter: "Eminem",
+						text: "My mom does this differently",
+						picURL: "https://pbs.twimg.com/profile_images/929030268043845633/ilS1ri2v_400x400.jpg",
+						replies: [
+							{
+								commenter: "Eminemfan",
+							text: "ITS EMINEM",
+							picURL: "https://i.ytimg.com/vi/MvpQbVl8c4o/maxresdefault.jpg"
+							}
+						]
+					},
+					{
+						commenter: "Spencer",
+						text: "Last step, put the spaghetti in a taco shell",
+						picURL: "https://i.imgur.com/JAe1JvH.jpg"
+					}
 				],
 
 				ingredients: [
@@ -411,10 +444,40 @@ export default new Vuex.Store({
 				author: "Bill",
 				owns: true,
 				private: false,
-				imgURL: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Homemade-Guacamole_EXPS_THJJ18_38391_D01_31_3b-5.jpg",
+				imgURL: "http://i68.tinypic.com/adzu6e.png",
 				recipeComments: [
+					{
+						commenter: "Haas",
+						text: "Fresh guacamole is the best, this recipe rocks",
+						picURL: "https://i.imgur.com/uv1P5iU.jpg",
+						replies: [
+							{
+								commenter: "Thatguy",
+								text: "Why are you wearing an avacado",
+								picURL: undefined
+							},
+							{
+								commenter: "Haas",
+								text: "I LOVE AVACADOS",
+								picURL: "https://i.imgur.com/uv1P5iU.jpg"
+							}
+						]
+					}
 				],
+
 				stepsComments: [
+					{
+						commenter: "Ross",
+						text: "Is there a safer way to cut the avacado? I'm scared of cutting myself",
+						picURL: "https://pixel.nymag.com/imgs/fashion/daily/2018/10/24/24-ross-friends.w700.h700.jpg",
+						replies: [
+							{
+								commenter: "Haas",
+								text: "Just practice it dude! you got it!",
+								picURL: "https://i.imgur.com/uv1P5iU.jpg"
+							}
+						]
+					}
 				],
 
 				ingredients: [
@@ -535,6 +598,23 @@ export default new Vuex.Store({
 				private: false,
 				imgURL: "https://www.thewholesomedish.com/wp-content/uploads/2018/05/600-X-900.jpg",
 				recipeComments: [
+					{
+						commenter: "Michael Scott",
+						text: "The carpet took forever to clean by the way",
+						picURL: "https://pbs.twimg.com/profile_images/563105554822737921/F-iH3BMT_400x400.png",
+						replies: [
+							{
+								commenter: "Holly",
+								text: "It's ok kevin, I'm happy you tried.",
+								picURL: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Hollytheoffice.jpg/220px-Hollytheoffice.jpg"
+							}
+						]
+					},
+					{
+						commenter: "Ashton Kutcher",
+						text: "Hey this is pretty good",
+						picURL: "https://fortunedotcom.files.wordpress.com/2012/09/120927042336-136755854.jpg"
+					}
 				],
 				stepsComments: [
 				],
@@ -628,8 +708,23 @@ export default new Vuex.Store({
 				private: false,
 				imgURL: "https://dinnerthendessert.com/wp-content/uploads/2017/02/Slow-Cooker-Jerk-Chicken-2-e1486362861446.jpg",
 				recipeComments: [
+					{
+						commenter: "John Legere",
+						text: "I love a slow cooker recipe",
+						picURL: "https://amp.businessinsider.com/images/58c194c2402a6b83038b5168-750-375.jpg"
+					},
+					{
+						commenter: "Ilovecooking",
+						text: "MMM So good and tasty",
+						picURL: "https://i.ytimg.com/vi/-FrpuPLYnvY/hqdefault.jpg"
+					}
 				],
 				stepsComments: [
+					{
+						commenter: "Ainsley",
+						text: "Yes! Give that meat a good ol' rub",
+						picURL: "https://ih0.redbubble.net/image.373223104.8912/flat,550x550,075,f.u1.jpg"
+					}
 				],
 
 				ingredients: [
@@ -736,6 +831,18 @@ export default new Vuex.Store({
 				private: false,
 				imgURL: "https://images.unsplash.com/photo-1521483451569-e33803c0330c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=29cc8c2559e8e871584bc355e644832b&auto=format&fit=crop&w=3077&q=80",
 				recipeComments: [
+					{
+						commenter: "Lisa",
+						text: "Dad everyone knows how to make cereal",
+						picURL: "https://i.imgur.com/fYxPB3u.gif",
+						replies: [
+							{
+								commenter: "Marge",
+								text: "Lisa, your father worked very hard for this",
+								picURL: "https://i.imgur.com/Dmy15V2.jpg"
+							}
+						]
+					}
 				],
 				stepsComments: [
 				],
@@ -790,8 +897,49 @@ export default new Vuex.Store({
 				private: false,
 				imgURL: "https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg",
 				recipeComments: [
+					{
+						commenter: "Gibby",
+						text: "ITS GIBBEH",
+						picURL: "https://i.imgur.com/FJrPoQh.jpg",
+						replies: [
+							{
+								commenter: "Spencer",
+								text: "Gibby please comment only if its about the recipe",
+								picURL: "https://i.imgur.com/JAe1JvH.jpg"
+							}
+						]
+					}
 				],
 				stepsComments: [
+					{
+						commenter: "Haas",
+						text: "Why not add guacamole to the recipe?",
+						picURL: "https://i.imgur.com/uv1P5iU.jpg",
+						replies: [
+							{
+								commenter: "Spencer",
+								text: "Because guacamole is gross",
+								picURL: "https://i.imgur.com/JAe1JvH.jpg"
+							}
+						]
+					},
+					{
+						commenter: "Thatguy",
+						text: "Is it better to get hard shell tacos or soft shell",
+						picURL: undefined,
+						replies: [
+							{
+								commenter: "Spencer",
+								text: "I like it hard, but it is all preference",
+								picURL: "https://i.imgur.com/JAe1JvH.jpg"
+							},
+							{
+								commenter: "Thatguy",
+								text: "ok thanks! ill go with hard too",
+								picURL: undefined
+							}
+						]
+					}
 				],
 
 				ingredients: [
@@ -857,13 +1005,25 @@ export default new Vuex.Store({
 				name: "Spicy Garlic Lime Chicken",
 				description: "Chicken with a little kick",
 				duration: 25,
-				author: "Perez",
+				author: "Peralta",
 				owns: false,
 				private: false,
 				imgURL: "https://sweetpeasandsaffron.com/wp-content/uploads/2018/07/Perfect-Baked-Chicken-Breast-5.jpg",
 				recipeComments: [
 				],
 				stepsComments: [
+					{
+						commenter: "Barbara",
+						text: "Can I bake this instead of pan frying?",
+						picURL: undefined,
+						replies: [
+							{
+								commenter: "Peralta",
+								text: "Of course!",
+								picURL: "https://i.imgur.com/4d2dcnz.png"
+							}
+						]
+					}
 				],
 
 				ingredients: [
@@ -969,6 +1129,16 @@ export default new Vuex.Store({
 				private: false,
 				imgURL: "https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/800/quick-and-easy-french-toast.ashx?vd=20180710T034231Z&hash=FF5BBBC3BD24EBCC8B311AE653BCA55BE8B74516",
 				recipeComments: [
+					{
+						commenter: "pancakelover",
+						text: "As much as I love pancakes, these are so delicious",
+						picURL: "https://i.imgur.com/VH9zxjl.jpg"
+					},
+					{
+						commenter: "The Rock",
+						text: "I love toast, and this recipe is amazing",
+						picURL: "https://i.imgur.com/DEfpu9S.jpg"
+					}
 				],
 				stepsComments: [
 				],
