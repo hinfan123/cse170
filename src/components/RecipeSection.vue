@@ -229,6 +229,7 @@ export default {
 		},
 		savePrivateRecipe: function () {
 			if (this.goodToSubmit()) {
+				this.readjustStepNumbers()
 				this.$emit('bypassRouteGuard')
 				this.stepDurationToSeconds()
 				this.recipe.owns = true
@@ -241,6 +242,7 @@ export default {
 		},
 		savePublicRecipe: function () {
 			if (this.goodToSubmit()) {
+				this.readjustStepNumbers()
 				this.$emit('bypassRouteGuard')
 				this.stepDurationToSeconds()
 				this.recipe.owns = true

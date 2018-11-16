@@ -48,6 +48,8 @@ export default {
 				private: false,
 				imgURL: undefined,
 				ingredients: [],
+				stepsComments: [],
+				recipeComments: [],
 				steps: [{
 					n: 1,
 					title: undefined,
