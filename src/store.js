@@ -37,7 +37,8 @@ export default new Vuex.Store({
 					{
 						commenter: "randomGuy",
 						text: "Good stuff!",
-						picURL: "https://i.imgur.com/L2Dcj4p.jpg"
+						picURL: "https://i.imgur.com/L2Dcj4p.jpg",
+						replies: []
 					}
 				],
 				stepsComments: [
@@ -265,7 +266,8 @@ export default new Vuex.Store({
 					{
 						commenter: "Sarah",
 						text: "You should try adding lime juice to the recipe!",
-						picURL: "https://i.imgur.com/HgWpe7G.png"
+						picURL: "https://i.imgur.com/HgWpe7G.png",
+						replies: []
 					}
 				],
 				stepsComments: [
@@ -276,15 +278,16 @@ export default new Vuex.Store({
 						replies: [
 							{
 								commenter: "Eminemfan",
-							text: "ITS EMINEM",
-							picURL: "https://i.ytimg.com/vi/MvpQbVl8c4o/maxresdefault.jpg"
+								text: "ITS EMINEM",
+								picURL: "https://i.ytimg.com/vi/MvpQbVl8c4o/maxresdefault.jpg"
 							}
 						]
 					},
 					{
 						commenter: "Spencer",
 						text: "Last step, put the spaghetti in a taco shell",
-						picURL: "https://i.imgur.com/JAe1JvH.jpg"
+						picURL: "https://i.imgur.com/JAe1JvH.jpg",
+						replies: []
 					}
 				],
 
@@ -613,7 +616,8 @@ export default new Vuex.Store({
 					{
 						commenter: "Ashton Kutcher",
 						text: "Hey this is pretty good",
-						picURL: "https://fortunedotcom.files.wordpress.com/2012/09/120927042336-136755854.jpg"
+						picURL: "https://fortunedotcom.files.wordpress.com/2012/09/120927042336-136755854.jpg",
+						replies: []
 					}
 				],
 				stepsComments: [
@@ -711,19 +715,22 @@ export default new Vuex.Store({
 					{
 						commenter: "John Legere",
 						text: "I love a slow cooker recipe",
-						picURL: "https://amp.businessinsider.com/images/58c194c2402a6b83038b5168-750-375.jpg"
+						picURL: "https://amp.businessinsider.com/images/58c194c2402a6b83038b5168-750-375.jpg",
+						replies: []
 					},
 					{
 						commenter: "Ilovecooking",
 						text: "MMM So good and tasty",
-						picURL: "https://i.ytimg.com/vi/-FrpuPLYnvY/hqdefault.jpg"
+						picURL: "https://i.ytimg.com/vi/-FrpuPLYnvY/hqdefault.jpg",
+						replies: []
 					}
 				],
 				stepsComments: [
 					{
 						commenter: "Ainsley",
 						text: "Yes! Give that meat a good ol' rub",
-						picURL: "https://ih0.redbubble.net/image.373223104.8912/flat,550x550,075,f.u1.jpg"
+						picURL: "https://ih0.redbubble.net/image.373223104.8912/flat,550x550,075,f.u1.jpg",
+						replies: []
 					}
 				],
 
@@ -1132,12 +1139,14 @@ export default new Vuex.Store({
 					{
 						commenter: "pancakelover",
 						text: "As much as I love pancakes, these are so delicious",
-						picURL: "https://i.imgur.com/VH9zxjl.jpg"
+						picURL: "https://i.imgur.com/VH9zxjl.jpg",
+						replies: []
 					},
 					{
 						commenter: "The Rock",
 						text: "I love toast, and this recipe is amazing",
-						picURL: "https://i.imgur.com/DEfpu9S.jpg"
+						picURL: "https://i.imgur.com/DEfpu9S.jpg",
+						replies: []
 					}
 				],
 				stepsComments: [
