@@ -146,7 +146,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/2wXXmfG8w5Dpzcf6Fz/giphy.gif",
 						details: "Thinly slice basil leaves",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 3
@@ -155,7 +155,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/LpkyFm03sUdiEAxZAy/giphy.gif",
 						details: "Peel and thinly cut shallots",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 4
@@ -164,7 +164,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/9P3DEEByoWpOnuDfIv/giphy.gif",
 						details: "Peel, slice, and mince garlic",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 5
@@ -173,7 +173,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/82wZfAVtQnVgXNzgZa/giphy.gif",
 						details: "Thinly cut peppers.",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 6
@@ -236,7 +236,7 @@ export default new Vuex.Store({
 						gifURL: "http://i68.tinypic.com/o5q685.png",
 						details: "Enjoy your Spicy Thai Basil Chicken with rice!",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					}
 				] // end steps
@@ -370,7 +370,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/LXQKgwV69cmvIvSNCa/giphy.gif",
 						details: "Pre-heat oven to 500 F and keep on while preparing meatballs",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 3
@@ -397,7 +397,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/kPmlOPx0BzX7kfyxOQ/giphy.gif",
 						details: "Line baking sheet with aluminum foil. Brush it lightly with oil.",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 5
@@ -406,7 +406,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/tJdwJbehOyPPEqQcQZ/giphy.gif",
 						details: "Using a sorbet scoop, scoop meat mixture and place on baking sheet. Finish out the rest of the mixture." ,
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 5
@@ -433,7 +433,7 @@ export default new Vuex.Store({
 						gifURL: "http://i63.tinypic.com/dwop4p.jpg",
 						details: "Enjoy your meatballs on its own or with some cooked spaghetti!",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					}
 
@@ -523,7 +523,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/82wZfAVtQnVgXNzgZa/giphy.gif",
 						details: "Thinly cut up Serrano peppers.",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 2
@@ -532,7 +532,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/9xrbFyFTwl3XfJZQwb/giphy.gif",
 						details: "Chop cilantro to desired thickness",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 3
@@ -541,7 +541,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/1itBKqHdcuc0LihqzH/giphy.gif",
 						details: "Chop the onion using technique showng",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 4
@@ -568,7 +568,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/fH0bH5jZVmNBsiDPR2/giphy.gif",
 						details: "Cut and remove pit of avocados.",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 7
@@ -577,7 +577,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/vcdiV9CpApFB8JX0GS/giphy.gif",
 						details: "Add in cilantro and onion paste. Add extra cilantro and lime for taste. Mash everything to desired consistency.",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 8
@@ -586,7 +586,7 @@ export default new Vuex.Store({
 						gifURL: "http://i68.tinypic.com/adzu6e.png",
 						details: "Enjoy your delicious guacamole with some chips!",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					}
 				] // end steps
@@ -697,7 +697,7 @@ export default new Vuex.Store({
 						gifURL: "http://78.media.tumblr.com/tumblr_lwd88hxDip1qfhqloo1_500.gif",
 						details: "You're done! Now time to spill on the carpet",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					}
 				] // end steps
@@ -808,7 +808,7 @@ export default new Vuex.Store({
 						gifURL: "https://media2.giphy.com/media/3oEduNF7DlpxgcHVJe/giphy.gif?cid=3640f6095be617b5627041653272f037",
 						details: "Puree the green onions, onion, jalapeno, soy sauce, Vinegar, vegetable oil, brown sugar, thyme, cloves, nutmeg and allspice",
 						timer: false,
-						duration: 0
+						duration: undefined
 					},
 					{ // step 3
 						n: 3,
@@ -824,7 +824,7 @@ export default new Vuex.Store({
 						gifURL: "https://dinnerthendessert.com/wp-content/uploads/2017/02/Slow-Cooker-Jerk-Chicken-2-e1486362861446.jpg",
 						details: "Congrats you are done!",
 						timer: false,
-						duration: 0
+						duration: undefined
 					}
 				] // end steps
 			}, // end recipe 4: kevin"s chili
@@ -1003,7 +1003,7 @@ export default new Vuex.Store({
 						gifURL: "https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg",
 						details: "Enjoy!",
 						timer: false,
-						duration: 0
+						duration: undefined
 					}
 				] // end steps
 			}, // end recipe 4: kevin"s chili
@@ -1122,7 +1122,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/kExFYiM3wmCKCgdolR/giphy.gif",
 						details: "Enjoy Your Meal!",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 					}
 				] // end steps
 			}, // end recipe 4: kevin"s chili
@@ -1229,7 +1229,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/2xPPtyPH1R9oRhDU12/giphy.gif",
 						details: "Take off pan and add syrup!",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 					}
 				] // end steps
 			}, // end recipe 4: kevin"s chili
@@ -1313,7 +1313,7 @@ export default new Vuex.Store({
 						gifURL: "https://i.giphy.com/media/9tXEdM8YNswvgyIQM8/giphy.webp",
 						details: "Add cheese to mixture when thick",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 3
@@ -1322,7 +1322,7 @@ export default new Vuex.Store({
 						gifURL: "https://i.giphy.com/media/1evbPHdzBY5HWmHNoG/giphy.webp",
 						details: "Mac n cheese is done, add anything you want to the top (bacon bits)",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 					}
 				] // end steps
 			},
@@ -1371,7 +1371,7 @@ export default new Vuex.Store({
 						gifURL: "https://media0.giphy.com/media/29yGKKh9FRrzi/giphy.gif?cid=3640f6095bee49cd3768345149f2ea1f",
 						details: "Spread peanut butter onto your toast, be very liberal",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 
 					},
 					{ // step 3
@@ -1380,7 +1380,7 @@ export default new Vuex.Store({
 						gifURL: "https://media1.giphy.com/media/xT77XHUkpCtKbmtuH6/giphy.gif?cid=3640f6095bee4a0e48697237363ed0d7",
 						details: "Chop your banana into bite size pieces",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 					},
 					{
 						n: 4,
@@ -1388,10 +1388,10 @@ export default new Vuex.Store({
 						gifURL: "https://media2.giphy.com/media/IB9foBA4PVkKA/giphy.gif?cid=3640f6095bee4a3974394e4573a8b48cp",
 						details: "Enjoy with some milk",
 						timer: false,
-						duration: 0,
+						duration: undefined,
 					}
 				] // end steps
-			},  
+			},
 		], // END recipes list
 		searchQuery: "",
 		saved: [1,3,4,5,8,12],

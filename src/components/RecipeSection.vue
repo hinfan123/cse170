@@ -1,138 +1,299 @@
 <template>
 	<div class="content">
 
-		<div v-if="isEdit" class="edit-bar">
-			<router-link v-if="isEdit" tag="button" to="/myrecipes" class="m-l-xxl">
-				<i class="fas fa-chevron-left"></i>BACK
+		<div class="fixed-btn-container left">
+			<router-link v-if="isEdit" tag="button" to="/myrecipes" class="button muted m-l-xl">
+				<i class="fas fa-chevron-left m-r-sm"></i>BACK
 			</router-link>
-			<h3 class="m-none">Editing Recipe: {{recipe.name}}</h3>
-			<button @click="saveEditedRecipe()" class="m-r-xxl">
-				<i class="fas fa-check"></i>Save
+		</div>
+
+		<div class="fixed-btn-container right">
+			<button v-if="!isEdit" class="button primary m-b-md" @click="savePublicRecipe()">
+				<i class="fas fa-share-square m-r-sm"></i>
+				Publish Recipe
+			</button>
+			<button v-if="!isEdit" class="button muted" @click="savePrivateRecipe()">
+				<i class="fas fa-eye-slash m-r-sm"></i>
+				Save as Private Recipe
+			</button>
+			<button v-if="isEdit" @click="saveEditedRecipe()" class="button primary m-r-xl">
+				<i class="fas fa-check m-r-sm"></i>Save
 			</button>
 		</div>
 
-		<h3 v-if="!isEdit" class="m-none">Create New Recipe</h3>
+		<div class="columns">
+			<div class="column">
+				<h2 class="color-default text-semibold m-b-none">
+					{{ isEdit? 'Editing Recipe: ' + recipe.name : 'Create New Recipe' }}
+				</h2>
+			</div>
+		</div>
 
-		<div class="content m-t-xl">
-			<div class="is-flex align-center">
+		<div class="columns m-b-none">
+
+	<!-- Basic Info -->
+			<div class="column is-6">
 				<div class="img-container sm m-r-lg">
 					<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
 					</div>
 				</div>
+			</div>
 
-				<div>
-					<div class="recipe-container is-flex flex-column">
-						<input placeholder="Name of dish" v-model="recipe.name">
-						<input placeholder="Time to cook in minutes" v-model="recipe.duration">
-						<textarea rows="3"
+			<div class="column is-6">
+				<div class="field m-b-sm">
+					<label class="label m-none">Recipe Name</label>
+					<div class="control">
+						<input class="input"
+									 type="text"
+									 placeholder="Give your recipe a name!"
+									 v-model="recipe.name">
+					</div>
+				</div>
+				<div class="field m-b-0">
+					<label class="label m-none">Recipe Name</label>
+					<div class="control">
+						<textarea rows="5"
 											v-model="recipe.description"
 											placeholder="Describe your recipe...">
 						</textarea>
-						<input placeholder="Enter the URL to a picture of your dish" v-model="recipe.imgURL">
-						<div v-if="isEdit" class="field">
-							<b-checkbox v-model="recipe.private">
-									Private Recipe?
-							</b-checkbox>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="columns bottom-border m-b-lg">
+			<div class="column is-6">
+				<div class="field m-none">
+					<label class="label m-none">Image URL</label>
+					<div class="control">
+						<input class="input"
+									 type="text"
+									 placeholder="Enter the URL to an image of your recipe"
+									 v-model="recipe.imgURL">
+					</div>
+				</div>
+			</div>
+			<div class="column is-6">
+				<div class="field m-b-sm">
+					<label class="label m-none">Cooking Duration</label>
+					<div class="control">
+						<input class="input"
+									 type="text"
+									 placeholder="How long does this recipe take to cook?"
+									 v-model="recipe.duration">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- Ingredients -->
+		<div class="columns m-b-none">
+			<div class="column">
+				<h2 class="color-default text-semibold m-b-none">Ingredients</h2>
+			</div>
+		</div>
+
+		<div class="columns bottom-border m-b-lg">
+			<div class="column">
+				<div class="ingredient-container">
+					<div v-for="(ingredient, i) in recipe.ingredients"
+							 class="ingredient-row">
+						<div class="is-flex left-entry">
+							<div class="field m-b-none wide">
+							 	<div class="control">
+							 		<input class="input"
+							 					 type="text"
+							 					 placeholder="Ingredient name"
+							 					 v-model="ingredient.name">
+							 	</div>
+							</div>
+							<div class="field m-b-none narrow">
+							 	<div class="control">
+							 		<input class="input"
+							 					 type="text"
+							 					 placeholder="Quantity"
+							 					 v-model="ingredient.quantity">
+							 	</div>
+							</div>
+							<div class="field m-b-none narrow">
+							 	<div class="control">
+							 		<input class="input"
+							 					 type="text"
+							 					 placeholder="Units"
+							 					 v-model="ingredient.unit">
+							 	</div>
+							</div>
+						</div>
+						<div class="right-entry">
+							<div class="delete-btn"
+									 @click="recipe.ingredients.splice(i, 1)">
+								<i class="fas fa-times"></i>
+							</div>
+						</div>
+					</div>
+					<div class="ingredient-row">
+						<div class="is-flex left-entry">
+							<div class="field m-b-none wide">
+								<div class="control">
+									<input class="input"
+												 type="text"
+												 placeholder="Ingredient name"
+												 ref="ingredientBox"
+												 v-on:keyup.enter="onIngredientAdd()"
+												 v-model="ingredientToAdd">
+								</div>
+							</div>
+							<div class="field m-b-none narrow">
+								<div class="control">
+									<input class="input"
+												 type="text"
+												 placeholder="Quantity"
+												 v-on:keyup.enter="onIngredientAdd()"
+												 v-model="quantityToAdd"
+												 :disabled="!ingredientToAdd">
+								</div>
+							</div>
+							<div class="field m-b-none narrow">
+								<div class="control">
+									<input class="input"
+												 type="text"
+												 placeholder="Units"
+												 v-on:keyup.enter="onIngredientAdd()"
+												 v-model="unitToAdd"
+												 :disabled="!ingredientToAdd">
+								</div>
+							</div>
+						</div>
+						<div class="right-entry">
+							<h6 class="color-muted m-none no-wrap">Tap enter to add!</h6>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<h3>Ingredients</h3>
+	<!-- Steps -->
+		<div v-for="(step, i) in recipe.steps" class="step-section columns">
+			<div class="column p-none">
 
-			<div class="ingredient-container">
-				<div v-for="(ingredient, i) in recipe.ingredients"
-						 class="ingredient-entry">
-					<input placeholder="Name" v-model="ingredient.name">
-					<input placeholder="Quantity" v-model="ingredient.quantity">
-					<input placeholder="Units" v-model="ingredient.unit">
-					<div class="delete-btn"
-							 @click="recipe.ingredients.splice(i, 1)">
-						<i class="fas fa-times"></i>
+				<div class="columns m-none">
+					<div class="column">
+						<h3 class="color-default text-semibold m-b-none">Step {{ i + 1 }}</h3>
 					</div>
 				</div>
-				<div class="is-flex align-center">
-					<input class="m-r-md"
-								 v-on:keyup.enter="onIngredientAdd()"
-								 v-model="ingredientToAdd"
-								 placeholder="Ingredient name?"
-								 ref="ingredientBox">
-					<input class="m-r-md"
-								 v-on:keyup.enter="onIngredientAdd()"
-								 v-model="quantityToAdd"
-								 placeholder="How much/many?"
-								 :disabled="!ingredientToAdd">
-					<input class="m-r-md"
-								 v-on:keyup.enter="onIngredientAdd()"
-								 v-model="unitToAdd"
-								 placeholder="How to measure this?"
-								 :disabled="!ingredientToAdd">
-					<h6 class="color-muted m-none">Tap enter to add!</h6>
-				</div>
-			</div>
 
-			<br>
-
-			<div v-for="(step, i) in recipe.steps" class="step-section is-flex flex-column">
-				<h4>Step {{ i + 1 }}</h4>
-				<div class="delete-btn"
-						 @click="deleteStep(i)">
+				<div class="delete-btn" @click="deleteStep(i)">
 					<i class="fas fa-times"></i>
 				</div>
-				<div class="is-flex align-center">
-					<div class="img-container sm m-r-lg">
-						<div class="img" :style="{'background-image': genURL(step.gifURL)}">
+
+				<div class="columns m-none">
+
+					<div class="column is-6">
+						<div class="img-container sm m-r-lg">
+							<div class="img" :style="{'background-image': genURL(step.gifURL)}">
+							</div>
 						</div>
 					</div>
 
-					<div class="is-flex flex-column">
-						<input v-model="step.title"
-									 placeholder="Step title">
-						<textarea rows="3"
-											v-model="step.details"
-											placeholder="Add some details...">
-						</textarea>
-						<input placeholder="Enter the URL to a gif or image representing the step..."
-									 v-model="step.gifURL">
-						<div class="field">
-							<b-checkbox v-model="step.timer">
-									Has timer?
-							</b-checkbox>
+					<div class="column is-6">
+						<div class="field m-b-sm">
+							<label class="label m-none">Instruction Title</label>
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Summarize your step..."
+											 v-model="step.title">
+							</div>
 						</div>
-						<input v-if="step.timer" v-model="step.duration" placeholder="How long in minutes?">
+						<div class="field m-b-0">
+							<label class="label m-none">Details</label>
+							<div class="control">
+								<textarea rows="5"
+													v-model="step.details"
+													placeholder="Add some details...">
+								</textarea>
+							</div>
+						</div>
+
 					</div>
 				</div>
-				<br>
+
+				<div class="columns m-none">
+					<div class="column is-6">
+						<div class="field m-none">
+							<label class="label m-none">Image/GIF URL</label>
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Enter the URL to an image or GIF"
+											 v-model="step.gifURL">
+							</div>
+						</div>
+					</div>
+					<div class="column is-6 p-none">
+						<div class="columns m-none p-none">
+							<div class="column is-3">
+								<div class="field m-none">
+									<label class="label m-none">Has Timer?</label>
+									<div class="control">
+										<div class="check-box" @click="onTimerCheckbox(step)">
+											<i v-if="step.timer" class="fas fa-check-square tick"></i>
+											<i v-if="!step.timer" class="far fa-square no-tick"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="column is-9">
+								<div class="field m-none">
+									<label class="label m-none" :class="{'color-accent': !step.timer}">
+										Timer Duration
+									</label>
+								  <div class="field has-addons m-none">
+								  	<p class="control">
+								  	  <input class="input"
+														 type="text"
+														 placeholder="How long?"
+														 v-model="step.duration"
+														 :disabled="!step.timer">
+								  	</p>
+								  	<p class="control">
+								  	  <a class="button is-static" :class="{'disabled': !step.timer}">
+								  	    minutes
+								  	  </a>
+								  	</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<button @click="addStep()">
-				Add a step
-			</button>
+		</div>
 
-			<div v-if="!isEdit" class="is-flex">
-				<button @click="savePublicRecipe()">
-					Publish Recipe
-				</button>
-				<button @click="savePrivateRecipe()">
-					Save as Private Recipe
+		<div class="columns m-b-lg">
+			<div class="column">
+				<button class="button muted md" @click="addStep()">
+					Add a Step
 				</button>
 			</div>
-
-			<br>
 		</div>
 
 		<b-modal :active.sync="modalActive"
-						 :width="400"
+						 :width="300"
 						 :canCancel="false">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm">Recipe Created!</h2>
-					<div class="is-flex justify-between">
-						<!-- <router-link to="/m/cook" tag="button" class="button primary">
-							Cook it now!
-						</router-link> -->
-						<router-link to="/home" tag="button" class="button green">
-							Back to home page
+					<h4 class="color-default m-b-sm">
+						Recipe Created!
+					</h4>
+					<h6 class="color-muted">
+						It will now show up in the "My Recipes" page!
+					</h6>
+					<div class="is-flex justify-between full-width">
+						<router-link to="/home" tag="button" class="button primary full-width">
+							Back to Home Page
 						</router-link>
 					</div>
 				</div>
@@ -144,9 +305,16 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h3 class="color-default m-b-sm">Some Information is Missing!</h3>
-					<div class="is-flex justify-between">
-						<button class="button primary" @click="badInfoModalActive = false">OK</button>
+					<h4 class="color-default m-b-sm">
+						Some Information is Missing!
+					</h4>
+					<h6 class="color-muted">
+						Please fill in all required fields
+					</h6>
+					<div class="is-flex justify-between full-width">
+						<button class="button primary full-width" @click="badInfoModalActive = false">
+							Dismiss
+						</button>
 					</div>
 				</div>
 			</div>
@@ -156,27 +324,46 @@
 </template>
 
 <style scoped lang="scss">
-input, textarea { width: 300px; margin-bottom: 10px; }
-.step-section {
-	position: relative;
-	.delete-btn {
-		right: 5px; top: 5px;
+.fixed-btn-container {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 100px;
+	z-index: 30;
+	&.left { left: 25px; }
+	&.right { right: 25px; }
+}
+.columns {
+	width: 100%;
+}
+.ingredient-row {
+	display: flex;
+	align-items: center;
+	.field {
+		margin-right: 1em;
+		&.narrow {
+			width: 125px;
+			min-width: 125px;
+		}
+		&.wide {
+		}
+	}
+	.left-entry {
+		width: 100%;
+	}
+	.right-entry {
+		text-align: left;
+		min-width: 125px;
 	}
 }
-.ingredient-entry {
-	padding-right: 2em;
-	position: relative;
-	.delete-btn {
-		right: 0;
+.img-container {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	.img {
+		width: 100%;
+		height: 100%;
 	}
-}
-.delete-btn {
-	position: absolute;
-	font-size: 1.25em;
-	cursor: pointer;
-}
-.ingredient-container {
-	input { width: 175px; }
 }
 </style>
 
@@ -214,6 +401,12 @@ export default {
 			'saveRecipe',
 			'updateRecipe'
 		]),
+		onTimerCheckbox: function (step) {
+			step.timer = !step.timer
+			if (!step.timer) {
+				step.duration = undefined
+			}
+		},
 		onIngredientAdd: function () {
 			if (this.ingredientToAdd) {
 				this.recipe.ingredients.push({
@@ -266,7 +459,7 @@ export default {
 		goodToSubmit: function () {
 			let goodIngredients = true
 			_.forEach(this.recipe.ingredients, (ingredient) => {
-				goodIngredients = goodIngredients && ingredient.name && ingredient.quantity && ingredient.unit
+				goodIngredients = goodIngredients && ingredient.name && ingredient.quantity
 			})
 			let goodSteps = true
 			_.forEach(this.recipe.steps, (step) => {

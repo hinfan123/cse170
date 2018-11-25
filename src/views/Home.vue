@@ -6,9 +6,17 @@
 						 @click="openModal(recipe)"
 						 :class="['recipe-box', boxSizeArray[i][j]]"
 						 :style="{'background-image': genURL(recipe.imgURL)}">
-					<div :class="['save-btn', {'saved': isSaved(recipe.id)}]"
-							 @click.stop="onSaveBtnClick(recipe)">
-						<i class="fas fa-heart"></i>
+					<div class="save-btn-container"
+							 @click.stop="toggleSaved(recipe.id)">
+						<button v-show="!isSaved(recipe.id)" class="button xs pink save">
+							Save
+						</button>
+						<button v-show="isSaved(recipe.id)" class="button saved">
+							<i class="fas fa-heart"></i>
+						</button>
+						<button v-show="isSaved(recipe.id)" class="button xs muted unsave">
+							Unsave
+						</button>
 					</div>
 					<div class="recipe-text is-flex flex-column">
 						<h4 class="m-b-sm color-default text-semibold">{{ recipe.name }}</h4>
@@ -34,7 +42,7 @@
 							<button class="button pink" @click="onSaveBtnClick(clickedRecipe)">
 								<i class="fas fa-heart m-r-sm"></i> {{isSaved(clickedRecipe.id)? 'Saved' : 'Save'}}
 							</button>
-							<div class="duration text-semibold m-t-sm">
+							<div class="duration text-semibold m-t-sm color-default">
 								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
 							</div>
 						</div>
@@ -51,11 +59,11 @@
 					</p>
 					<div class="is-flex justify-center">
 						<router-link :to="'/h/cook/' + clickedRecipe.id" tag="button" class="button primary is-large">
-							cook
+							COOK
 						</router-link>
 					</div>
 
-					<h5>Comments</h5>
+					<h5 class="color-default">Comments</h5>
 					<comments-section :comments="clickedRecipe.recipeComments"
 														commentBoxPlaceholder="What do you think of this recipe?">
 					</comments-section>
@@ -72,23 +80,7 @@
 </template>
 
 <style lang="scss" scoped>
-.close-modal-btn {
-	position: fixed;
-	top: 50px; left: 50px;
-	z-index: 50;
-	cursor: pointer;
-	padding: 0.5em;
-	font-size: 20px;
-	color: #FFFFFF;
-	font-weight: 700;
-	border-radius: 8px;
-	i {
-		margin-right: 0.75em;
-	}
-	&:hover {
-		background: rgba(200,200,200, 0.5);
-	}
-}
+</style>
 
 .duration {
 	i {
@@ -161,9 +153,6 @@ export default {
 		},
 		isSaved: function (id) {
 			return _.indexOf(this.savedList, id) !== -1
-		},
-		onSaveBtnClick: function (recipe) {
-			this.toggleSaved(recipe.id)
 		}
 	},
 	created: function () {

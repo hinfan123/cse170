@@ -1,39 +1,197 @@
 <template>
 	<div id="profile" class="content">
-		<h3>General Information</h3>
-		<input placeholder="username">
-		<input placeholder="Email">
-		<input placeholder="First name">
-		<input placeholder="Last name">
-		<br>
-		<button @click="toast">save info</button>
+
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label"></label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<h3 class="color-default">General Information</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					Username
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="text" class="input" placeholder="Ex. avocadodevourer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					E-mail
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="text" class="input" placeholder="Ex. avocadoman@gmail.com">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					First Name
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="text" class="input" placeholder="Ex. John">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					Last Name
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="text" class="input" placeholder="Ex. Smith">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label"></label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<button class="button muted md" @click="toast">
+							Save Info
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<br>
 
-		<h3>Change Password</h3>
-		<input placeholder="old password" type="password">
-		<input placeholder="new password" type="password">
-		<input placeholder="re-enter new password" type="password">
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label"></label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<h3 class="color-default">Change Password</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					Old Password
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="password" class="input" placeholder="Hopefully you remember it">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					New Password
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="password" class="input" placeholder="Please make it secure">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label">
+					Confirm New Password
+				</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<input type="password" class="input" placeholder="Confirm your password">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label"></label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<button class="button muted md" @click="toastPassword">
+							Change Password
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<br>
-		<button @click="toastPassword">change password</button>
 
-		<br><br>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal">
+				<label class="label"></label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						<button class="button pink md" @click="modalActive = true">
+							<i class="fas fa-sign-out-alt m-r-sm"></i>
+							LOGOUT
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-		<button @click="modalActive = true">
-			logout
-		</button>
+
 
 		<b-modal :active.sync="modalActive"
-						 :width="250"
+						 :width="275"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
-				<div class="card-content">
-					<h5 class="color-default m-b-sm">
-						Are you sure you want to logout?
-					</h5>
-					<div class="is-flex justify-between">
-						<button class="button primary" @click="modalActive = false">stay</button>
-						<router-link to="/" tag="button" class="button pink">
-							logout
+				<div class="card-content is-large">
+					<h4 class="color-default m-b-sm">
+						Are you sure?
+					</h4>
+					<div class="is-flex justify-between m-t-md">
+						<button class="button muted sm" @click="modalActive = false">
+							Stay
+						</button>
+						<router-link to="/" tag="button" class="button pink filled sm">
+							Logout
 						</router-link>
 					</div>
 				</div>

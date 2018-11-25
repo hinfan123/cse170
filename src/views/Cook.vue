@@ -73,16 +73,16 @@
 		</div>
 
 		<b-modal :active.sync="skipModalActive"
-						 :width="400"
+						 :width="375"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">Are you sure you want to jump to this step?</h2>
 					<div class="is-flex justify-between">
-						<button class="button green" @click="skipModalActive = false">
+						<button class="button muted" @click="skipModalActive = false">
 							Stay on Step {{ currStep }}
 						</button>
-						<button class="button pink" @click="changeStep(stepClicked)">
+						<button class="button primary" @click="changeStep(stepClicked)">
 							Jump to Step {{ stepClicked }}
 						</button>
 					</div>
@@ -97,7 +97,7 @@
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">YAY! Enjoy your dish!</h2>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="finishedModalActive = false">
+						<button class="button muted" @click="finishedModalActive = false">
 							Back
 						</button>
 						<router-link to="/home" tag="button" class="button">
@@ -115,7 +115,7 @@
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">Timer is Done!!</h2>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="timerModalActive = false">
+						<button class="button muted" @click="timerModalActive = false">
 							Restart Step
 						</button>
 						<button class="button primary" @click="timerModalNext()">
@@ -128,12 +128,12 @@
 
 		<b-modal :active.sync="ignoreTimerModalActive"
 						 :width="350"
-						 :canCancel="false">
+						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">You haven't started the timer. Are you sure you want to proceed?</h2>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="ignoreTimerModalActive = false">
+						<button class="button muted" @click="ignoreTimerModalActive = false">
 							Stay in current step
 						</button>
 						<button class="button primary" @click="timerModalNext()">
@@ -145,15 +145,15 @@
 		</b-modal>
 
 		<b-modal :active.sync="goBackModalActive"
-						 :width="450"
+						 :width="425"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
 					<h2 class="color-default m-b-sm text-semibold">
-						Are you sure you want to stop cooking and exit to the home page?
+						Go back to the home page?
 					</h2>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="goBackModalActive = false">
+						<button class="button muted" @click="goBackModalActive = false">
 							Continue Cooking
 						</button>
 						<router-link :to="prevRoute" tag="button" class="button pink">

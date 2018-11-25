@@ -3,7 +3,7 @@
   src: url(/assets/SF.otf) format('otf');
 }
 
-//*
+/*
 // Light Theme
 $bg: #FFFFFF;
 $text: #444444;
@@ -15,17 +15,21 @@ $primary: #76ADB0;
 $muted: #8E8E8E;
 $modal-bg: rgba(25,25,25,0.9);
 $translucent: rgba(250,250,250,0.8);
+$translucent-light: rgba(255,255,255,0.75);
+$selection-bg: rgba(25,25,25,0.99);
 /*/
 // Dark theme
 $bg: #202020;
 $text: #DEDEDE;
 $light-accent: #282828;
 $accent: #333333;
-$placeholder: #828282;
+$placeholder: #707070;
 $primary: #75B0B0;
 $muted: #8E8E8E;
 $modal-bg: rgba(75,75,75,0.9);
-$translucent: rgba(75,75,75,0.85);
+$translucent: rgba(50,50,50,0.85);
+$translucent-light: $bg;
+$selection-bg: rgba(200,200,200,0.99);
 //*/
 
 $pink: #EB8D96;
@@ -54,6 +58,15 @@ html {
 	width: 0.4em;
 }*/
 
+::-moz-selection {
+	color: $bg;
+	background-color: $selection-bg;
+}
+::selection {
+	color: $bg;
+	background-color: $selection-bg;
+}
+
 h1, h2, h3, h4, h5, h6, p {
 	margin-bottom: 0.25em;
 }
@@ -71,7 +84,6 @@ h1, h2, h3, h4, h5, h6, p {
   font-family: 'SF Pro Display', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: $text;
 }
 
@@ -118,7 +130,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #profile {
-	text-align: left;
+	max-width: 575px;
+	width: 70%;
+}
+
+.wrapper {
+	max-width: 800px;
+	width: 75%;
 }
 
 .modal-background {
@@ -130,61 +148,6 @@ h1, h2, h3, h4, h5, h6, p {
 	overflow-y: scroll !important;
 	.animation-content.modal-content {
 		overflow: visible !important;
-	}
-}
-
-button {
-	cursor: pointer;
-}
-button[disabled] {
-	cursor: not-allowed !important;
-}
-
-button.button {
-	background: transparent;
-	border-radius: 6px;
-	text-transform: uppercase;
-	font-weight: 700;
-	&:focus:not(:active) {
-		box-shadow: none;
-	}
-	&:focus {
-		box-shadow: none;
-	}
-	&:active {
-		box-shadow: none;
-	}
-	&.primary {
-		color: $primary;
-		border: 2px solid $primary;
-		&:hover {
-			background: $primary;
-			color: $bg;
-		}
-	}
-	&.green {
-		color: $green;
-		border: 2px solid $green;
-		&:hover {
-			background: $green;
-			color: $bg;
-		}
-	}
-	&.yellow {
-		color: $yellow;
-		border: 2px solid $yellow;
-		&:hover {
-			background: $yellow;
-			color: $bg;
-		}
-	}
-	&.pink {
-		color: $pink;
-		border: 2px solid $pink;
-		&:hover {
-			background: $pink;
-			color: $bg;
-		}
 	}
 }
 
@@ -200,74 +163,9 @@ button.button {
 	color: $text;
 	cursor: pointer;
 	&:hover { background: $accent; }
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-   color: $placeholder;
-   opacity: 1; /* Firefox */
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: $placeholder;
-}
-::-ms-input-placeholder { /* Microsoft Edge */
-   color: $placeholder;
-}
-
-.input-container {
-	position: relative;
-	display: flex;
-	font-size: 16px;
-	width: 100%;
-	&.sm { font-size: 14px; }
-	.icon-container {
-		position: absolute;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		width: 2.5em;
-		i {
-			font-size: 1.25em;
-			color: $text;
-		}
-		&.clear {
-			cursor: pointer;
-			i {
-				color: $placeholder;
-			}
-			&:hover {
-				i { color: $pink; }
-			}
-			right: 0;
-		}
+	&.lg {
+		font-size: 42px;
 	}
-	input, textarea {
-		padding: 0 2.5em;
-		width: 100%;
-		background: $accent;
-		border-radius: 8px;
-		border-style: none;
-		font-size: 1em;
-		font-weight: 700;
-		color: $text;
-		&:focus {
-			outline: none;
-			box-shadow: 0 0 0 3px $primary;
-		}
-	}
-	input {
-		height: 2.5em;
-	}
-	textarea {
-		resize: none;
-		line-height: 1.25em;
-		padding-top: 0.75em;
-		padding-bottom: 0.75em;
-	}
-}
-
-input.search-bar {
-	width: 400px;
 }
 
 .recipe-box {
@@ -276,7 +174,7 @@ input.search-bar {
 	padding: 1em;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: space-between;
 	background: $accent;
 	border-radius: 8px;
 	text-align: left;
@@ -305,21 +203,11 @@ input.search-bar {
 		border-radius: 8px;
 		background: $translucent;
 	}
-	.save-btn {
-		cursor: pointer;
-		position: absolute;
-		top: 0; right: 0;
-		padding: 5px;
-		height: 30px;
-		width: 30px;
-		i { color: $bg; }
-		&:hover {
-
-		}
-		&.saved {
-			i { color: $pink; }
-			&:hover {
-
+	&:hover {
+		.save-btn-container {
+			.save {
+				opacity: 1;
+				visibility: visible;
 			}
 		}
 	}
@@ -332,11 +220,53 @@ input.search-bar {
 	}
 }
 
+.save-btn-container {
+	cursor: pointer;
+	position: relative;
+	height: 40px;
+	width: 100px;
+	align-self: flex-end;
+	button {
+		position: absolute;
+		top: 0; right: 0;
+	}
+	.saved {
+		visibility: visible;
+		border-style: none;
+		opacity: 0.85;
+		color: $pink;
+		background: $bg;
+	}
+	.save {
+		opacity: 0;
+		visibility: hidden;
+	}
+	.unsave {
+		opacity: 0;
+		visibility: hidden;
+	}
+	&:hover {
+		.unsave {
+			opacity: 1;
+			visibility: visible;
+		}
+		.saved {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
+
 .content {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.header {
+	text-align: left;
+	width: 100%;
 }
 
 .ingredient-container {
@@ -520,19 +450,22 @@ input.search-bar {
 	position: relative;
 	font-size: 14px;
 	padding: 0.5em 0.5em 0.5em 3.5em;
-	background: $light-accent;
-	border-radius: 8px;
+	//background: $light-accent;
+	//border-radius: 8px;
+	border-bottom: 1px solid $accent;
 	text-align: left;
 	&.reply {
+		border-bottom: none;
 		padding: 0em 0em 0em 3em;
 		.profile-pic {
 			top: 0.05em; left: 0;
 		}
 	}
-	.comment-text {
-		font-size: 0.95em;
+	.comment-text, .commenter-name {
+		font-size: 1em;
 		overflow-wrap: break-word;
 		word-wrap: break-word;
+		letter-spacing: 0.5px;
 	}
 	.profile-pic {
 		position: absolute;
@@ -566,7 +499,7 @@ input.search-bar {
 	align-items: center;
 	position: fixed;
 	top: 65px; left: 0; right: 0;
-	background: rgba(255,255,255,0.75);
+	background: $translucent-light;
 	padding: 0.75em;
 	z-index: 30;
 	button {
@@ -585,4 +518,24 @@ input.search-bar {
 			background: $accent;
 		}
 	}
+}
+
+.step-section {
+	position: relative;
+	width: 100%;
+	.delete-btn {
+		position: absolute;
+		right: 10px; top: 10px;
+	}
+}
+.delete-btn {
+	font-size: 1.25em;
+	cursor: pointer;
+	&:hover {
+		color: $pink;
+	}
+}
+
+.bottom-border {
+	border-bottom: 1px solid $accent;
 }

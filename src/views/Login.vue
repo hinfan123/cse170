@@ -1,24 +1,83 @@
 <template>
-	<div>
-		<div class="content p-xl">
-			<div class="logo-container text-bold">
+	<div class="content p-xxl">
+
+		<div class="is-flex flex-column align-center">
+
+			<div class="logo-container lg text-bold m-t-xxl m-b-md">
 				EZ<i class="fas fa-utensils m-l-sm"></i>
 			</div>
+			<h4 v-if="!isSignup" class="color-muted m-b-lg">
+				EZ-Chef - Anyone can cook!
+			</h4>
+			<h3 v-if="isSignup" class="color-default m-y-md">
+				SIGN-UP
+			</h3>
 
-			<h2>{{ isSignup? "SIGN-UP" : "LOG-IN" }}</h2>
-			<input v-if="!isSignup" placeholder="username or email" v-model="enteredUsername" @keyup.enter="onLogin()">
-			<input v-if="!isSignup" placeholder="password" type="password" v-model="enteredPassword" @keyup.enter="onLogin()">
-			<input v-if="isSignup" placeholder="Username">
-			<input v-if="isSignup" placeholder="Email">
-			<input v-if="isSignup" placeholder="First name">
-			<input v-if="isSignup" placeholder="Last name">
-			<input v-if="isSignup" placeholder="password" type="password">
-			<input v-if="isSignup" placeholder="Re-enter password" type="password">
-			<button v-if="!isSignup" @click="onLogin()">
-				login
+			<div v-if="!isSignup"class="is-flex flex-column">
+				<div class="field m-b-md">
+					<div class="control">
+						<input type="text"
+									 class="input"
+									 placeholder="Username or E-mail"
+									 v-model="enteredUsername"
+									 @keyup.enter="onLogin()">
+					</div>
+				</div>
+				<div class="field m-b-md">
+					<div class="control">
+						<input type="password"
+									 class="input"
+									 placeholder="Password"
+									 v-model="enteredPassword"
+									 @keyup.enter="onLogin()">
+					</div>
+				</div>
+			</div>
+
+			<div v-if="isSignup"class="is-flex flex-column">
+				<div class="field m-b-md">
+					<div class="control">
+						<input type="text"
+									 class="input"
+									 placeholder="Username">
+					</div>
+				</div>
+				<div class="field m-b-md">
+					<div class="control">
+						<input type="text"
+									 class="input"
+									 placeholder="E-mail">
+					</div>
+				</div>
+				<div class="field m-b-md">
+					<div class="control">
+						<input type="password"
+									 class="input"
+									 placeholder="Password">
+					</div>
+				</div>
+				<div class="field m-b-md">
+					<div class="control">
+						<input type="password"
+									 class="input"
+									 placeholder="Re-enter Password">
+					</div>
+				</div>
+			</div>
+
+			<button v-if="!isSignup" class="button primary m-b-md" @click="onLogin()">
+				Login
 			</button>
-			<button v-if="!isSignup" @click="isSignup = true">signup</button>
-			<button v-if="isSignup" @click="toast">submit</button>
+			<button v-if="!isSignup" class="button muted m-b-md" @click="isSignup = true">
+				Sign up
+			</button>
+			<button v-if="isSignup" class="button primary m-b-md" @click="toast">
+				Sign up!
+			</button>
+			<button v-if="isSignup" class="button muted m-b-md" @click="isSignup = false">
+				Back to Login
+			</button>
+
 		</div>
 
 		<b-modal :active.sync="modalActive"
@@ -26,12 +85,12 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm text-semibold">
-						Your Username or Password is Incorrect...
-					</h2>
+					<h4 class="color-default">
+						Incorrect Username or Password...
+					</h4>
 					<div class="is-flex justify-between">
 						<button class="button primary" @click="modalActive = false">
-							dismiss
+							Try Again
 						</button>
 					</div>
 				</div>
@@ -40,6 +99,12 @@
 	</div>
 
 </template>
+
+<style scoped lang="scss">
+input, button {
+	width: 250px;
+}
+</style>
 
 <script>
 import _ from 'lodash'

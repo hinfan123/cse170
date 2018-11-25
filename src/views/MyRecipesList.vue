@@ -4,17 +4,11 @@
 			<h2 class="align-left m-l-xxl color-default">Published Recipes</h2>
 			<div class="is-flex justify-center align-center">
 
-				<!-- <div class="img-carousel-btn">
-					<i class="fas fa-chevron-left"></i>
-				</div> -->
-
 				<div class="recipe-list">
-					<div v-if="myPublishedRecipeList.length===0"> Looks like you have no recipes, go make some!</div>
+					<div v-if="myPublishedRecipeList.length === 0"> Looks like you have no recipes, go make some!</div>
 					<div v-for="recipe in myPublishedRecipeList" class="recipe-entry">
 						<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
-							<!-- <div class="saved-btn">
-								<i class="fas fa-heart"></i>
-							</div> -->
+
 						</div>
 						<div class="recipe-description">
 							<h4 class="color-default">{{ recipe.name }}</h4>
@@ -22,11 +16,11 @@
 								{{ recipe.description }}
 							</p>
 							<div class="btn-container">
-								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button yellow">
-									edit
+								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button muted">
+									Edit
 								</router-link>
 								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary">
-									cook
+									Cook
 								</router-link>
 							</div>
 						</div>
@@ -48,7 +42,7 @@
 				</div> -->
 
 				<div class="recipe-list">
-					<div v-if="myPrivateRecipeList.length===0"> It looks like you have no recipes. Go make some! </div>
+					<div v-if="myPrivateRecipeList.length === 0"> It looks like you have no recipes. Go make some! </div>
 					<div v-for="recipe in myPrivateRecipeList" class="recipe-entry">
 						<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
 							<!-- <div class="saved-btn">
@@ -61,11 +55,11 @@
 								{{ recipe.description }}
 							</p>
 							<div class="btn-container">
-								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button yellow">
-									edit
+								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button muted">
+									Edit
 								</router-link>
 								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary">
-									cook
+									Cook
 								</router-link>
 							</div>
 						</div>

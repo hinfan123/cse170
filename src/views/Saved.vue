@@ -2,11 +2,7 @@
 	<div id="saved" class="content">
 		<div class="recipe-list">
 			<div v-for="recipe in recipes" class="recipe-entry">
-				<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}">
-					<div class="saved-btn">
-						<i class="fas fa-heart"></i>
-					</div>
-				</div>
+				<div class="recipe-img" :style="{'background-image': genURL(recipe.imgURL)}"></div>
 				<div class="recipe-description">
 					<h4 class="text-semibold color-default">{{ recipe.name }}</h4>
 					<p class="text-regular color-muted">
@@ -14,8 +10,11 @@
 						{{ recipe.description }}
 					</p>
 					<div class="btn-container">
-						<router-link :to="'/s/cook/' + recipe.id" tag="button" class="button primary">
-							cook
+						<button class="button muted sm" @click="toggleSaved(recipe.id)">
+							Unsave
+						</button>
+						<router-link :to="'/s/cook/' + recipe.id" tag="button" class="button sm primary">
+							Cook
 						</router-link>
 					</div>
 				</div>

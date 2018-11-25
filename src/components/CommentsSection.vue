@@ -26,14 +26,14 @@
 			<div class="profile-pic"
 					 :style="{'background-image': genProfilePicURL(comment.picURL)}">
 			</div>
-			<div class="commenter-name text-semibold">
+			<div class="commenter-name text-semibold color-primary">
 				{{ comment.commenter }}
 			</div>
-			<div class="comment-text text-regular m-b-xs">
+			<div class="comment-text text-regular m-b-xs color-default">
 				{{ comment.text}}
 			</div>
 
-			<button class="reply" @click="toggleReplyBox(i)">
+			<button class="button reply-btn" @click="toggleReplyBox(i)">
 				REPLY
 			</button>
 
@@ -42,10 +42,10 @@
 				<div class="profile-pic"
 						 :style="{'background-image': genProfilePicURL(reply.picURL)}">
 				</div>
-				<div class="commenter-name text-semibold">
+				<div class="commenter-name text-semibold color-primary">
 					{{ reply.commenter }}
 				</div>
-				<div class="comment-text text-regular m-b-xs">
+				<div class="comment-text text-regular m-b-xs color-default">
 					{{ reply.text}}
 				</div>
 			</div>

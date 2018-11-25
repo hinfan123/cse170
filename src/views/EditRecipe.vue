@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="wrapper">
 		<recipe-section :recipe="recipeToEdit"
 										:isEdit="true"
 										@bypassRouteGuard="bypassRouteGuard = true">
@@ -9,12 +9,15 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h5 class="color-default m-b-sm">
-						Are you sure you want to leave? All unsaved information will be lost
-					</h5>
+					<h4 class="color-default m-b-sm">
+						Leave this page?
+					</h4>
+					<h6 class="color-muted">
+						All unsaved information will be lost
+					</h6>
 					<div class="is-flex justify-between">
-						<button class="button primary" @click="promiseReject()">stay</button>
-						<button class="button pink" @click="promiseResolve()">Leave</button>
+						<button class="button muted sm" @click="promiseReject()">Stay</button>
+						<button class="button pink sm" @click="promiseResolve()">Leave</button>
 					</div>
 				</div>
 			</div>

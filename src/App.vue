@@ -7,8 +7,9 @@
 <style lang="scss">
 @import "~bulma/sass/utilities/_all";
 @import "~bulma";
-@import "./styles/styles.scss";
-@import "./styles/helpers.scss";
+@import "@/styles/styles.scss";
+@import "@/styles/helpers.scss";
+@import "@/styles/input.scss";
 </style>
 
 

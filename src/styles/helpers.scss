@@ -1,3 +1,21 @@
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
 .color-default {
   color: $text !important;
 }
@@ -9,6 +27,9 @@
 }
 .color-primary {
   color: $primary !important;
+}
+.color-accent {
+  color: $accent !important;
 }
 
 .flex-column {
@@ -46,6 +67,9 @@
   align-self: flex-start;
 }
 
+.no-wrap {
+  white-space: nowrap !important;
+}
 
 .full-width {
   width: 100% !important;
