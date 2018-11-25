@@ -58,7 +58,6 @@
 						</textarea>
 					</div>
 				</div>
-
 			</div>
 		</div>
 
@@ -101,28 +100,28 @@
 							 class="ingredient-row">
 						<div class="is-flex left-entry">
 							<div class="field m-b-none wide">
-							 	<div class="control">
-							 		<input class="input"
-							 					 type="text"
-							 					 placeholder="Ingredient name"
-							 					 v-model="ingredient.name">
-							 	</div>
+								<div class="control">
+									<input class="input"
+												 type="text"
+												 placeholder="Ingredient name"
+												 v-model="ingredient.name">
+								</div>
 							</div>
 							<div class="field m-b-none narrow">
-							 	<div class="control">
-							 		<input class="input"
-							 					 type="text"
-							 					 placeholder="Quantity"
-							 					 v-model="ingredient.quantity">
-							 	</div>
+								<div class="control">
+									<input class="input"
+												 type="text"
+												 placeholder="Quantity"
+												 v-model="ingredient.quantity">
+								</div>
 							</div>
 							<div class="field m-b-none narrow">
-							 	<div class="control">
-							 		<input class="input"
-							 					 type="text"
-							 					 placeholder="Units"
-							 					 v-model="ingredient.unit">
-							 	</div>
+								<div class="control">
+									<input class="input"
+												 type="text"
+												 placeholder="Units"
+												 v-model="ingredient.unit">
+								</div>
 							</div>
 						</div>
 						<div class="right-entry">
@@ -249,27 +248,26 @@
 									<label class="label m-none" :class="{'color-accent': !step.timer}">
 										Timer Duration
 									</label>
-								  <div class="field has-addons m-none">
-								  	<p class="control">
-								  	  <input class="input"
+									<div class="field has-addons m-none">
+										<p class="control">
+											<input class="input"
 														 type="text"
 														 placeholder="How long?"
 														 v-model="step.duration"
 														 :disabled="!step.timer">
-								  	</p>
-								  	<p class="control">
-								  	  <a class="button is-static" :class="{'disabled': !step.timer}">
-								  	    minutes
-								  	  </a>
-								  	</p>
-								  </div>
+										</p>
+										<p class="control">
+											<a class="button is-static" :class="{'disabled': !step.timer}">
+												minutes
+											</a>
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 		<div class="columns m-b-lg">
@@ -285,7 +283,7 @@
 						 :canCancel="false">
 			<div class="card">
 				<div class="card-content">
-					<h4 class="color-default m-b-sm">
+					<h4 class="color-default text-semibold m-b-sm">
 						Recipe Created!
 					</h4>
 					<h6 class="color-muted">
@@ -305,7 +303,7 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h4 class="color-default m-b-sm">
+					<h4 class="color-default text-semibold m-b-sm">
 						Some Information is Missing!
 					</h4>
 					<h6 class="color-muted">
@@ -368,7 +366,7 @@
 </style>
 
 <script>
-import { mapGetters, mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import _ from 'lodash'
 
 export default {

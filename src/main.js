@@ -23,7 +23,8 @@ Vue.mixin({
 	methods: {
 		genURL: function (url) {
 			let actual = url? url :
-					'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
+					'https://yesfitness.com.ua/wp-content/uploads/2016/03/placeholder-1000x600.jpg'
+					//'https://www.aut.ac.nz/__data/assets/image/0006/92328/placeholder-image10.jpg'
 			return 'url(' + actual + ')'
 		},
 		genProfilePicURL: function (url) {

@@ -74,6 +74,17 @@ button.button {
 			border-bottom: 2px solid transparent;
 		}
 	}
+	&.close-modal-btn {
+		position: fixed;
+		top: 50px; left: 100px;
+		z-index: 50;
+		color: #F2F2F2;
+		border-style: none;
+		font-size: 20px;
+		&:hover {
+			background: $light-accent;
+		}
+	}
 	&.xs {
 		min-width: 75px;
 	}
@@ -182,6 +193,7 @@ a.button.is-static {
 			border-radius: 6px;
 			font-size: 1rem;
 			letter-spacing: -0.03em;
+			box-shadow: none;
 			&:focus {
 				outline: none;
 				border: 2px solid $primary;
@@ -198,6 +210,7 @@ a.button.is-static {
 			padding: 0.5em;
 			width: 100%;
 			resize: none;
+			box-shadow: none;
 		}
 	}
 }

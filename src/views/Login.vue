@@ -85,7 +85,7 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h4 class="color-default">
+					<h4 class="color-default text-semibold">
 						Incorrect Username or Password...
 					</h4>
 					<div class="is-flex justify-between">

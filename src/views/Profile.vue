@@ -8,7 +8,7 @@
 			<div class="field-body">
 				<div class="field">
 					<div class="control">
-						<h3 class="color-default">General Information</h3>
+						<h2 class="color-default text-semibold">General Information</h2>
 					</div>
 				</div>
 			</div>
@@ -95,7 +95,7 @@
 			<div class="field-body">
 				<div class="field">
 					<div class="control">
-						<h3 class="color-default">Change Password</h3>
+						<h2 class="color-default text-semibold">Change Password</h2>
 					</div>
 				</div>
 			</div>
@@ -183,7 +183,7 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content is-large">
-					<h4 class="color-default m-b-sm">
+					<h4 class="color-default text-semibold m-b-sm">
 						Are you sure?
 					</h4>
 					<div class="is-flex justify-between m-t-md">

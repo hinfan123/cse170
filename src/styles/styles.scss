@@ -539,3 +539,35 @@ h1, h2, h3, h4, h5, h6, p {
 .bottom-border {
 	border-bottom: 1px solid $accent;
 }
+
+.save-btn-container-modal {
+	cursor: pointer;
+	position: relative;
+	height: 40px;
+	width: 100px;
+	align-self: flex-end;
+	button {
+		position: absolute;
+		top: 0; right: 0;
+	}
+	.saved {
+		visibility: visible;
+		border-style: none;
+		background: $pink;
+		color: $bg;
+	}
+	.unsave {
+		opacity: 0;
+		visibility: hidden;
+	}
+	&:hover {
+		.unsave {
+			opacity: 1;
+			visibility: visible;
+		}
+		.saved {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}

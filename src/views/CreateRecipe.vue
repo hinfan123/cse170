@@ -9,7 +9,7 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h4 class="color-default m-b-sm">
+					<h4 class="color-default text-semibold m-b-sm">
 						Leave this page?
 					</h4>
 					<h6 class="color-muted">

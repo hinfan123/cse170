@@ -35,13 +35,22 @@
 				<div class="card-content">
 					<div class="is-flex justify-between">
 						<div class="is-flex flex-column">
-							<h2 class="color-default m-b-sm">{{ clickedRecipe.name }}</h2>
+							<h2 class="color-default text-semibold m-b-sm">{{ clickedRecipe.name }}</h2>
 							<h5 class="color-default">@{{ clickedRecipe.author }}</h5>
 						</div>
 						<div class="is-flex flex-column align-end">
-							<button class="button pink" @click="onSaveBtnClick(clickedRecipe)">
-								<i class="fas fa-heart m-r-sm"></i> {{isSaved(clickedRecipe.id)? 'Saved' : 'Save'}}
-							</button>
+							<div class="save-btn-container-modal"
+									 @click.stop="toggleSaved(clickedRecipe.id)">
+								<button v-show="!isSaved(clickedRecipe.id)" class="button muted save sm">
+									<i class="fas fa-heart m-r-sm"></i>Save
+								</button>
+								<button v-show="isSaved(clickedRecipe.id)" class="button saved sm">
+									<i class="fas fa-heart m-r-sm"></i>Saved
+								</button>
+								<button v-show="isSaved(clickedRecipe.id)" class="button muted unsave sm">
+									Unsave
+								</button>
+							</div>
 							<div class="duration text-semibold m-t-sm color-default">
 								<i class="fas fa-clock"></i> {{ clickedRecipe.duration }} m
 							</div>
@@ -54,16 +63,18 @@
 						</div>
 					</div>
 
-					<p class="color-default text-semibold">
-						{{ clickedRecipe.description }}
-					</p>
-					<div class="is-flex justify-center">
-						<router-link :to="'/h/cook/' + clickedRecipe.id" tag="button" class="button primary is-large">
+					<div class="is-flex justify-between bottom-border m-b-md p-y-md">
+						<h4 class="color-default text-semibold m-b-none">
+							{{ clickedRecipe.description }}
+						</h4>
+						<router-link :to="'/h/cook/' + clickedRecipe.id"
+												 tag="button"
+												 class="button primary is-large text-bold md ">
 							COOK
 						</router-link>
 					</div>
 
-					<h5 class="color-default">Comments</h5>
+					<h5 class="color-default text-semibold m-b-sm">Comments</h5>
 					<comments-section :comments="clickedRecipe.recipeComments"
 														commentBoxPlaceholder="What do you think of this recipe?">
 					</comments-section>
@@ -71,17 +82,15 @@
 				</div>
 			</div>
 		</b-modal>
-		<div class="close-modal-btn" v-if="modalActive" @click="closeModal()">
-			<i class="fas fa-chevron-left"></i>BACK
-		</div>
+		<button class="button close-modal-btn" v-if="modalActive" @click="closeModal()">
+			<i class="fas fa-chevron-left m-r-md"></i>BACK
+		</button>
 
 
 	</div>
 </template>
 
 <style lang="scss" scoped>
-</style>
-
 .duration {
 	i {
 		font-size: 1.25em;
@@ -89,6 +98,8 @@
 	}
 	font-size: 18px;
 }
+</style>
+
 </style>
 
 <script>
