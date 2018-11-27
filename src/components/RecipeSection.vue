@@ -45,7 +45,7 @@
 				<div class="field m-b-sm">
 					<label class="label m-none">Recipe Name</label>
 					<div class="control">
-						<input class="input"
+						<input class="input" :class="{'error': triedSubmitting && !recipe.name}"
 									 type="text"
 									 placeholder="Give your recipe a name!"
 									 v-model="recipe.name">
@@ -54,7 +54,7 @@
 				<div class="field m-b-0">
 					<label class="label m-none">Description</label>
 					<div class="control">
-						<textarea rows="5"
+						<textarea rows="5" :class="{'error': triedSubmitting && !recipe.description}"
 											v-model="recipe.description"
 											placeholder="Describe your recipe...">
 						</textarea>
@@ -79,7 +79,7 @@
 				<div class="field m-b-sm">
 					<label class="label m-none">Cooking Duration</label>
 					<div class="control">
-						<input class="input"
+						<input class="input" :class="{'error': triedSubmitting && (!recipe.duration || isNaN(recipe.duration))}"
 									 type="text"
 									 placeholder="How long does this recipe take to cook?"
 									 v-model="recipe.duration">
@@ -102,7 +102,7 @@
 					<div class="is-flex left-entry">
 						<div class="field m-b-none wide">
 							<div class="control">
-								<input class="input"
+								<input class="input" :class="{'error': triedSubmitting && !ingredient.name}"
 											 type="text"
 											 placeholder="Ingredient name"
 											 v-model="ingredient.name">
@@ -110,7 +110,7 @@
 						</div>
 						<div class="field m-b-none narrow">
 							<div class="control">
-								<input class="input"
+								<input class="input" :class="{'error': triedSubmitting && !ingredient.quantity}"
 											 type="text"
 											 placeholder="Quantity"
 											 v-model="ingredient.quantity">
@@ -199,7 +199,7 @@
 						<div class="field m-b-sm">
 							<label class="label m-none">Instruction Title</label>
 							<div class="control">
-								<input class="input"
+								<input class="input" :class="{'error': triedSubmitting && !step.title}"
 											 type="text"
 											 placeholder="Summarize your step..."
 											 v-model="step.title">
@@ -208,7 +208,7 @@
 						<div class="field m-b-0">
 							<label class="label m-none">Details</label>
 							<div class="control">
-								<textarea rows="5"
+								<textarea rows="5" :class="{'error': triedSubmitting && !step.details}"
 													v-model="step.details"
 													placeholder="Add some details...">
 								</textarea>
@@ -250,7 +250,7 @@
 									</label>
 									<div class="field has-addons m-none">
 										<p class="control">
-											<input class="input"
+											<input class="input" :class="{'error': triedSubmitting && step.timer && (!step.duration || isNaN(step.duration))}"
 														 type="text"
 														 placeholder="How long?"
 														 v-model="step.duration"
@@ -299,15 +299,15 @@
 		</b-modal>
 
 		<b-modal :active.sync="badInfoModalActive"
-						 :width="300"
+						 :width="325"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
 					<h4 class="color-default text-semibold m-b-sm">
-						Some Information is Missing!
+						Some Information is Missing or Invalid!
 					</h4>
 					<h6 class="color-muted">
-						Please fill in all required fields
+						Please fill in all required fields and make sure they are of appropriate type
 					</h6>
 					<div class="is-flex justify-between full-width">
 						<button class="button primary full-width" @click="badInfoModalActive = false">
@@ -382,6 +382,7 @@ export default {
 			modalActive: false,
 			badInfoModalActive: false,
 			oldRecipeName: '',
+			triedSubmitting: false,
 			steps: [
 				{
 					n: 1,
@@ -423,6 +424,7 @@ export default {
 			}
 		},
 		savePrivateRecipe: function () {
+			this.triedSubmitting = true
 			if (this.goodToSubmit()) {
 				this.readjustStepNumbers()
 				this.$emit('bypassRouteGuard')
@@ -436,6 +438,7 @@ export default {
 			}
 		},
 		savePublicRecipe: function () {
+			this.triedSubmitting = true
 			if (this.goodToSubmit()) {
 				this.readjustStepNumbers()
 				this.$emit('bypassRouteGuard')
@@ -466,9 +469,9 @@ export default {
 			let goodSteps = true
 			_.forEach(this.recipe.steps, (step) => {
 				goodSteps = goodSteps && step.title && step.details &&
-				(!step.timer || step.duration)
+				(!step.timer || (step.duration && !isNaN(step.duration)))
 			})
-			return this.recipe.name && this.recipe.duration && this.recipe.description && goodIngredients && goodSteps
+			return this.recipe.name && this.recipe.duration && !isNaN(this.recipe.duration) && this.recipe.description && goodIngredients && goodSteps
 		},
 		stepDurationToSeconds: function () {
 			_.forEach(this.recipe.steps, (step) => {
@@ -485,8 +488,9 @@ export default {
 			})
 		},
 		saveEditedRecipe: function () {
-			this.stepDurationToSeconds()
+			this.triedSubmitting = true
 			if (this.goodToSubmit()) {
+				this.stepDurationToSeconds()
 				this.updateRecipe(this.recipe)
 				this.$emit('bypassRouteGuard')
 				this.$router.push('/myrecipes')

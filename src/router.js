@@ -15,6 +15,8 @@ import Profile from './views/Profile.vue'
 import Cook from './views/Cook.vue'
 import Login from './views/Login.vue'
 
+import SavedOld from './views/SavedOld.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +38,10 @@ export default new Router({
         {
           path: '/saved',
           component: Saved
+        },
+        {
+          path: '/saved-old',
+          component: SavedOld
         },
         {
           path: '/myrecipes',

@@ -19,10 +19,10 @@
 								{{ recipe.description }}
 							</p>
 							<div class="btn-container">
-								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button muted">
+								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button muted sm">
 									Edit
 								</router-link>
-								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary">
+								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary sm">
 									Cook
 								</router-link>
 							</div>
@@ -59,10 +59,10 @@
 								{{ recipe.description }}
 							</p>
 							<div class="btn-container">
-								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button muted">
+								<router-link :to="'/myrecipes/edit/' + recipe.id" tag="button" class="button muted sm">
 									Edit
 								</router-link>
-								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary">
+								<router-link :to="'/m/cook/' + recipe.id" tag="button" class="button primary sm">
 									Cook
 								</router-link>
 							</div>

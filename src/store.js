@@ -1457,14 +1457,6 @@ export default new Vuex.Store({
 				return recipe.id === payload.id
 			})
 			state.recipeList.splice(idx, 1, payload)
-		},
-		DUPLICATE_RECIPE: (state, id) => {
-			let recipeToDuplicate = _.find(state.recipeList, {"id": id})
-			let newRecipe = JSON.parse(JSON.stringify(recipeToDuplicate))
-			newRecipe.id = state.idCounter
-			newRecipe.name = recipeToDuplicate.name + ' v.2'
-			state.idCounter += 1
-			state.recipeList.push(newRecipe)
 		}
 	},
 	actions: {
@@ -1484,9 +1476,6 @@ export default new Vuex.Store({
 		},
 		updateRecipe: (context, payload) => {
 			context.commit("UPDATE_RECIPE", payload)
-		},
-		duplicateRecipe: (context, id) => {
-			context.commit("DUPLICATE_RECIPE", id)
 		}
 	}
 })

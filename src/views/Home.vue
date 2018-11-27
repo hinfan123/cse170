@@ -67,11 +67,19 @@
 						<h4 class="color-default text-semibold m-b-none">
 							{{ clickedRecipe.description }}
 						</h4>
-						<router-link :to="'/h/cook/' + clickedRecipe.id"
-												 tag="button"
-												 class="button primary is-large text-bold md ">
-							COOK
-						</router-link>
+						<div class="is-flex flex-column">
+							<router-link :to="'/h/cook/' + clickedRecipe.id"
+													 tag="button"
+													 class="button primary is-large text-bold md ">
+								COOK
+							</router-link>
+							<router-link v-if="clickedRecipe.owns" :to="'/myrecipes/edit/' + clickedRecipe.id" tag="button" class="button muted sm m-t-sm">
+								Edit
+							</router-link>
+							<router-link v-if="!clickedRecipe.owns" :to="'/create/' + clickedRecipe.id" tag="button" class="button muted sm m-t-sm">
+								Create a new version
+							</router-link>
+						</div>
 					</div>
 
 					<h5 class="color-default text-semibold m-b-sm">Comments</h5>

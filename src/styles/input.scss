@@ -138,6 +138,20 @@ button.button {
 			}
 		}
 	}
+	&.toggle-btn {
+		background: $accent;
+		color: $text;
+		border-style: none;
+		&:hover {
+			background: tint($accent, 15%);
+		}
+		&.active {
+			color: $primary;
+			&:hover {
+				background: $accent;
+			}
+		}
+	}
 	&.xs {
 		min-width: 75px;
 	}
@@ -260,6 +274,15 @@ a.button.is-static {
 			   color: $placeholder;
 			   font-weight: 500;
 			   opacity: 1; /* Firefox */
+			}
+			&.error {
+				border: 2px solid $pink;
+				&:focus {
+					outline: none;
+					border: 2px solid $primary;
+					box-shadow: 0 0 0 0.5px $primary;
+					color: $primary;
+				}
 			}
 		}
 		textarea {
