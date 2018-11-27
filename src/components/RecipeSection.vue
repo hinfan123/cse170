@@ -2,9 +2,9 @@
 	<div class="content">
 
 		<div class="fixed-btn-container left">
-			<router-link v-if="isEdit" tag="button" to="/myrecipes" class="button muted m-l-xl">
+			<button class="button muted m-l-xl" @click="$router.go(-1)">
 				<i class="fas fa-chevron-left m-r-sm"></i>BACK
-			</router-link>
+			</button>
 		</div>
 
 		<div class="fixed-btn-container right">
@@ -24,7 +24,9 @@
 		<div class="columns">
 			<div class="column">
 				<h2 class="color-default text-semibold m-b-none">
-					{{ isEdit? 'Editing Recipe: ' + recipe.name : 'Create New Recipe' }}
+					{{ isEdit? 'Editing Recipe: ' + recipe.name :
+						 recipe.name? 'Creating a new version of "' + oldRecipeName  + '"':
+						 'Create New Recipe'}}
 				</h2>
 			</div>
 		</div>
@@ -50,7 +52,7 @@
 					</div>
 				</div>
 				<div class="field m-b-0">
-					<label class="label m-none">Recipe Name</label>
+					<label class="label m-none">Description</label>
 					<div class="control">
 						<textarea rows="5"
 											v-model="recipe.description"
@@ -379,6 +381,7 @@ export default {
 			unitToAdd: '',
 			modalActive: false,
 			badInfoModalActive: false,
+			oldRecipeName: '',
 			steps: [
 				{
 					n: 1,
@@ -503,6 +506,11 @@ export default {
 	},
 	created: function () {
 		this.stepDurationToMinutes()
+		if (!this.isEdit && this.recipe.name) {
+			this.duplicateRecipe = true
+			this.oldRecipeName = this.recipe.name
+			this.recipe.name = 'New version of ' + this.recipe.name
+		}
 	}
 }
 </script>

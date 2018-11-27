@@ -33,7 +33,9 @@
 				<router-link to="/profile" class="is-unselectable">
 					Profile
 				</router-link>
-				<router-link to="/create" class="is-unselectable">
+				<router-link to="/create/new"
+										 class="is-unselectable"
+										 :class="{'router-link-active router-link-exact-active': inCreate}">
 					New Recipe
 				</router-link>
 			</div>
@@ -72,6 +74,9 @@ export default {
 	computed: {
 		inEdit: function () {
 			return this.$route.name === 'edit'
+		},
+		inCreate: function () {
+			return this.$route.name === 'create'
 		}
 	},
 	created () {

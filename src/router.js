@@ -57,8 +57,9 @@ export default new Router({
           component: Profile
         },
         {
-          path: '/create',
-          component: CreateRecipe
+          path: '/create/:id',
+          name: 'create',
+          component: CreateRecipe,
         }
       ]
     },

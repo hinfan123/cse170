@@ -874,7 +874,7 @@ export default new Vuex.Store({
 						gifURL: "https://media1.giphy.com/media/mcp8ZwgDAEA9y/giphy.gif?cid=3640f6095be61b3b5574493163a470b5",
 						details: "Pour cereal into bowl, CEREAL FIRST. NEVER MILK FIRST",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{ // step 2
 						n: 2,
@@ -882,7 +882,7 @@ export default new Vuex.Store({
 						gifURL: "https://media3.giphy.com/media/gQzoxR4vrBYg8/giphy.gif?cid=3640f6095be61bc03441432f2e274676",
 						details: "Pour Milk into bowl",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{ // step 3
 						n: 3,
@@ -890,7 +890,7 @@ export default new Vuex.Store({
 						gifURL: "https://media3.giphy.com/media/A5ugHVbuFL3uo/giphy.gif?cid=3640f6095be6184d7a32544a6fe774ae",
 						details: "Enjoy your bowl of cereal",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 				] // end steps
 			}, // end recipe 4: kevin"s chili
@@ -1098,7 +1098,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/2xPMQQrcFVHshHFJ90/giphy.gif",
 						details: "Mix salt, black pepper, cayenne, paprika, garlic poweder, onion powder, thyme and parsely",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{ // step 2
 						n: 2,
@@ -1106,7 +1106,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/2tRpFJMpiIwGhsuOMn/giphy.gif",
 						details: "Rub spice mix onto chicken breasts",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{ // step 3
 						n: 3,
@@ -1114,7 +1114,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/8FA0ZE01IF29WAoHqC/giphy.gif",
 						details: "Heat butter on pan and saute chicken until golden brown, sprinkle with lime juice and cook 5 more min",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{
 						n: 4,
@@ -1207,7 +1207,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/7FgYiCHdjD0797zVmD/giphy.gif",
 						details: "Whisk eggs and add milk or cream",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{ // step 2
 						n: 2,
@@ -1221,7 +1221,7 @@ export default new Vuex.Store({
 						gifURL: "https://media.giphy.com/media/43J6lI4dUPBaU8t6K4/giphy.gif",
 						details: "Dip bread in mixture and pan fry",
 						timer: false,
-						duration: 60
+						duration: undefined
 					},
 					{
 						n: 4,
@@ -1423,15 +1423,18 @@ export default new Vuex.Store({
 		savedList: (state) => {
 			return state.saved
 		},
-		myPublishedRecipeList:(state) => {
+		myPublishedRecipeList: (state) => {
 			return _.filter(state.recipeList, (recipe) => {
 				return recipe.owns && !recipe.private
 			})
 		},
-		myPrivateRecipeList:(state) => {
+		myPrivateRecipeList: (state) => {
 			return _.filter(state.recipeList, (recipe) => {
 				return recipe.owns && recipe.private
 			})
+		},
+		getMostRecentRecipe: (state) => {
+			return _.last(state.recipeList)
 		}
 	},
 	mutations: {
@@ -1454,6 +1457,14 @@ export default new Vuex.Store({
 				return recipe.id === payload.id
 			})
 			state.recipeList.splice(idx, 1, payload)
+		},
+		DUPLICATE_RECIPE: (state, id) => {
+			let recipeToDuplicate = _.find(state.recipeList, {"id": id})
+			let newRecipe = JSON.parse(JSON.stringify(recipeToDuplicate))
+			newRecipe.id = state.idCounter
+			newRecipe.name = recipeToDuplicate.name + ' v.2'
+			state.idCounter += 1
+			state.recipeList.push(newRecipe)
 		}
 	},
 	actions: {
@@ -1473,6 +1484,9 @@ export default new Vuex.Store({
 		},
 		updateRecipe: (context, payload) => {
 			context.commit("UPDATE_RECIPE", payload)
+		},
+		duplicateRecipe: (context, id) => {
+			context.commit("DUPLICATE_RECIPE", id)
 		}
 	}
 })

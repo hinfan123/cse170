@@ -1,6 +1,6 @@
 <template>
 	<div class="wrapper">
-		<recipe-section :recipe="emptyRecipe"
+		<recipe-section :recipe="recipeToCreate"
 										:isEdit="false"
 										@bypassRouteGuard="bypassRouteGuard = true">
 		</recipe-section>
@@ -30,6 +30,7 @@
 
 <script>
 import _ from 'lodash'
+import { mapGetters } from 'vuex'
 
 import RecipeSection from '@/components/RecipeSection.vue'
 
@@ -42,6 +43,7 @@ export default {
 		return {
 			bypassRouteGuard: false,
 			loseInfoModalActive: false,
+			recipeToCreate: undefined,
 			emptyRecipe: {
 				name: undefined,
 				description: undefined,
@@ -67,6 +69,17 @@ export default {
 	methods: {
 		promiseResolve: () => {},
 		promiseReject: () => {}
+	},
+	created: function () {
+		if (this.$route.params.id === 'new') {
+			this.recipeToCreate = this.emptyRecipe
+		} else {
+			let recipeID = this.$route.params.id
+			let recipeToDuplicate = this.$store.getters.getRecipeById(_.toNumber(recipeID))
+			let newRecipe = JSON.parse(JSON.stringify(recipeToDuplicate))
+			newRecipe.id = undefined
+			this.recipeToCreate = newRecipe
+		}
 	},
 	beforeRouteLeave: function (to, from, next) {
 		let self = this // this is undefined within promise use self reference
