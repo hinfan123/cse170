@@ -1,16 +1,18 @@
 <template>
 	<div class="content">
-		<h2 class="m-b-sm">{{ step.title }}</h2>
+		<h2 class="m-b-sm text-semibold color-default">{{ step.title }}</h2>
 		<div class="img-container">
 			<div class="img" :style="{'background-image': genURL(step.gifURL)}">
 
 			</div>
 		</div>
-		<div class="instruction-detail-container">
-			{{ step.details }}
+		<div class="step-detail text-left">
+			<p class="color-default text-regular">
+				{{ step.details }}
+			</p>
 		</div>
 
-		<div v-if="step.timer" class="timer-container">
+		<div v-if="step.timer" class="timer-container m-t-md">
 			<cooking-timer :duration="step.duration"
 										 :timerActive.sync="timerActive"
 										 @timer-done="onTimerDone()"
@@ -19,20 +21,23 @@
 		</div>
 
 		<br>
-		<div class="step-nav-container">
-			<button @click="$emit('prev-step')"
+		<div class="is-flex justify-between">
+			<button class="button muted md m-x-md"
+							@click="$emit('prev-step')"
 							:disabled="timerActive">
-				back
+				Back
 			</button>
 			<button v-if="step.n < lastStep"
+							class="button muted md m-x-md"
 							@click="onNext()"
 							:disabled="timerActive">
-				next
+				Next
 			</button>
 			<button v-if="step.n >= lastStep"
+							class="button muted md m-x-md"
 							@click="onFinish()"
 							:disabled="timerActive">
-				finish
+				Finish
 			</button>
 		</div>
 	</div>

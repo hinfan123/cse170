@@ -3,7 +3,7 @@
   src: url(/assets/SF.otf) format('otf');
 }
 
-/*
+//*
 // Light Theme
 $bg: #FFFFFF;
 $text: #444444;
@@ -134,6 +134,10 @@ h1, h2, h3, h4, h5, h6, p {
 	width: 70%;
 }
 
+#cook {
+
+}
+
 .wrapper {
 	max-width: 800px;
 	width: 75%;
@@ -215,7 +219,7 @@ h1, h2, h3, h4, h5, h6, p {
 		display: none;
 		position: absolute;
 		top: 0; bottom: 0; left: 0; right: 0;
-		background: rgba(50,50,50,0.25);
+		background: rgba(25,25,25,0.4);
 		border-radius: 8px;
 	}
 }
@@ -269,27 +273,6 @@ h1, h2, h3, h4, h5, h6, p {
 	width: 100%;
 }
 
-.ingredient-container {
-	display: flex;
-	flex-direction: column;
-	input {
-		margin: 5px 0;
-	}
-}
-
-.ingredient-entry {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin: 5px 0;
-	.ingredient-amount {
-		margin: 0 15px;
-		display: flex;
-		flex-direction: row;
-		h4 { margin: 0 5px; }
-	}
-}
-
 .img-container {
 	display: flex;
 	flex-direction: row;
@@ -335,33 +318,26 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
+.ingredients-list {
+	min-width: 400px;
+}
 
-.back-btn {
-	padding: 5px;
-	margin: 20px;
-	cursor: pointer;
-	i {
-		font-size: 1.5rem;
+.step-detail {
+	min-width: 350px;
+	width: 60%;
+	p {
+		font-size: 1.1em;
 	}
 }
 
-.instruction-detail-container {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	h4 { margin: 5px 0; }
-}
-
-.step-nav-container {
-	display: flex;
-	justify-content: space-between;
-	button { margin: 0 15px; }
-}
-
 .timer-container {
-	display: flex;
-	justify-content: space-between;
-	* { margin: 0 15px; }
+	.timer-time {
+		align-text: right;
+		width: 175px;
+		padding: 0.35em;
+		border-radius: 6px;
+		background: $light-accent;
+	}
 }
 
 .steps-nav {
@@ -490,6 +466,7 @@ h1, h2, h3, h4, h5, h6, p {
 	transform-origin: 100% 0%;
  	&.fold {
  		width: 0;
+ 		white-space: nowrap;
  	}
 }
 
@@ -527,6 +504,12 @@ h1, h2, h3, h4, h5, h6, p {
 		position: absolute;
 		right: 10px; top: 10px;
 	}
+}
+
+.steps-nav {
+	padding: 1em;
+	border-radius: 6px;
+	background: $light-accent;
 }
 .delete-btn {
 	font-size: 1.25em;

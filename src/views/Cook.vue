@@ -1,57 +1,66 @@
 <template>
-	<div id="cook">
-		<div class="is-flex justify-between align-center p-r-sm">
-			<div class="is-flex align-center">
-				<div class="back-btn" @click="goBackModalActive = true">
-					<i class="fas fa-chevron-left"></i>
-				</div>
-				<h2>Cooking {{ recipe.name }}</h2>
-			</div>
-			<button class="button green"
-							@click="showCommentsTab = !showCommentsTab">
-				<i class="fas fa-comment-alt"></i>
-			</button>
-		</div>
+	<div id="cook" class="content">
+		<button class="button back-btn" @click="goBackModalActive = true">
+			<i class="fas fa-chevron-left m-r-md"></i>BACK
+		</button>
 
-		<div class="columns">
-			<div class="column justify-center">
-				<div class="steps-nav">
-					<button :class="['step-btn', {'current': iscurrStep(0)}]"
+		<div class="columns full-width m-t-md">
+			<div class="column justify-center text-center">
+				<h4 class="color-default m-t-xs m-b-md text-semibold">Cooking {{ recipe.name }}</h4>
+				<div class="steps-nav m-y-md">
+					<button :class="['button', 'cooking-step-btn',
+													 {'curr': iscurrStep(0),
+														'done': currStep > 0}]"
 									:disabled="timerActive"
 									@click="currStep = 0">
 						PREP
 					</button>
 					<button v-for="step in recipe.steps"
-									:class="['step-btn', {'current': iscurrStep(step.n)}]"
+									:class="['button', 'cooking-step-btn',
+													 {'curr': iscurrStep(step.n),
+														'done': currStep > step.n,
+														'remainding': currStep < step.n}
+													]"
 									:disabled="timerActive"
 									@click="onStepClick(step.n)">
 						{{ step.n }}
 					</button>
 				</div>
 
-				<div v-show="iscurrStep(0)" class="content">
-					<div class="img-container">
-						<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
-						</div>
-					</div>
-					<div class="ingredient-container">
-						<h3>Here's what you need:</h3><br>
-						<div v-for="ingredient in recipe.ingredients" class="ingredient-entry">
-							<h5 class="m-b-none">{{ ingredient.name }}</h5>
-							<div class="ingredient-amount">
-								<h5 class="m-b-none m-r-sm">{{ ingredient.quantity }}</h5>
-								<h5 class="m-b-none">{{ ingredient.unit }}</h5>
+				<div v-if="iscurrStep(0)" class="columns m-x-lg">
+					<div class="column is-7">
+						<div class="img-container">
+							<div class="img" :style="{'background-image': genURL(recipe.imgURL)}">
 							</div>
 						</div>
 					</div>
-
-					<button class="start-btn" @click="changeStep(1)">
-						START COOKING
-					</button>
+					<div class="column is-5 text-center ingredients-list">
+						<h5 class="text-semibold color-muted text-left">Here's what you need:</h5>
+						<div class="columns m-b-none" v-for="ingredient in recipe.ingredients">
+							<div class="column is-7 text-left p-b-sm">
+								<h5  class="color-default m-b-none">
+									{{ ingredient.name }}
+								</h5>
+							</div>
+							<div class="column is-2 text-right p-b-sm">
+								<h5 class="color-default m-b-none">
+									{{ ingredient.quantity }}
+								</h5>
+							</div>
+							<div class="column is-3 text-left p-b-sm">
+								<h5 class="color-default m-b-none">
+									{{ ingredient.unit }}
+								</h5>
+							</div>
+						</div>
+						<button class="button primary lg m-y-md" @click="changeStep(1)">
+							START COOKING
+						</button>
+					</div>
 				</div>
 
 				<div v-for="step in recipe.steps">
-					<div v-if="iscurrStep(step.n)" class="content">
+					<div v-show="iscurrStep(step.n)" class="content">
 						<cooking-step :step="step"
 													:lastStep="recipe.steps.length"
 													:timerActive.sync="timerActive"
@@ -65,25 +74,31 @@
 				</div>
 			</div>
 
-			<div class="comments-tab m-x-md" :class="{'fold': !showCommentsTab}">
-				<comments-section :comments="recipe.stepsComments"
-													commentBoxPlaceholder="Add a comment...">
-				</comments-section>
+			<div class="is-flex flex-column align-end p-md">
+				<button class="button primary m-y-sm"
+								@click="showCommentsTab = !showCommentsTab">
+					<i class="fas fa-comment-alt"></i>
+				</button>
+				<div class="comments-tab" :class="{'fold': !showCommentsTab}">
+					<comments-section :comments="recipe.stepsComments"
+														commentBoxPlaceholder="Add a comment...">
+					</comments-section>
+				</div>
 			</div>
 		</div>
 
 		<b-modal :active.sync="skipModalActive"
-						 :width="375"
+						 :width="400"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm text-semibold">Are you sure you want to jump to this step?</h2>
+					<h4 class="color-default m-b-sm text-semibold">Are you sure you want to jump to this step?</h4>
 					<div class="is-flex justify-between">
 						<button class="button muted" @click="skipModalActive = false">
-							Stay on Step {{ currStep }}
+							Stay on {{ currStep == 0? ' Prep Step' : ' Step ' + currStep }}
 						</button>
 						<button class="button primary" @click="changeStep(stepClicked)">
-							Jump to Step {{ stepClicked }}
+							Jump to {{ stepClicked == 0? ' Prep Step' : ' Step ' + stepClicked }}
 						</button>
 					</div>
 				</div>
@@ -91,16 +106,16 @@
 		</b-modal>
 
 		<b-modal :active.sync="finishedModalActive"
-						 :width="400"
+						 :width="275"
 						 :canCancel="false">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm text-semibold">YAY! Enjoy your dish!</h2>
+					<h4 class="color-default text-semibold">YAY! Enjoy your dish!</h4>
 					<div class="is-flex justify-between">
 						<button class="button muted" @click="finishedModalActive = false">
 							Back
 						</button>
-						<router-link to="/home" tag="button" class="button">
+						<router-link to="/home" tag="button" class="button primary">
 							Done Cooking
 						</router-link>
 					</div>
@@ -109,11 +124,11 @@
 		</b-modal>
 
 		<b-modal :active.sync="timerModalActive"
-						 :width="350"
+						 :width="300"
 						 :canCancel="false">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm text-semibold">Timer is Done!!</h2>
+					<h4 class="color-default text-semibold">The Timer is Done!</h4>
 					<div class="is-flex justify-between">
 						<button class="button muted" @click="timerModalActive = false">
 							Restart Step
@@ -131,7 +146,8 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm text-semibold">You haven't started the timer. Are you sure you want to proceed?</h2>
+					<h4 class="color-default m-b-sm text-semibold">You haven't started the timer</h4>
+					<h6 class="color-muted">Are you sure you want to proceed?</h6>
 					<div class="is-flex justify-between">
 						<button class="button muted" @click="ignoreTimerModalActive = false">
 							Stay in current step
@@ -145,19 +161,19 @@
 		</b-modal>
 
 		<b-modal :active.sync="goBackModalActive"
-						 :width="425"
+						 :width="300"
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h2 class="color-default m-b-sm text-semibold">
-						Go back to the home page?
-					</h2>
+					<h4 class="color-default text-semibold">
+						Exit to the home page?
+					</h4>
 					<div class="is-flex justify-between">
-						<button class="button muted" @click="goBackModalActive = false">
-							Continue Cooking
+						<button class="button muted sm" @click="goBackModalActive = false">
+							Stay
 						</button>
-						<router-link :to="prevRoute" tag="button" class="button pink">
-							Exit to Home Page
+						<router-link :to="prevRoute" tag="button" class="button pink sm">
+							Exit
 						</router-link>
 					</div>
 				</div>
@@ -216,7 +232,8 @@ export default {
 		},
 		changeStep: function (n) {
 			this.currStep = n
-			this.skipModalActive = false;
+			this.skipModalActive = false
+			console.log(this.currStep)
 		},
 		prevStep: function () {
 			this.currStep -= 1

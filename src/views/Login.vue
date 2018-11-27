@@ -3,13 +3,13 @@
 
 		<div class="is-flex flex-column align-center">
 
-			<div class="logo-container lg text-bold m-t-xxl m-b-md">
+			<div class="logo-container lg text-bold m-t-xxl m-b-md is-unselectable">
 				EZ<i class="fas fa-utensils m-l-sm"></i>
 			</div>
-			<h4 v-if="!isSignup" class="color-muted m-b-lg">
+			<h4 v-if="!isSignup" class="color-muted text-semibold m-b-lg is-unselectable">
 				EZ-Chef - Anyone can cook!
 			</h4>
-			<h3 v-if="isSignup" class="color-default m-y-md">
+			<h3 v-if="isSignup" class="color-default m-y-md is-unselectable">
 				SIGN-UP
 			</h3>
 

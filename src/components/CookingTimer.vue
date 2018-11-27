@@ -1,13 +1,24 @@
 <template>
-	<div class="is-flex">
-		<h1 class="m-r-md">{{ display }}</h1>
-		<button v-if="!timerActive" @click="startTimer(duration)">START TIMER</button>
-		<button v-if="timerActive" @click="resetTimer()">RESET TIMER</button>
+	<div class="is-flex align-center timer-container is-unselectable">
+		<h1 class="m-x-md m-b-none text-semibold timer-time"
+				:class="{'color-primary': !timerActive, 'color-pink': timerActive}">
+			{{ display }}
+		</h1>
+		<button v-if="!timerActive"
+						class="button primary md m-x-md"
+						@click="startTimer(duration)">
+			START TIMER
+		</button>
+		<button v-if="timerActive"
+						class="button pink md m-x-md"
+						@click="resetTimer()">
+			RESET TIMER
+		</button>
 	</div>
 
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 </style>
 
 <script>

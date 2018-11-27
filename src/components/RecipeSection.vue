@@ -95,78 +95,76 @@
 
 		<div class="columns bottom-border m-b-lg">
 			<div class="column">
-				<div class="ingredient-container">
-					<div v-for="(ingredient, i) in recipe.ingredients"
-							 class="ingredient-row">
-						<div class="is-flex left-entry">
-							<div class="field m-b-none wide">
-								<div class="control">
-									<input class="input"
-												 type="text"
-												 placeholder="Ingredient name"
-												 v-model="ingredient.name">
-								</div>
-							</div>
-							<div class="field m-b-none narrow">
-								<div class="control">
-									<input class="input"
-												 type="text"
-												 placeholder="Quantity"
-												 v-model="ingredient.quantity">
-								</div>
-							</div>
-							<div class="field m-b-none narrow">
-								<div class="control">
-									<input class="input"
-												 type="text"
-												 placeholder="Units"
-												 v-model="ingredient.unit">
-								</div>
+				<div v-for="(ingredient, i) in recipe.ingredients"
+						 class="ingredient-row m-b-md">
+					<div class="is-flex left-entry">
+						<div class="field m-b-none wide">
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Ingredient name"
+											 v-model="ingredient.name">
 							</div>
 						</div>
-						<div class="right-entry">
-							<div class="delete-btn"
-									 @click="recipe.ingredients.splice(i, 1)">
-								<i class="fas fa-times"></i>
+						<div class="field m-b-none narrow">
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Quantity"
+											 v-model="ingredient.quantity">
+							</div>
+						</div>
+						<div class="field m-b-none narrow">
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Units"
+											 v-model="ingredient.unit">
 							</div>
 						</div>
 					</div>
-					<div class="ingredient-row">
-						<div class="is-flex left-entry">
-							<div class="field m-b-none wide">
-								<div class="control">
-									<input class="input"
-												 type="text"
-												 placeholder="Ingredient name"
-												 ref="ingredientBox"
-												 v-on:keyup.enter="onIngredientAdd()"
-												 v-model="ingredientToAdd">
-								</div>
-							</div>
-							<div class="field m-b-none narrow">
-								<div class="control">
-									<input class="input"
-												 type="text"
-												 placeholder="Quantity"
-												 v-on:keyup.enter="onIngredientAdd()"
-												 v-model="quantityToAdd"
-												 :disabled="!ingredientToAdd">
-								</div>
-							</div>
-							<div class="field m-b-none narrow">
-								<div class="control">
-									<input class="input"
-												 type="text"
-												 placeholder="Units"
-												 v-on:keyup.enter="onIngredientAdd()"
-												 v-model="unitToAdd"
-												 :disabled="!ingredientToAdd">
-								</div>
+					<div class="right-entry">
+						<div class="delete-btn text-center"
+								 @click="recipe.ingredients.splice(i, 1)">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+				<div class="ingredient-row">
+					<div class="is-flex left-entry">
+						<div class="field m-b-none wide">
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Ingredient name"
+											 ref="ingredientBox"
+											 v-on:keyup.enter="onIngredientAdd()"
+											 v-model="ingredientToAdd">
 							</div>
 						</div>
-						<div class="right-entry">
-							<h6 class="color-muted m-none no-wrap">Tap enter to add!</h6>
+						<div class="field m-b-none narrow">
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Quantity"
+											 v-on:keyup.enter="onIngredientAdd()"
+											 v-model="quantityToAdd"
+											 :disabled="!ingredientToAdd">
+							</div>
 						</div>
+						<div class="field m-b-none narrow">
+							<div class="control">
+								<input class="input"
+											 type="text"
+											 placeholder="Units"
+											 v-on:keyup.enter="onIngredientAdd()"
+											 v-model="unitToAdd"
+											 :disabled="!ingredientToAdd">
+							</div>
+						</div>
+					</div>
+					<div class="right-entry is-unselectable">
+						<h6 class="color-muted m-none no-wrap">Tap enter to add!</h6>
 					</div>
 				</div>
 			</div>
@@ -352,6 +350,9 @@
 	.right-entry {
 		text-align: left;
 		min-width: 125px;
+		.delete-btn {
+			width: 30px;
+		}
 	}
 }
 .img-container {

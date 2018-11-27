@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div id="top-bar">
-			<router-link to="/home" tag="div" class="logo-container text-bold">
+			<router-link to="/home" tag="div" class="logo-container text-bold is-unselectable">
 				EZ<i class="fas fa-utensils m-l-sm"></i>
 			</router-link>
 
@@ -19,20 +19,21 @@
 			</div>
 
 			<div id="nav">
-				<router-link to="/home">
+				<router-link to="/home" class="is-unselectable">
 					Home
 				</router-link>
-				<router-link to="/saved">
+				<router-link to="/saved" class="is-unselectable">
 					Saved
 				</router-link>
 				<router-link to="/myrecipes"
+										 class="is-unselectable"
 										 :class="{'router-link-active router-link-exact-active': inEdit}">
 					My Recipes
 				</router-link>
-				<router-link to="/profile">
+				<router-link to="/profile" class="is-unselectable">
 					Profile
 				</router-link>
-				<router-link to="/create">
+				<router-link to="/create" class="is-unselectable">
 					New Recipe
 				</router-link>
 			</div>

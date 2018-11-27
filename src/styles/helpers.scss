@@ -28,6 +28,9 @@
 .color-primary {
   color: $primary !important;
 }
+.color-pink {
+  color: $pink !important;
+}
 .color-accent {
   color: $accent !important;
 }
@@ -62,9 +65,18 @@
 .align-end {
   align-items: flex-end !important;
 }
-
 .align-left {
   align-self: flex-start;
+}
+
+.text-center {
+  text-align: center !important;
+}
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
 }
 
 .no-wrap {

@@ -9,7 +9,7 @@
 						 :canCancel="['escape', 'outside']">
 			<div class="card">
 				<div class="card-content">
-					<h4 class="color-default text-semiboldm-b-sm">
+					<h4 class="color-default text-semibold m-b-sm">
 						Leave this page?
 					</h4>
 					<h6 class="color-muted">
@@ -61,14 +61,12 @@ export default {
 			let p = new Promise( (resolve, reject) => {
 				this.promiseReject = reject
 				this.promiseResolve = resolve
-			});
+			})
 			p.then(function () {
 				next()
-			})
-			.catch(function () {
+			}).catch(function () {
 				next(false)
-			})
-			.finally(function () {
+			}).finally(function () {
 				self.loseInfoModalActive = false
 			})
 		} else {

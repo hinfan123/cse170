@@ -28,7 +28,7 @@
 
 		<b-modal v-if="clickedRecipe"
 						 :active.sync="modalActive"
-						 :width="625"
+						 :width="700"
 						 :canCancel="['escape', 'outside']"
 						 scroll="clip">
 			<div class="card">
@@ -118,7 +118,7 @@ export default {
 		return {
 			columns: [0,1,2,3],
 			boxSizeArray: undefined,
-			boxSizes: ['xs','sm','md','lg', 'xl'],
+			boxSizes: ['xs','sm','md','lg','xl'],
 			modalActive: false,
 			clickedRecipe: undefined
 		}
@@ -136,7 +136,6 @@ export default {
 		]),
 		getColRecipes: function (col) {
 			return _.filter(this.dummyRecipes, (i, n) => {
-				//console.log(n % this.columns.length === col)
 				return (n % this.columns.length) === col
 			})
 		},

@@ -78,11 +78,9 @@ export default {
 			});
 			p.then(function () {
 				next()
-			})
-			.catch(function () {
+			}).catch(function () {
 				next(false)
-			})
-			.finally(function () {
+			}).finally(function () {
 				self.loseInfoModalActive = false
 			})
 		} else {

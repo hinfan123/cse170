@@ -51,7 +51,7 @@
 			</div>
 			<div v-if="showReplyBox === i"
 					 v-input-focus-on-create
-					 class="input-container sm m-t-sm">
+					 class="input-container sm m-y-sm">
 				<div class="icon-container">
 					<i class="fas fa-reply color-placeholder"></i>
 				</div>

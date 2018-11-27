@@ -85,6 +85,59 @@ button.button {
 			background: $light-accent;
 		}
 	}
+	&.back-btn {
+		position: fixed;
+		top: 0; left: 0;
+		margin: 20px;
+		cursor: pointer;
+		font-size: 20px;
+		border-style: none;
+		color: $text;
+		i {
+			font-size: 1.5rem;
+		}
+		&:hover {
+			background: $accent;
+		}
+	}
+	&.cooking-step-btn {
+		margin-right: 10px;
+		font-weight: 800;
+		font-size: 14px;
+		&.curr {
+			color: $bg;
+			background: $yellow;
+			border-style: none;
+			&:hover {
+				background: shade($yellow, 35%);
+			}
+		}
+		&.done {
+			color: $bg;
+			background: $primary;
+			border-style: none;
+			&:hover {
+				background: shade($primary, 35%);
+			}
+			/*&::after {
+				position: absolute;
+				left: 100%;
+				top: 14px;
+				height: 3px;
+				width: 10px;
+				background: $primary;
+				content: '';
+			}*/
+		}
+		&.remainding {
+			background: $accent;
+			color: $text;
+			border-style: none;
+			&:hover {
+				background: tint($accent, 15%);
+			}
+		}
+	}
 	&.xs {
 		min-width: 75px;
 	}
@@ -93,6 +146,9 @@ button.button {
 	}
 	&.md {
 		min-width: 175px;
+	}
+	&.lg {
+		min-width: 225px;
 	}
 }
 
